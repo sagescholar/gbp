@@ -478,7 +478,7 @@ export const COMPOSITE_SKILL = {
     },
     "通常三手": {
         "小":{
-            "TA率": 2,
+            "TA率": "小",
         }
     }
 }

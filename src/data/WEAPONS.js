@@ -77,8 +77,8 @@ export const weapons = {
     name: "グラーシーザー",
     element: "闇",
     skill: {
-      1: { e: "闇", type: "通常攻刃", lank: "II", aura: "optimus"},
-      2: { e: "闇", type: "通常背水", lank: "中", aura: "optimus"},
+      1: { e: "闇", type: "通常攻刃", lank: "II", aura: "opti"},
+      2: { e: "闇", type: "通常背水", lank: "中", aura: "opti"},
     },
     }
 };

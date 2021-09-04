@@ -1,12 +1,20 @@
-import logo from "./logo.svg";
 import React from 'react';
+import { Header } from './layouts/Header';
 import "./App.css";
 import { buildTable } from "./components/BuildTable";
-import { basicskill } from "./data/WEAPONSKILL";
-import { CALCULATEINTERFACE } from "./data/WEAPONSKILL";
+import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
+import { BASE_SKILL, COMPOSITE_SKILL } from './data/WEAPONSKILL'
 import { weapons } from "./data/WEAPONS";
 
 function computeWeaponSkill(list) {
+
+  /*
+  計算手順
+  1. 情報を取得する 装備中武器/武器加護補正量,
+  2. 初期化したobj_outputに武器*武器加護補正計算後の値を加算
+  3. 武器スキルの合計値を返す
+  */
+
   let obj_equiped_weapon = {}
   let CNT = 1
   list.forEach((value) => {
@@ -15,25 +23,38 @@ function computeWeaponSkill(list) {
   })
 
   //DeepCopyMethod -> JSON.parse(JSON.stringify(***DeepCopyTarget***))
-  let obj_output = JSON.parse(JSON.stringify(CALCULATEINTERFACE));
+  let obj_output = JSON.parse(JSON.stringify(CALCULATE_OUT_INTERFACE));
 
-  Object.keys(obj_equiped_weapon).forEach((key) => {
+  Object.keys(obj_equiped_weapon/*装備中の武器*/).forEach((key_name) => {
     //key = {1,2,3...}
-    Object.keys(obj_equiped_weapon[key]["skill"]).forEach((keyNo) => {
+    Object.keys(obj_equiped_weapon[key_name]["skill"]/*装備中の武器のスキル*/).forEach((key_skill_no) => {
       //keyNo = {1,2,3,...}
-      obj_output[obj_equiped_weapon[key]["skill"][keyNo].type] +=
-        basicskill[obj_equiped_weapon[key]["skill"][keyNo].type][
-          obj_equiped_weapon[key]["skill"][keyNo].lank
-        ];
+      let skill_element = obj_equiped_weapon[key_name]["skill"][key_skill_no].e;
+      let skill_name = obj_equiped_weapon[key_name]["skill"][key_skill_no].type;
+      let skill_lank = obj_equiped_weapon[key_name]["skill"][key_skill_no].lank;
+
+      if(Object.keys(COMPOSITE_SKILL).includes(skill_name/*刹那*/)){
+        Object.keys(COMPOSITE_SKILL[skill_name][skill_lank]).forEach((skill_name_composite_parsed/**/) =>{
+          let skill_name_composite_parsed_lank = COMPOSITE_SKILL[skill_name][skill_lank][skill_name_composite_parsed]
+          obj_output[skill_name_composite_parsed][skill_element] +=
+          BASE_SKILL[skill_name_composite_parsed][skill_name_composite_parsed_lank]
+        })
+      }
+      else{
+        obj_output[skill_name][skill_element] +=
+        BASE_SKILL[skill_name][skill_lank]
+      }
     });
   });
   return (
     <ul style={{ listStyle: "circle", textAlign: "left", fontSize: "14px" }}>
-      {Object.keys(obj_output).map((key) => (
-        <li>
-          {key}: {obj_output[key]}
-        </li>
-      ))}
+      {Object.keys(obj_output).map((skill_name) => 
+        Object.keys(obj_output[skill_name]).map((skill_element) => (
+          <li>
+            {skill_name} | {skill_element}: {obj_output[skill_name][skill_element]}
+          </li>
+        ))
+      )}
     </ul>
   );
 }
@@ -43,19 +64,6 @@ function renderEquiped(list){
 }
 
 function App() {
-  const style_app = {
-    display: "flex",
-  };
-  const style_app_left = {
-    width: "250px",
-    magin: "15px",
-    padding: "20px 0px",
-    backgroundColor: "#aaaaaa",
-  };
-
-  const style_app_right = {
-    width: "50%",
-  };
 
   const [list_equiped, addEquiped] = React.useState([]);
 
@@ -72,15 +80,17 @@ function App() {
 
   return (
     <>
+      {Header()}
+      
       <div>{list_equiped.map((value) => <input type="button" value={value} />)}</div>
-      <div style={style_app} class="App">
+      <div class="App">
         
-        <div style={style_app_left} class="AppLeft">
+        <div class="AppLeft">
           <p style={{ backgroundColor: "#ffffff" }}>AppLeft</p>
           {computeWeaponSkill(list_equiped)}
         </div>
 
-        <div style={style_app_right} class="AppRight">
+        <div class="AppRight">
           <p>AppRight</p>
           <>
             {Object.keys(weapons).map((key) => (

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+.head-title {
+    margin: 0px;
+    vertical-align: top;
+    padding: 0px 0px 0px 0px;
+    border-bottom: 1px solid #1a183a;
+}
+
+.head-title h3{
+    font-family: 'JosefinSans', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}

@@ -1,5 +1,21 @@
+.AppLeft {
+  width: 250px;
+  margin: 15px;
+  padding: 20px 0px;
+  background-color: #aaaaaa;
+}
+.AppLeft:hover {
+  background-color: #282c34;
+}
+
+.AppRight {
+  margin: 15px;
+}
+
+
+
 .App {
-  text-align: center;
+  display: flex;
 }
 
 .App-logo {

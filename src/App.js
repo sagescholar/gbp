@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header } from './layouts/Header';
+import { Footer } from './layouts/Footer';
 import "./App.css";
 import { buildTable } from "./components/BuildTable";
 import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
@@ -14,6 +15,11 @@ function computeWeaponSkill(list) {
   2. 初期化したobj_outputに武器*武器加護補正計算後の値を加算
   3. 武器スキルの合計値を返す
   */
+
+  let aura_boost = {
+    main: {
+    }
+  }
 
   let obj_equiped_weapon = {}
   let CNT = 1
@@ -109,6 +115,8 @@ function App() {
       <hr />
 
       {buildTable()}
+
+      {Footer()}
     </>
   );
 }

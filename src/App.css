@@ -1,14 +1,13 @@
 .AppLeft {
-  width: 250px;
+  width: 1000px;
   margin: 15px;
   padding: 20px 0px;
   background-color: #aaaaaa;
 }
-.AppLeft:hover {
-  background-color: #282c34;
-}
 
 .AppRight {
+  text-align: right;
+  width: 100px;
   margin: 15px;
 }
 

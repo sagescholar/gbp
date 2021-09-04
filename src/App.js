@@ -4,7 +4,8 @@ import { Footer } from './layouts/Footer';
 import "./App.css";
 import { buildTable } from "./components/BuildTable";
 import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
-import { BASE_SKILL, COMPOSITE_SKILL } from './data/WEAPONSKILL'
+import { BASE_SKILL, COMPOSITE_SKILL } from './data/WEAPONSKILL';
+import { AURA_BOOST_INTERFACE } from './data/WEAPONSKILL';
 import { weapons } from "./data/WEAPONS";
 
 function computeWeaponSkill(list) {
@@ -16,17 +17,25 @@ function computeWeaponSkill(list) {
   3. 武器スキルの合計値を返す
   */
 
-  let aura_boost = {
-    main: {
-    }
-  }
+
+  /*AURA TEST*/
+  let aura_boost = JSON.parse(JSON.stringify(AURA_BOOST_INTERFACE));
+  aura_boost["omega"]["火"] = 0.0;
+  /*AURA TEST END*/
+
+  /*HP TEST*/
+  let hp = 70;
+  /*HP TEST END*/
 
   let obj_equiped_weapon = {}
   let CNT = 1
   list.forEach((value) => {
     obj_equiped_weapon[CNT] = weapons[value];
+    obj_equiped_weapon[CNT]["skill_level"] = "15";
     CNT += 1;
   })
+
+  console.log(obj_equiped_weapon);
 
   //DeepCopyMethod -> JSON.parse(JSON.stringify(***DeepCopyTarget***))
   let obj_output = JSON.parse(JSON.stringify(CALCULATE_OUT_INTERFACE));
@@ -38,22 +47,44 @@ function computeWeaponSkill(list) {
       let skill_element = obj_equiped_weapon[key_name]["skill"][key_skill_no].e;
       let skill_name = obj_equiped_weapon[key_name]["skill"][key_skill_no].type;
       let skill_lank = obj_equiped_weapon[key_name]["skill"][key_skill_no].lank;
+      let skill_aura = obj_equiped_weapon[key_name]["skill"][key_skill_no].aura;
+      let skill_level = obj_equiped_weapon[key_name]["skill_level"];
+
+      console.log("skill: " + skill_name)
 
       if(Object.keys(COMPOSITE_SKILL).includes(skill_name/*刹那*/)){
+        console.log("複合スキル")
         Object.keys(COMPOSITE_SKILL[skill_name][skill_lank]).forEach((skill_name_composite_parsed/**/) =>{
           let skill_name_composite_parsed_lank = COMPOSITE_SKILL[skill_name][skill_lank][skill_name_composite_parsed]
           obj_output[skill_name_composite_parsed][skill_element] +=
-          BASE_SKILL[skill_name_composite_parsed][skill_name_composite_parsed_lank]
+          BASE_SKILL[skill_name_composite_parsed][skill_name_composite_parsed_lank][skill_level]*
+          (1+aura_boost[skill_aura][skill_element])
         })
       }
       else{
-        obj_output[skill_name][skill_element] +=
-        BASE_SKILL[skill_name][skill_lank]
+        console.log("BASE_SKILL")
+        let branch_stamina_list = ["通常渾身","方陣渾身"];
+        let branch_enmity_list = ["通常背水","方陣背水"];
+        if(branch_stamina_list.includes(skill_name)){
+          obj_output[skill_name][skill_element] +=
+          BASE_SKILL[skill_name][skill_lank][skill_level](hp,skill_name,skill_lank,skill_level)*
+          (1+aura_boost[skill_aura][skill_element])
+        }
+        else if(branch_enmity_list.includes(skill_name)){
+          obj_output[skill_name][skill_element] +=
+          BASE_SKILL[skill_name][skill_lank][skill_level](hp,skill_name,skill_lank,skill_level)*
+          (1+aura_boost[skill_aura][skill_element])
+        }
+        else{
+          obj_output[skill_name][skill_element] +=
+          BASE_SKILL[skill_name][skill_lank][skill_level]*
+          (1+aura_boost[skill_aura][skill_element])
+        }
       }
     });
   });
   return (
-    <ul style={{ listStyle: "circle", textAlign: "left", fontSize: "14px" }}>
+    /*<ul style={{ listStyle: "circle", textAlign: "left", fontSize: "14px" }}>
       {Object.keys(obj_output).map((skill_name) => 
         Object.keys(obj_output[skill_name]).map((skill_element) => (
           <li>
@@ -61,8 +92,15 @@ function computeWeaponSkill(list) {
           </li>
         ))
       )}
-    </ul>
-  );
+    </ul>*/
+    Object.keys(obj_output).map((skill_name) => 
+      Object.keys(obj_output[skill_name]).map((skill_element) => {
+        if(obj_output[skill_name][skill_element] != 0)
+          return(<span>
+            {skill_name} | {skill_element}: {obj_output[skill_name][skill_element]}
+          </span>)
+      })
+  ));
 }
 
 function renderEquiped(list){
@@ -72,6 +110,9 @@ function renderEquiped(list){
 function App() {
 
   const [list_equiped, addEquiped] = React.useState([]);
+  const [list_aura_boost, setSummons] = React.useState(JSON.stringify(AURA_BOOST_INTERFACE));
+
+  const summons_list = ["アグニス","ヴァルナ","ティターン","ゼピュロス","ゼウス","ハデス"]; 
 
   React.useEffect(()=>{
 
@@ -87,17 +128,17 @@ function App() {
   return (
     <>
       {Header()}
+
+      
       
       <div>{list_equiped.map((value) => <input type="button" value={value} />)}</div>
       <div class="App">
         
         <div class="AppLeft">
-          <p style={{ backgroundColor: "#ffffff" }}>AppLeft</p>
           {computeWeaponSkill(list_equiped)}
         </div>
 
         <div class="AppRight">
-          <p>AppRight</p>
           <>
             {Object.keys(weapons).map((key) => (
               <input
@@ -109,6 +150,11 @@ function App() {
             ))}
           </>
           <hr />
+        </div>
+        <div class="app-summons">
+          {summons_list.map((summon) => 
+            <input type="button" value={summon} onClick="" />
+          )}
         </div>
       </div>
 

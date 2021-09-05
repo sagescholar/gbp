@@ -1,11 +1,4 @@
-export const ELEMENT_INTERFACE = {
-    "火": 0,
-    "水": 0,
-    "土": 0,
-    "風": 0,
-    "光": 0,
-    "闇": 0,
-}
+import {ELEMENT_INTERFACE} from './ELEMENT';
 
 export const CALCULATE_OUT_INTERFACE = {
     "通常攻刃": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
@@ -450,7 +443,7 @@ export const BASE_SKILL = {
             "15": 14.0,
             "20": 0.0,
         },
-        "オメガ闘争": {
+        "オメガß闘争": {
             "10": 20.0,
             "15": 0.0,
             "20": 0.0,

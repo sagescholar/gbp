@@ -11,8 +11,6 @@
   margin: 15px;
 }
 
-
-
 .App {
   display: flex;
 }
@@ -22,11 +20,19 @@
   pointer-events: none;
 }
 
+.app-summons{
+  display: flex;
+  flex-flow: column;
+  border: 2px solid #ccc;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+
 
 .App-header {
   background-color: #282c34;

@@ -1,8 +1,9 @@
 import React from 'react';
 import "./css/header.css";
 
-export function Header(){
-    return(
+class Header extends React.Component{
+    render(){
+        return(
         <div class="head-title">
             <h3>Granblue Poral</h3>
             {/*
@@ -12,5 +13,8 @@ export function Header(){
             <span>Home</span>
             */}
         </div>
-    );
+        )
+    }
 }
+
+export default Header;

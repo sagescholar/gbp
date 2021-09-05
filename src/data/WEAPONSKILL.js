@@ -13,13 +13,6 @@ export const CALCULATE_OUT_INTERFACE = {
     "TA率": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
 }
 
-export const AURA_BOOST_INTERFACE = {
-    opti: JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    omega: JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    sixdragons: JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "None": 0,
-}
-
 /*hp,skill_name,skill_lank,skill_level*/
 const calculate_stamina = (HP,SName,SLank,SLv) => {
     let OBJ_C = {

@@ -92,9 +92,13 @@ export function computeWeaponSkill(list) {
       Object.keys(obj_output).map((skill_name) => 
         Object.keys(obj_output[skill_name]).map((skill_element) => {
           if(obj_output[skill_name][skill_element] != 0)
-            return(<span>
-              {skill_name} | {skill_element}: {obj_output[skill_name][skill_element]}
-            </span>)
+            return(
+                <div style={{display: "flex"}}>
+                    {skill_name}|
+                    {skill_element}|
+                    {obj_output[skill_name][skill_element]}
+                </div>
+            )
         })
     ));
   }

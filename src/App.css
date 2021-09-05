@@ -1,18 +1,24 @@
-.AppLeft {
-  width: 1000px;
-  margin: 15px;
-  padding: 20px 0px;
-  background-color: #aaaaaa;
+.app-compute {
+  min-width: 500px;
+  padding: 10px;
 }
 
-.AppRight {
-  text-align: right;
-  width: 100px;
-  margin: 15px;
+.app-weapon-list {
+  text-align: center;
 }
 
 .App {
   display: flex;
+  margin-top: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+}
+
+.app-equiped{
+  display: flex;
+  flex-flow: column;
+  margin-right: 5px;
 }
 
 .App-logo {
@@ -22,8 +28,21 @@
 
 .app-summons{
   display: flex;
+  border: 0px solid #ccc;
+}
+
+.summons-button{
+  display: flex;
   flex-flow: column;
-  border: 2px solid #ccc;
+  width: 75px;
+  font-size: 11px;
+  text-align: center;
+  margin: 1px;
+  padding: 3px;
+}
+
+.summons-button:hover{
+  background-color: #282c34;
 }
 
 @media (prefers-reduced-motion: no-preference) {

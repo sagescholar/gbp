@@ -5,8 +5,7 @@ import "./App.css";
 
 //COMPONENTS
 import { computeWeaponSkill } from "./components/ComputeWeaponSkill"
-import { buildTable } from "./components/BuildTable";
-
+import { buildSummonsButton } from './components/BuildSummonsButton'
 
 //DATA
 import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
@@ -19,8 +18,8 @@ import { ELEMENT_STYLE } from './data/ELEMENT';
 function App() {
 
   const [list_equiped, addEquiped] = React.useState([]);
-  const [list_aura_boost, setSummons] = React.useState(JSON.stringify(AURA_BOOST_INTERFACE));
-
+  const [list_aura_boost, updateAura] = React.useState(JSON.stringify(AURA_BOOST_INTERFACE));
+  
   /*
   SUMMONS
   ComputeWeaponSkillに1.渡すためApp側で管理しておく必要がある。
@@ -29,35 +28,15 @@ function App() {
   描画する石は./data/SUMMONSで管理しているオブジェクトを展開する?
   WeaponSkill<->加護効果の関係は召喚石名orスキル名をkeyにて関係をとる
   */
-  const summons_list = STATE_SUMMONS_INTERFACE;
-  const buildSummonsButton = (summons_list, main_or_friend) =>{
-    const Rsl = {
-      opti: [],
-      omega: [],
-      sixdragon: [],
-    }
-    Object.keys(summons_list).map((omega_or_opti) =>
-      Object.keys(summons_list[omega_or_opti]).map((element) =>
-        Rsl[omega_or_opti].push(<input disabled style={{border: "1px solid " + ELEMENT_STYLE[element], color: "#303030"}} class="summons-button" value={element} />)
-      )
-    )
-    return(
-      <div>
-        <p style={{textAlign: "center"}}>{main_or_friend}</p>
-        <div class="opti_button">
-          {Rsl.opti}
-        </div>
-        <hr/>
-        <div class="omega_button">
-          {Rsl.omega}
-        </div>
-        <hr />
-        <div class="sixdragon_button">
-          {Rsl.sixdragon}
-        </div>
-      </div>
-    )
-  }
+
+  /*
+  共通属性
+  class,id,
+  value: 表示する値
+  title: 要素に補足情報をつける
+  */
+  const [summons_list, updateSummons] = 
+  React.useState(JSON.parse(JSON.stringify(STATE_SUMMONS_INTERFACE)));
 
   React.useEffect(()=>{
 
@@ -70,24 +49,43 @@ function App() {
     addEquiped(item);
   }
 
+  function deleteEquip(e){
+    let item = JSON.parse(JSON.stringify(list_equiped));
+  }
+
   return (
     <>
       <Header />
+      <div style={{margin: "5px", padding: "5px", border: "1px solid #202020"}}>
+        <div>
+        {Object.keys(summons_list).map((key1) => 
+          Object.keys(summons_list[key1]).map((key2) =>
+            Object.keys(summons_list[key1][key2]).map((key3) => 
+              Object.keys(summons_list[key1][key2][key3]).map((key4) => {
+              let item = summons_list[key1][key2][key3][key4];
+              if(item.toggle) 
+                return <p style={{fontSize: "12px"}}>{key1 + " : " + key3 + "_" + key4}</p>
+              })
+            )
+          )
+        )}
+        </div>
 
-      
+      </div>
+
       <div class="App">
 
         {/* EQUIPED */}
         <div class="app-equiped">
-          <p style={{textAlign:"center"}}>EQUIPED</p>
+          <p style={{textAlign:"center", padding: "0px 20px"}}>EQUIPED</p>
           {list_equiped.map((value) => <input style={{textAlign:"center",fontSize: "11px"}} disabled value={value} />)}
         </div>
 
         {/* 計算結果 */}
         <div class="app-compute">
-          <p style={{textAlign: "center"}}>COMPUTE RESULT</p>
-          <hr/>
-          {computeWeaponSkill(list_equiped)}
+          <p style={{textAlign: "center", paddingBottom: "5px", borderBottom: "1px solid #202020"}}>COMPUTE RESULT</p>
+          
+          {computeWeaponSkill(list_equiped,list_aura_boost)}
         </div>
 
         {/* 武器選択 */}
@@ -108,8 +106,8 @@ function App() {
 
         {/* 石選択 */}
         <div class="app-summons">
-          {buildSummonsButton(summons_list.MAIN, 'MAIN')}
-          {buildSummonsButton(summons_list.FRIEND, 'FRIEND')}
+          {buildSummonsButton(summons_list.MAIN, 'MAIN', updateSummons, summons_list)}
+          {buildSummonsButton(summons_list.FRIEND, 'FRIEND', updateSummons, summons_list)}
         </div>
       </div>
 

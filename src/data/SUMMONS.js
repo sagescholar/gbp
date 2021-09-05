@@ -4,7 +4,7 @@ export const AURA_BOOST_INTERFACE = {
     opti: JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
     omega: JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
     //sixdragons: JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "None": 0,
+    "None": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
 }
 
 export const OPTIMUS_BASE_INTERFACE = {

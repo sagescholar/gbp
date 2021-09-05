@@ -1,6 +1,7 @@
 .app-compute {
   min-width: 500px;
-  padding: 10px;
+  padding: 0px 10px 10px 10px;
+  margin-left: 0px;
 }
 
 .app-weapon-list {
@@ -18,7 +19,9 @@
 .app-equiped{
   display: flex;
   flex-flow: column;
-  margin-right: 5px;
+  min-width: 100px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .App-logo {

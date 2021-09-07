@@ -14,7 +14,7 @@ export const OPTIMUS_BASE_INTERFACE = {
         toggle:false,
     },
     140:{
-        value:150,
+        value:140,
         toggle:false,
     }
 }

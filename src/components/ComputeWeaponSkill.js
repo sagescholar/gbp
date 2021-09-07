@@ -12,8 +12,6 @@ export function computeWeaponSkill(list,aura) {
     2. 初期化したobj_outputに武器*武器加護補正計算後の値を加算
     3. 武器スキルの合計値を返す
     */
-    
-    console.log(aura)
   
     /*AURA TEST*/
     let aura_boost = aura;

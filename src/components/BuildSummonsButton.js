@@ -1,4 +1,5 @@
 import React from 'react';
+import cloneDeep from 'lodash.clonedeep' 
 
 //DATA
 import { CALCULATE_OUT_INTERFACE } from "../data/WEAPONSKILL";
@@ -17,7 +18,7 @@ export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSum
     key_4: 5凸 or 4凸
     */
     const updateSummon = (key_1,key_2,key_3,key_4) => {
-        let item = JSON.parse(JSON.stringify(parent_summons_list));
+        let item = cloneDeep(parent_summons_list);
         /*全てのToggleをoffにする*/
         /*
         1.通常/方陣の場合はkey3以下の六竜以外を全てOFFにする
@@ -46,6 +47,7 @@ export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSum
         item[key_1][key_2][key_3][key_4].toggle =
         !item[key_1][key_2][key_3][key_4].toggle;
         //console.log(item[key_1][key_2][key_3][key_4].toggle)
+        console.log(item)
         parentUpdateSummons(item);
     }
 

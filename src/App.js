@@ -40,6 +40,12 @@ function App() {
   React.useState(cloneDeep(STATE_SUMMONS_INTERFACE));
 
   React.useEffect(()=>{
+    /*
+    FIXME:
+    ここで読み込むsummons_listはtrueになっていることが期待されているがそうなっていない
+    そのため補正量が計算できない
+    */
+    console.log(summons_list)
     let cvt_summonname2element = {
       アグニス: "火",
       ヴァルナ: "水",
@@ -71,7 +77,6 @@ function App() {
       Object.keys(summons_list[key1_]).map((key2_) =>
         Object.keys(summons_list[key1_][key2_]).map((key3_) =>
           Object.keys(summons_list[key1_][key2_][key3_]).map((key4_) =>{
-            console.log(summons_list[key1_][key2_][key3_][key4_].toggle)
             let AuraType = cvt_summontype2opti[key2_]
             let AuraElement = cvt_summonname2element[key3_]
             if(summons_list[key1_][key2_][key3_][key4_].toggle)

@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './layouts/Header';
 import { Footer } from './layouts/Footer';
 import "./App.css";
+import cloneDeep from 'lodash.clonedeep' 
 
 //COMPONENTS
 import { computeWeaponSkill } from "./components/ComputeWeaponSkill"
@@ -18,7 +19,7 @@ import { ELEMENT_STYLE } from './data/ELEMENT';
 function App() {
 
   const [list_equiped, addEquiped] = React.useState([]);
-  const [list_aura_boost, updateAura] = React.useState(JSON.stringify(AURA_BOOST_INTERFACE));
+  const [list_aura_boost, updateAura] = React.useState(cloneDeep(AURA_BOOST_INTERFACE));
   
   /*
   SUMMONS
@@ -36,11 +37,54 @@ function App() {
   title: 要素に補足情報をつける
   */
   const [summons_list, updateSummons] = 
-  React.useState(JSON.parse(JSON.stringify(STATE_SUMMONS_INTERFACE)));
+  React.useState(cloneDeep(STATE_SUMMONS_INTERFACE));
 
   React.useEffect(()=>{
+    let cvt_summonname2element = {
+      アグニス: "火",
+      ヴァルナ: "水",
+      ティターン: "土",
+      ゼピュロス: '風',
+      ゼウス: "光",
+      ハデス: "闇",
 
-  })
+      コロッサス: "火",
+      リヴァイアサン: "水",
+      ユグドラシル: "土",
+      ティアマト: '風',
+      シュヴァリエ: "光",
+      セレスト: "闇",
+
+      ウィルナス: "火",
+      ワムデュス: "水",
+      ガレオン: "土",
+      イーウィア: '風',
+      ルオー: "光",
+      フェディエル: "闇",
+    }
+    let cvt_summontype2opti = {
+      sixdragon: "opti",
+      opti: "opti"
+    }
+    let updated_list_aura_boost = cloneDeep(AURA_BOOST_INTERFACE);
+    Object.keys(summons_list).map((key1_)=>
+      Object.keys(summons_list[key1_]).map((key2_) =>
+        Object.keys(summons_list[key1_][key2_]).map((key3_) =>
+          Object.keys(summons_list[key1_][key2_][key3_]).map((key4_) =>{
+            console.log(summons_list[key1_][key2_][key3_][key4_].toggle)
+            let AuraType = cvt_summontype2opti[key2_]
+            let AuraElement = cvt_summonname2element[key3_]
+            if(summons_list[key1_][key2_][key3_][key4_].toggle)
+              updated_list_aura_boost[AuraType][AuraElement] +=
+              summons_list[key1_][key2_][key3_][key4_].value/100.0
+
+          })
+        )
+      )
+    )
+    updateAura(updated_list_aura_boost);
+
+  },['summons_list'])
 
   function addEquipe(e){
     let item = JSON.parse(JSON.stringify(list_equiped));
@@ -77,7 +121,7 @@ function App() {
 
         {/* EQUIPED */}
         <div class="app-equiped">
-          <p style={{textAlign:"center", padding: "0px 20px"}}>EQUIPED</p>
+          <p style={{textAlign:"center", padding: "0px 20px"}}>EQUIPED[</p>
           {list_equiped.map((value) => <input style={{textAlign:"center",fontSize: "11px"}} disabled value={value} />)}
         </div>
 

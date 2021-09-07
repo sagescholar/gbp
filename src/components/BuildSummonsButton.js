@@ -62,12 +62,15 @@ export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSum
           let key_2 = omega_or_opti;
           let key_3 = element;
           let key_4 = lank;
+          let text_value = "";
+          if(key_2 == "sixdragon") text_value = element + " " + lank + "%";
+          else                     text_value = element + "Lv." + lank;
           Rsl[omega_or_opti].push(
             <input 
               //disabled
               style={{border: "1px solid " + ELEMENT_STYLE[element], color: "#303030"}} 
               class="summons-button"
-              value={element + "Lv." + lank} 
+              value={text_value} 
               onClick={()=>updateSummon(key_1,key_2,key_3,key_4)}
             />
           )

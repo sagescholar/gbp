@@ -16,12 +16,13 @@ export function computeWeaponSkill(list,aura) {
     console.log(aura)
   
     /*AURA TEST*/
-    let aura_boost = JSON.parse(JSON.stringify(AURA_BOOST_INTERFACE));
+    let aura_boost = aura;
+    console.log(aura_boost)
 
     /*AURA TEST END*/
   
     /*HP TEST*/
-    let hp = 70;
+    let hp = 100;
     /*HP TEST END*/
   
     let obj_equiped_weapon = {}

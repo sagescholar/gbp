@@ -1,6 +1,8 @@
 import React from 'react';
 import cloneDeep from 'lodash.clonedeep' 
 
+import { updateAuraBoost } from './UpdateAuraBoost'
+
 //DATA
 import { CALCULATE_OUT_INTERFACE } from "../data/WEAPONSKILL";
 import { BASE_SKILL, COMPOSITE_SKILL } from '../data/WEAPONSKILL';
@@ -9,7 +11,7 @@ import { weapons } from "../data/WEAPONS";
 import { STATE_SUMMONS_INTERFACE} from '../data/SUMMONS'
 import { ELEMENT_STYLE } from '../data/ELEMENT';
 
-export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSummons, parent_summons_list) =>{
+export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSummons, parent_summons_list,parentUpdateAura) =>{
     
     /*
     key_1: MAIN or FRIEND
@@ -19,6 +21,8 @@ export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSum
     */
     const updateSummon = (key_1,key_2,key_3,key_4) => {
         let item = cloneDeep(parent_summons_list);
+        //CHECK: ここではTrueになっている
+        console.log(item)
         /*全てのToggleをoffにする*/
         /*
         1.通常/方陣の場合はkey3以下の六竜以外を全てOFFにする
@@ -49,6 +53,7 @@ export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSum
         //console.log(item[key_1][key_2][key_3][key_4].toggle)
         console.log(item)
         parentUpdateSummons(item);
+        updateAuraBoost(item,parentUpdateAura)
     }
 
     const Rsl = {
@@ -60,20 +65,20 @@ export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSum
       Object.keys(summons_list[omega_or_opti]).map((element) => 
         Object.keys(summons_list[omega_or_opti][element]).forEach((lank) => {
           if(main_or_friend == "FRIEND" && omega_or_opti == "sixdragon") return
-          let key_1 = main_or_friend;
-          let key_2 = omega_or_opti;
-          let key_3 = element;
-          let key_4 = lank;
+          let key__1 = main_or_friend;
+          let key__2 = omega_or_opti;
+          let key__3 = element;
+          let key__4 = lank;
           let text_value = "";
-          if(key_2 == "sixdragon") text_value = element + " " + lank + "%";
-          else                     text_value = element + "Lv." + lank;
+          if(key__2 == "sixdragon") text_value = element + " " + lank + "%";
+          else                      text_value = element + "Lv." + lank;
           Rsl[omega_or_opti].push(
             <input 
               //disabled
               style={{border: "1px solid " + ELEMENT_STYLE[element], color: "#303030"}} 
               class="summons-button"
               value={text_value} 
-              onClick={()=>updateSummon(key_1,key_2,key_3,key_4)}
+              onClick={()=>updateSummon(key__1,key__2,key__3,key__4)}
             />
           )
         })

@@ -1,16 +1,17 @@
 import {ELEMENT_INTERFACE} from './ELEMENT';
+import cloneDeep from 'lodash.clonedeep' 
 
 export const CALCULATE_OUT_INTERFACE = {
-    "通常攻刃": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "通常背水": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "通常渾身": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "方陣渾身": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "方陣背水": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "方陣攻刃": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "EX攻刃": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "技巧": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "DA率": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
-    "TA率": JSON.parse(JSON.stringify(ELEMENT_INTERFACE)),
+    "通常攻刃": cloneDeep(ELEMENT_INTERFACE),
+    "通常背水": cloneDeep(ELEMENT_INTERFACE),
+    "通常渾身": cloneDeep(ELEMENT_INTERFACE),
+    "方陣渾身": cloneDeep(ELEMENT_INTERFACE),
+    "方陣背水": cloneDeep(ELEMENT_INTERFACE),
+    "方陣攻刃": cloneDeep(ELEMENT_INTERFACE),
+    "EX攻刃": cloneDeep(ELEMENT_INTERFACE),
+    "技巧": cloneDeep(ELEMENT_INTERFACE),
+    "DA率": cloneDeep(ELEMENT_INTERFACE),
+    "TA率": cloneDeep(ELEMENT_INTERFACE),
 }
 
 /*hp,skill_name,skill_lank,skill_level*/
@@ -466,5 +467,19 @@ export const COMPOSITE_SKILL = {
         "小":{
             "TA率": "小",
         }
-    }
+    },
+    "通常克己": {
+        "小":{
+            技巧: "小",
+            //DA率: "小"
+        },
+        "中":{
+            技巧: "中",
+            //DA率: "中"
+        },
+        "大":{
+            技巧: "大",
+            //DA率: "大"
+        }
+    },
 }

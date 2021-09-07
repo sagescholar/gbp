@@ -19,47 +19,47 @@ export const weapons = {
   },
   ガリレオサイト: {
     name: "ガリレオサイト",
-    element: "火",
+    element: "水",
     skill: {
-      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "opti"},
-      2: { e: "火", type: "通常渾身", lank: "中", aura: "opti"},
+      1: { e: "水", type: "通常克己", lank: "中", aura: "opti"},
+      2: { e: "水", type: "通常渾身", lank: "大", aura: "opti"},
     },
   },
   虚無乃哭風: {
     name: "虚無乃哭風",
-    element: "火",
+    element: "風",
     skill: {
-      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "omega"},
-      2: { e: "火", type: "通常渾身", lank: "中", aura: "omega"},
+      1: { e: "風", type: "通常渾身", lank: "中", aura: "opti"},
+      //2: { e: "風", type: "通常渾身", lank: "中", aura: "omega"},
     },
   },
   エデン: {
     name: "エデン",
-    element: "火",
+    element: "光",
     skill: {
-      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "omega"},
-      2: { e: "火", type: "通常渾身", lank: "中", aura: "omega"},
+      1: { e: "光", type: "通常攻刃", lank: "特大", aura: "omega"},
+      2: { e: "光", type: "通常渾身", lank: "中", aura: "omega"},
     },
   },
   アーク: {
     name: "アーク",
-    element: "火",
+    element: "光",
     skill: {
-      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "omega"},
-      2: { e: "火", type: "通常渾身", lank: "中", aura: "omega"},
+      1: { e: "光", type: "通常刹那", lank: "特大", aura: "omega"},
+      //2: { e: "光", type: "通常渾身", lank: "中", aura: "omega"},
     },
   },
-  コロンバ: {
-    name: "コロンバ",
-    element: "火",
+  シュヴァリエソードマグナ: {
+    name: "シュヴァリエソードマグナ",
+    element: "光",
     skill: {
-      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "omega"},
-      2: { e: "火", type: "通常渾身", lank: "中", aura: "omega"},
+      1: { e: "光", type: "方陣攻刃", lank: "中", aura: "omega"},
+      2: { e: "光", type: "通常攻刃", lank: "小", aura: "opti"},
     },
   },
   扇抜: {
     name: "扇抜",
-    element: "火",
+    element: "水",
     skill: {
       1: { e: "火", type: "通常攻刃", lank: "特大", aura: "omega"},
       2: { e: "火", type: "通常渾身", lank: "中", aura: "omega"},
@@ -67,7 +67,7 @@ export const weapons = {
   },
   太歳精弓: {
     name: "太歳精弓",
-    element: "火",
+    element: "水",
     skill: {
       1: { e: "火", type: "通常攻刃", lank: "特大", aura: "omega"},
       2: { e: "火", type: "通常渾身", lank: "中", aura: "omega"},

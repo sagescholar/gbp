@@ -17,7 +17,7 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
     function addEquipe(e) {
         let item = JSON.parse(JSON.stringify(parent_state_list_equiped));
         item.push(e.target.value);
-        if(item.length >= 10){
+        if(item.length > 10){
             mordalOpen();
             return
         }

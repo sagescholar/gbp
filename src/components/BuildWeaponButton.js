@@ -10,13 +10,22 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 
 
-export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEquiped) => {
+
+export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEquiped,mordalOpen) => {
+    
+
     function addEquipe(e) {
         let item = JSON.parse(JSON.stringify(parent_state_list_equiped));
         item.push(e.target.value);
+        if(item.length >= 10){
+            mordalOpen();
+            return
+        }
         console.log(item);
         parentSetStateAddEquiped(item);
     }
+
+    
 
     const HtmlTooltip = withStyles((theme) => ({
         tooltip: {
@@ -32,6 +41,7 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
     return(
         
         <div>
+        
         {Object.keys(weapons).map((key) =>
             <HtmlTooltip
             title={

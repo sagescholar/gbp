@@ -4,6 +4,8 @@ import { Footer } from "./layouts/Footer";
 import "./App.css";
 import cloneDeep from "lodash.clonedeep";
 
+import { useModal } from 'react-hooks-use-modal';
+
 //COMPONENTS
 import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
 import { buildSummonsButton } from "./components/BuildSummonsButton";
@@ -25,6 +27,14 @@ function App() {
   const [state_smn_toggle, setStateSmnToggle] = React.useState(
     cloneDeep(STATE_SUMMONS_INTERFACE)
   );
+  const [Modal, open, close, isOpen] = useModal('root',{
+    preventScroll: true,
+  });
+  const modalStyle = {
+    backgroundColor: '#fff',
+    padding: '60px 100px',
+    borderRadius: '10px',
+  };
   /*
   SUMMONS
   ComputeWeaponSkillに1.渡すためApp側で管理しておく必要がある。
@@ -43,6 +53,14 @@ function App() {
 
   return (
     <>
+
+      <Modal>
+          <div style={modalStyle}>
+          <h1>警告:武器は10本までです</h1>
+          <p>更新してEquipedListをリセットしてください</p>
+          <button onClick={close}>CLOSE</button>
+          </div>
+      </Modal>
       <Header />
       <div
         style={{
@@ -103,7 +121,7 @@ function App() {
         <div class="app-weapon-list">
           <>
             <p>SELECTER</p>
-            {buildWeaponButton(state_list_equiped,setStateAddEquiped)}
+            {buildWeaponButton(state_list_equiped,setStateAddEquiped,open)}
           </>
         </div>
 

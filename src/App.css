@@ -32,6 +32,7 @@
 .app-summons{
   display: flex;
   border: 0px solid #ccc;
+  width: 290px;
 }
 
 .summons-button{

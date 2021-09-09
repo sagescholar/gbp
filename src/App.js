@@ -15,11 +15,15 @@ import { AURA_BOOST_INTERFACE } from "./data/SUMMONS";
 import { weapons } from "./data/WEAPONS";
 import { STATE_SUMMONS_INTERFACE } from "./data/SUMMONS";
 import { ELEMENT_STYLE } from "./data/ELEMENT";
+import { buildWeaponButton } from "./components/BuildWeaponButton";
 
 function App() {
   const [state_list_equiped, setStateAddEquiped] = React.useState([]);
   const [state_list_aura_boost, setStateUpdateAura] = React.useState(
     cloneDeep(AURA_BOOST_INTERFACE)
+  );
+  const [state_smn_toggle, setStateSmnToggle] = React.useState(
+    cloneDeep(STATE_SUMMONS_INTERFACE)
   );
   /*
   SUMMONS
@@ -36,20 +40,6 @@ function App() {
   value: 表示する値
   title: 要素に補足情報をつける
   */
-  const [state_smn_toggle, setStateSmnToggle] = React.useState(
-    cloneDeep(STATE_SUMMONS_INTERFACE)
-  );
-
-  function addEquipe(e) {
-    let item = JSON.parse(JSON.stringify(state_list_equiped));
-    item.push(e.target.value);
-    console.log(item);
-    setStateAddEquiped(item);
-  }
-
-  function deleteEquip(e) {
-    let item = JSON.parse(JSON.stringify(state_list_equiped));
-  }
 
   return (
     <>
@@ -113,15 +103,7 @@ function App() {
         <div class="app-weapon-list">
           <>
             <p>SELECTER</p>
-            {Object.keys(weapons).map((key) => (
-              <input
-                //disabled
-                type=""
-                onClick={addEquipe}
-                style={{ margin: "1px", fontSize: "11px", textAlign: "center" }}
-                value={weapons[key].name}
-              />
-            ))}
+            {buildWeaponButton(state_list_equiped,setStateAddEquiped)}
           </>
         </div>
 

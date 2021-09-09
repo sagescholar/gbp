@@ -11,7 +11,7 @@ import { weapons } from "../data/WEAPONS";
 import { STATE_SUMMONS_INTERFACE} from '../data/SUMMONS'
 import { ELEMENT_STYLE } from '../data/ELEMENT';
 
-export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSummons, parent_summons_list,parentUpdateAura) =>{
+export const buildSummonsButton = (main_or_friend, parentSetStateSmnToggle, parent_state_smn_toggle,parentSetStateUpdateAura) =>{
     
     /*
     key_1: MAIN or FRIEND
@@ -20,7 +20,7 @@ export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSum
     key_4: 5凸 or 4凸
     */
     const updateSummon = (key_1,key_2,key_3,key_4) => {
-        let item = cloneDeep(parent_summons_list);
+        let item = cloneDeep(parent_state_smn_toggle);
         //CHECK: ここではTrueになっている
         console.log(item)
         /*全てのToggleをoffにする*/
@@ -52,8 +52,8 @@ export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSum
         !item[key_1][key_2][key_3][key_4].toggle;
         //console.log(item[key_1][key_2][key_3][key_4].toggle)
         console.log(item)
-        parentUpdateSummons(item);
-        updateAuraBoost(item,parentUpdateAura)
+        parentSetStateSmnToggle(item);
+        updateAuraBoost(item,parentSetStateUpdateAura)
     }
 
     const Rsl = {
@@ -61,9 +61,9 @@ export const buildSummonsButton = (summons_list, main_or_friend, parentUpdateSum
       omega: [],
       sixdragon: [],
     }
-    Object.keys(summons_list).map((omega_or_opti) =>
-      Object.keys(summons_list[omega_or_opti]).map((element) => 
-        Object.keys(summons_list[omega_or_opti][element]).forEach((lank) => {
+    Object.keys(parent_state_smn_toggle[main_or_friend]).map((omega_or_opti) =>
+      Object.keys(parent_state_smn_toggle[main_or_friend][omega_or_opti]).map((element) => 
+        Object.keys(parent_state_smn_toggle[main_or_friend][omega_or_opti][element]).forEach((lank) => {
           if(main_or_friend == "FRIEND" && omega_or_opti == "sixdragon") return
           let key__1 = main_or_friend;
           let key__2 = omega_or_opti;

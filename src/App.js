@@ -1,25 +1,26 @@
-import React from 'react';
-import Header from './layouts/Header';
-import { Footer } from './layouts/Footer';
+import React from "react";
+import Header from "./layouts/Header";
+import { Footer } from "./layouts/Footer";
 import "./App.css";
-import cloneDeep from 'lodash.clonedeep' 
+import cloneDeep from "lodash.clonedeep";
 
 //COMPONENTS
-import { computeWeaponSkill } from "./components/ComputeWeaponSkill"
-import { buildSummonsButton } from './components/BuildSummonsButton'
+import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
+import { buildSummonsButton } from "./components/BuildSummonsButton";
 
 //DATA
 import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
-import { BASE_SKILL, COMPOSITE_SKILL } from './data/WEAPONSKILL';
-import { AURA_BOOST_INTERFACE } from './data/SUMMONS';
+import { BASE_SKILL, COMPOSITE_SKILL } from "./data/WEAPONSKILL";
+import { AURA_BOOST_INTERFACE } from "./data/SUMMONS";
 import { weapons } from "./data/WEAPONS";
-import { STATE_SUMMONS_INTERFACE} from './data/SUMMONS'
-import { ELEMENT_STYLE } from './data/ELEMENT';
+import { STATE_SUMMONS_INTERFACE } from "./data/SUMMONS";
+import { ELEMENT_STYLE } from "./data/ELEMENT";
 
 function App() {
-
-  const [list_equiped, addEquiped] = React.useState([]);
-  const [list_aura_boost, updateAura] = React.useState(cloneDeep(AURA_BOOST_INTERFACE));
+  const [state_list_equiped, setStateAddEquiped] = React.useState([]);
+  const [state_list_aura_boost, setStateUpdateAura] = React.useState(
+    cloneDeep(AURA_BOOST_INTERFACE)
+  );
   /*
   SUMMONS
   ComputeWeaponSkillに1.渡すためApp側で管理しておく必要がある。
@@ -35,53 +36,77 @@ function App() {
   value: 表示する値
   title: 要素に補足情報をつける
   */
-  const [summons_list, updateSummons] = 
-  React.useState(cloneDeep(STATE_SUMMONS_INTERFACE));
+  const [state_smn_toggle, setStateSmnToggle] = React.useState(
+    cloneDeep(STATE_SUMMONS_INTERFACE)
+  );
 
-  function addEquipe(e){
-    let item = JSON.parse(JSON.stringify(list_equiped));
+  function addEquipe(e) {
+    let item = JSON.parse(JSON.stringify(state_list_equiped));
     item.push(e.target.value);
-    console.log(item)
-    addEquiped(item);
+    console.log(item);
+    setStateAddEquiped(item);
   }
 
-  function deleteEquip(e){
-    let item = JSON.parse(JSON.stringify(list_equiped));
+  function deleteEquip(e) {
+    let item = JSON.parse(JSON.stringify(state_list_equiped));
   }
 
   return (
     <>
       <Header />
-      <div style={{margin: "5px", padding: "5px", border: "1px solid #202020"}}>
+      <div
+        style={{
+          height: "80px",
+          margin: "5px",
+          padding: "5px",
+          border: "1px solid #202020",
+        }}
+      >
         <div>
-        {Object.keys(summons_list).map((key1) => 
-          Object.keys(summons_list[key1]).map((key2) =>
-            Object.keys(summons_list[key1][key2]).map((key3) => 
-              Object.keys(summons_list[key1][key2][key3]).map((key4) => {
-              let item = summons_list[key1][key2][key3][key4];
-              if(item.toggle) 
-                return <p style={{fontSize: "12px"}}>{key1 + " : " + key3 + "_" + key4}</p>
-              })
+          {Object.keys(state_smn_toggle).map((key1) =>
+            Object.keys(state_smn_toggle[key1]).map((key2) =>
+              Object.keys(state_smn_toggle[key1][key2]).map((key3) =>
+                Object.keys(state_smn_toggle[key1][key2][key3]).map((key4) => {
+                  let item = state_smn_toggle[key1][key2][key3][key4];
+                  if (item.toggle)
+                    return (
+                      <p style={{ fontSize: "12px" }}>
+                        {key1 + " : " + key3 + "_" + key4}
+                      </p>
+                    );
+                })
+              )
             )
-          )
-        )}
+          )}
         </div>
-
       </div>
 
       <div class="App">
-
         {/* EQUIPED */}
         <div class="app-equiped">
-          <p style={{textAlign:"center", padding: "0px 20px"}}>EQUIPED</p>
-          {list_equiped.map((value) => <input style={{textAlign:"center",fontSize: "11px"}} disabled value={value} />)}
+          <p style={{ textAlign: "center", padding: "0px 20px" }}>EQUIPED</p>
+          {state_list_equiped.map((value) => (
+            <input
+              style={{ textAlign: "center", fontSize: "11px" }}
+              disabled
+              value={value}
+            />
+          ))}
         </div>
 
         {/* 計算結果 */}
         <div class="app-compute">
-          <p style={{textAlign: "center", paddingBottom: "5px", borderBottom: "1px solid #202020"}}>COMPUTE RESULT</p>
-          
-          {computeWeaponSkill(list_equiped,list_aura_boost)}
+          <p
+            style={{
+              textAlign: "center",
+              paddingBottom: "5px",
+              borderBottom: "1px solid #202020",
+            }}
+          >
+            COMPUTE RESULT
+          </p>
+
+          {computeWeaponSkill(state_list_equiped, state_list_aura_boost)}
         </div>
 
         {/* 武器選択 */}
@@ -93,7 +118,7 @@ function App() {
                 //disabled
                 type=""
                 onClick={addEquipe}
-                style={{ margin: "1px", fontSize: "11px", textAlign: "center"}}
+                style={{ margin: "1px", fontSize: "11px", textAlign: "center" }}
                 value={weapons[key].name}
               />
             ))}
@@ -102,8 +127,18 @@ function App() {
 
         {/* 石選択 */}
         <div class="app-summons">
-          {buildSummonsButton(summons_list.MAIN, 'MAIN', updateSummons, summons_list,updateAura)}
-          {buildSummonsButton(summons_list.FRIEND, 'FRIEND', updateSummons, summons_list, updateAura)}
+          {buildSummonsButton(
+            "MAIN",
+            setStateSmnToggle,
+            state_smn_toggle,
+            setStateUpdateAura
+          )}
+          {buildSummonsButton(
+            "FRIEND",
+            setStateSmnToggle,
+            state_smn_toggle,
+            setStateUpdateAura
+          )}
         </div>
       </div>
 

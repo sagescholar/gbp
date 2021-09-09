@@ -37,15 +37,15 @@ export const weapons = {
     name: "エデン",
     element: "光",
     skill: {
-      1: { e: "光", type: "通常攻刃", lank: "特大", aura: "omega"},
-      2: { e: "光", type: "通常渾身", lank: "中", aura: "omega"},
+      1: { e: "光", type: "通常攻刃", lank: "特大", aura: "opti"},
+      2: { e: "光", type: "通常渾身", lank: "中", aura: "opti"},
     },
   },
   アーク: {
     name: "アーク",
     element: "光",
     skill: {
-      1: { e: "光", type: "通常刹那", lank: "特大", aura: "omega"},
+      1: { e: "光", type: "通常刹那", lank: "特大", aura: "opti"},
       //2: { e: "光", type: "通常渾身", lank: "中", aura: "omega"},
     },
   },
@@ -61,16 +61,16 @@ export const weapons = {
     name: "扇抜",
     element: "水",
     skill: {
-      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "omega"},
-      2: { e: "火", type: "通常渾身", lank: "中", aura: "omega"},
+      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "opti"},
+      2: { e: "火", type: "通常渾身", lank: "中", aura: "opti"},
     },
   },
   太歳精弓: {
     name: "太歳精弓",
     element: "水",
     skill: {
-      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "omega"},
-      2: { e: "火", type: "通常渾身", lank: "中", aura: "omega"},
+      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "opti"},
+      2: { e: "火", type: "通常渾身", lank: "中", aura: "opti"},
     },
   },
   グラーシーザー: {

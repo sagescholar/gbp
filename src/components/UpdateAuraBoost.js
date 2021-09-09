@@ -16,7 +16,8 @@ import { AURA_BOOST_INTERFACE } from '../data/SUMMONS';
 //import { STATE_SUMMONS_INTERFACE} from './data/SUMMONS'
 //import { ELEMENT_STYLE } from './data/ELEMENT';
 
-export const updateAuraBoost = (summons_list,parentUpdateAura) => {
+export const updateAuraBoost = (parent_state_summons_list,parentSetStateUpdateAura) => {
+    /* SUMMONS_NAMEから属性を取り出す媒介変数 */
     let cvt_summonname2element = {
       アグニス: "火",
       ヴァルナ: "水",
@@ -39,26 +40,29 @@ export const updateAuraBoost = (summons_list,parentUpdateAura) => {
       ルオー: "光",
       フェディエル: "闇",
     }
+    /* SIXDRAGONの補正をOPTI枠に加算する媒介変数 */
     let cvt_summontype2opti = {
       sixdragon: "opti",
-      opti: "opti"
+      opti: "opti",
+      omega: "omega",
     }
-    let updated_list_aura_boost = cloneDeep(AURA_BOOST_INTERFACE);
-    Object.keys(summons_list).map((key1_)=>
-      Object.keys(summons_list[key1_]).map((key2_) =>
-        Object.keys(summons_list[key1_][key2_]).map((key3_) =>
-          Object.keys(summons_list[key1_][key2_][key3_]).map((key4_) =>{
+    let rsl_list_aura_boost = cloneDeep(AURA_BOOST_INTERFACE);
+    
+    Object.keys(parent_state_summons_list).map((key1_)=> /*MAIN or FRIEND*/
+      Object.keys(parent_state_summons_list[key1_]).map((key2_) => /* OPTI or OMEGA or SIXDRAGON */
+        Object.keys(parent_state_summons_list[key1_][key2_]).map((key3_) => /* SUMMONS NAME */
+          Object.keys(parent_state_summons_list[key1_][key2_][key3_]).map((key4_) =>{ /* BOOST VALUE */
             let AuraType = cvt_summontype2opti[key2_]
             let AuraElement = cvt_summonname2element[key3_]
-            if(summons_list[key1_][key2_][key3_][key4_].toggle)
-              updated_list_aura_boost[AuraType][AuraElement] +=
-              summons_list[key1_][key2_][key3_][key4_].value/100.0
+            if(parent_state_summons_list[key1_][key2_][key3_][key4_].toggle)
+              rsl_list_aura_boost[AuraType][AuraElement] +=
+              parent_state_summons_list[key1_][key2_][key3_][key4_].value/100.0
 
           })
         )
       )
     )
-    console.log(updated_list_aura_boost)
-    parentUpdateAura(updated_list_aura_boost);
+    console.log(rsl_list_aura_boost)
+    parentSetStateUpdateAura(rsl_list_aura_boost);
 
 }

@@ -62,6 +62,8 @@ function App() {
           </div>
       </Modal2>
       <Header />
+      
+
       <div
         style={{
           height: "80px",
@@ -70,6 +72,9 @@ function App() {
           border: "1px solid #202020",
         }}
       >
+      
+        
+      
         <div>
           {Object.keys(state_smn_toggle).map((key1) =>
             Object.keys(state_smn_toggle[key1]).map((key2) =>
@@ -88,8 +93,22 @@ function App() {
           )}
         </div>
       </div>
+      
+
+      
 
       <div class="App">
+        {/* 武器選択 */}
+        <div class="app-weapon-list">
+          <>
+            <ul style={{border:"0px solid gray"}} class="dropDn-p"><a>SELECTOR <span>▼</span></a>
+              <li class="dropDn-c">
+              {buildWeaponButton(state_list_equiped,setStateAddEquiped,open)}
+              </li>
+            </ul>
+          </>
+        </div>
+
         {/* EQUIPED */}
         <div class="app-equiped">
           <p style={{ textAlign: "center", padding: "0px 20px" }}>EQUIPED</p>
@@ -117,16 +136,7 @@ function App() {
           {computeWeaponSkill(state_list_equiped, state_list_aura_boost)}
         </div>
 
-        {/* 武器選択 */}
-        <div class="app-weapon-list">
-          <>
-            <ul class="dropDn-p"><a>SELECTOR <span>▼</span></a>
-              <li class="dropDn-c">
-              {buildWeaponButton(state_list_equiped,setStateAddEquiped,open)}
-              </li>
-            </ul>
-          </>
-        </div>
+        
 
         {/* 石選択 */}
         <div class="app-summons">

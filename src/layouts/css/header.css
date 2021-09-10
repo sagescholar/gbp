@@ -6,10 +6,12 @@
     vertical-align: top;
     padding: 0px 0px 0px 0px;
     border-bottom: 1px solid #1a183a;
+    background-color: #202020;
 }
 
 .head-title h3{
     font-family: 'JosefinSans', sans-serif;
     margin: 0px;
     padding: 0px;
+    color: white;
 }

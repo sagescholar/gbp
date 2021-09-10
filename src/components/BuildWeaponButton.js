@@ -34,7 +34,7 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
           maxWidth: 220,
           fontSize: "10px",
           border: "1px solid #dadde9",
-          padding: "10px",
+          padding: "0px",
         },
     }))(Tooltip);
 

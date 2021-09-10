@@ -27,7 +27,7 @@ function App() {
   const [state_smn_toggle, setStateSmnToggle] = React.useState(
     cloneDeep(STATE_SUMMONS_INTERFACE)
   );
-  const [Modal, open, close, isOpen] = useModal('root',{
+  const [Modal2, open, close, isOpen] = useModal('root',{
     preventScroll: true,
   });
   const modalStyle = {
@@ -54,13 +54,13 @@ function App() {
   return (
     <>
 
-      <Modal>
+      <Modal2>
           <div style={modalStyle}>
           <h1>警告:武器は10本までです</h1>
           <p>更新してEquipedListをリセットしてください</p>
           <button onClick={close}>CLOSE</button>
           </div>
-      </Modal>
+      </Modal2>
       <Header />
       <div
         style={{
@@ -120,8 +120,11 @@ function App() {
         {/* 武器選択 */}
         <div class="app-weapon-list">
           <>
-            <p>SELECTER</p>
-            {buildWeaponButton(state_list_equiped,setStateAddEquiped,open)}
+            <ul class="dropDn-p"><a>SELECTOR <span>▼</span></a>
+              <li class="dropDn-c">
+              {buildWeaponButton(state_list_equiped,setStateAddEquiped,open)}
+              </li>
+            </ul>
           </>
         </div>
 

@@ -5,7 +5,7 @@ import { weapons } from "../data/WEAPONS";
 import "../css/Util.css";
 import { HtmlTooltip } from "./HtmlToolTip";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+//import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 

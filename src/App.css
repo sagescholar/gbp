@@ -16,6 +16,38 @@
   margin-bottom: 15px;
 }
 
+@keyframes dropDn-open{
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.dropDn-p {
+  display: block;
+}
+
+.dropDn-c {
+  display: none;
+  opacity: 0;
+}
+
+.dropDn-p:hover .dropDn-c{
+  display: block;
+  opacity: 1;
+  animation: dropDn-open 0.3s ease-in 0s forwards;
+}
+
 .app-equiped{
   display: flex;
   flex-flow: column;

@@ -113,12 +113,12 @@ export const buildSummonsButton = (
             >
               <button
                 //disabled
-                style={{ transform: 'scale(0.8)',width: "150px" }}
+                style={{ transform: 'scale(0.8)',width: "150px",border: "0px", '&:hover': {textDecoration: 'underline',}}}
                 class="tooltip button"
                 value={text_value}
                 onClick={() => updateSummon(key__1, key__2, key__3, key__4)}
               >
-                <a style={{ fontSize: "10px", textAlign: "center" }}>
+                <a style={{ fontSize: "10px", textAlign: "center",'&:hover': {textDecoration: 'underline',} }}>
                   {text_value}
                 </a>
               </button>

@@ -1,0 +1,22 @@
+.btn-wrap {
+    min-width: 140px;
+  }
+   
+  .btn {
+    background: #4b4b4b;
+    color:  rgb(243, 243, 243);
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+    width: 100%;
+    padding: 5px 0px;
+    text-align: center;
+    border-bottom: 1px solid #333333;
+  }
+   
+  .btn:focus,
+  .btn:hover {
+    background: rgb(93, 225, 248);
+    border-color: currentColor;
+    color: #3b3b3b;
+  }

@@ -20,7 +20,7 @@ export function computeWeaponSkill(list,aura) {
     /*AURA TEST END*/
   
     /*HP TEST*/
-    let hp = 100;
+    let hp = 75;
     /*HP TEST END*/
   
     let obj_equiped_weapon = {}
@@ -72,6 +72,9 @@ export function computeWeaponSkill(list,aura) {
             (1+aura_boost[skill_aura][skill_element])
           }
           else if(branch_enmity_list.includes(skill_name)){
+            /*FIXME
+            背水がゼロだと通常背水が計算式に現れないのが違和感
+            */
             obj_output[skill_name][skill_element] +=
             BASE_SKILL[skill_name][skill_lank][skill_level](hp,skill_name,skill_lank,skill_level)*
             (1+aura_boost[skill_aura][skill_element])

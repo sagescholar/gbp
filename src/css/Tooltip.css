@@ -22,9 +22,6 @@
     border-radius: 3px; /* 角丸 */
     transition: 0.3s ease-in; /* アニメーション */
     z-index: 1;
-    /*
-    
-    */
   }
   
   /* ホバー時にツールチップの非表示を解除 */

@@ -1,9 +1,12 @@
 import React from "react";
+import cloneDeep from "lodash.clonedeep";
 import { weapons } from "../data/WEAPONS";
 //CSS
+
+
 //import "../css/Tooltip.css";
 import "../css/Util.css";
-import { HtmlTooltip } from "./HtmlToolTip";
+import "../css/SelectWeapon.css";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 //import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -14,9 +17,11 @@ import Typography from "@material-ui/core/Typography";
 export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEquiped,mordalOpen) => {
     
 
-    function addEquipe(e) {
-        let item = JSON.parse(JSON.stringify(parent_state_list_equiped));
-        item.push(e.target.value);
+    function addEquipe(value) {
+        let item = cloneDeep(parent_state_list_equiped);
+        //item.push(e.target.value);
+        console.log(value)
+        item.push(value);
         if(item.length > 10){
             mordalOpen();
             return
@@ -29,12 +34,14 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
 
     const HtmlTooltip = withStyles((theme) => ({
         tooltip: {
-          backgroundColor: "#f5f5f9",
+          backgroundColor: "rgba(230,230,230,0.95)",
+          opacity: 0.2,
           color: "rgba(0, 0, 0, 0.8)",
           maxWidth: 220,
+          width: "200px",
           fontSize: "10px",
           border: "1px solid #dadde9",
-          padding: "0px",
+          padding: "20px",
         },
     }))(Tooltip);
 
@@ -59,15 +66,13 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
               </React.Fragment>
             }
           >
-            <button
-            //disabled
-            type=""
-            onClick={addEquipe}
-            style={{ width: "150px",margin: "1px", fontSize: "10px", textAlign: "center" }}
+            <div
+            class = "btn-wrap"
+            onClick={() => addEquipe(weapons[key].name)}
             value={weapons[key].name}
             >
-            {weapons[key].name}
-            </button>
+            <a class="btn">{weapons[key].name}</a>
+            </div>
           </HtmlTooltip>
             
         )}

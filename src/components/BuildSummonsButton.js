@@ -14,7 +14,6 @@ import { ELEMENT_STYLE } from "../data/ELEMENT";
 //CSS
 //import "../css/Tooltip.css";
 import "../css/Util.css";
-import { HtmlTooltip } from "./HtmlToolTip";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 //import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -73,6 +72,7 @@ export const buildSummonsButton = (
       backgroundColor: "#f5f5f9",
       color: "rgba(0, 0, 0, 0.87)",
       maxWidth: 220,
+      padding: "15px",
       fontSize: theme.typography.pxToRem(12),
       border: "1px solid #dadde9",
     },

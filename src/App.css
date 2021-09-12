@@ -4,16 +4,14 @@
   margin-left: 0px;
 }
 
-.app-weapon-list {
-  text-align: center;
-}
-
 .App {
   display: flex;
-  margin-top: 15px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 15px;
+  background: #f3f3f3;
+
+}
+
+.app-weapon-select-wrap{
+  min-width: 140px;
 }
 
 @keyframes dropDn-open{
@@ -49,11 +47,9 @@
 }
 
 .app-equiped{
-  display: flex;
-  flex-flow: column;
-  min-width: 100px;
-  margin-right: 10px;
-  margin-left: 10px;
+  border: 0px solid black;
+  width: 150px;
+  min-height: 100px;
 }
 
 .App-logo {
@@ -65,6 +61,7 @@
   display: flex;
   border: 0px solid #ccc;
   width: 290px;
+  margin-left:auto;
 }
 
 .summons-button{
@@ -111,4 +108,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.equiped-btn-wrap {
+  min-width: 140px;
+}
+ 
+.equiped-btn {
+  background: #292929;
+  color:  rgb(243, 243, 243);
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  width: 100%;
+  padding: 5px 0px;
+  text-align: center;
+  border-bottom: 1px solid #333333;
+}
+ 
+.equiped-btn:focus,
+.equiped-btn:hover {
+  background: rgb(93, 225, 248);
+  border-color: currentColor;
+  color: #3b3b3b;
 }

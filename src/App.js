@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./layouts/Header";
 import { Footer } from "./layouts/Footer";
 import "./App.css";
+import "./css/SelectWeapon.css"
 import cloneDeep from "lodash.clonedeep";
 
 import { useModal } from 'react-hooks-use-modal';
@@ -64,60 +65,27 @@ function App() {
       <Header />
       
 
-      <div
-        style={{
-          height: "80px",
-          margin: "5px",
-          padding: "5px",
-          border: "1px solid #202020",
-        }}
-      >
       
-        
-      
-        <div>
-          {Object.keys(state_smn_toggle).map((key1) =>
-            Object.keys(state_smn_toggle[key1]).map((key2) =>
-              Object.keys(state_smn_toggle[key1][key2]).map((key3) =>
-                Object.keys(state_smn_toggle[key1][key2][key3]).map((key4) => {
-                  let item = state_smn_toggle[key1][key2][key3][key4];
-                  if (item.toggle)
-                    return (
-                      <p style={{ fontSize: "12px" }}>
-                        {key1 + " : " + key3 + "_" + key4}
-                      </p>
-                    );
-                })
-              )
-            )
-          )}
-        </div>
-      </div>
       
 
       
 
       <div class="App">
         {/* 武器選択 */}
-        <div class="app-weapon-list">
-          <>
-            <ul style={{border:"0px solid gray"}} class="dropDn-p"><a>SELECTOR <span>▼</span></a>
-              <li class="dropDn-c">
-              {buildWeaponButton(state_list_equiped,setStateAddEquiped,open)}
-              </li>
-            </ul>
-          </>
+        <div class="app-weapon-select-wrap">
+            
+            {buildWeaponButton(state_list_equiped,setStateAddEquiped,open)}
+            
         </div>
 
         {/* EQUIPED */}
         <div class="app-equiped">
-          <p style={{ textAlign: "center", padding: "0px 20px" }}>EQUIPED</p>
           {state_list_equiped.map((value) => (
-            <input
-              style={{ textAlign: "center", fontSize: "11px" }}
-              disabled
-              value={value}
-            />
+            <div
+              class="equiped-btn-wrap"
+            >
+            <a class="equiped-btn">{value}</a>
+            </div>
           ))}
         </div>
 

@@ -6,7 +6,7 @@
     vertical-align: top;
     padding: 0px 0px 0px 0px;
     border-bottom: 1px solid #1a183a;
-    background-color: #202020;
+    background-color: #333333;
 }
 
 .head-title h3{
@@ -14,4 +14,5 @@
     margin: 0px;
     padding: 0px;
     color: white;
+    text-align: center;
 }

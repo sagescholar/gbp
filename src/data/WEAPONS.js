@@ -80,5 +80,21 @@ export const weapons = {
       1: { e: "闇", type: "通常攻刃", lank: "II", aura: "opti"},
       2: { e: "闇", type: "通常背水", lank: "中", aura: "opti"},
     },
-    }
+  },
+  エッケザックス: {
+    name: "エッケザックス",
+    element: "火",
+    skill: {
+      1: { e: "火", type: "通常刹那", lank: "中", aura: "opti"},
+      2: { e: "火", type: "通常背水", lank: "小", aura: "opti"},
+    },
+  },
+  ドス: {
+    name: "ドス",
+    element: "火",
+    skill: {
+      1: { e: "火", type: "技巧", lank: "小", aura: "opti"},
+      2: { e: "火", type: "通常背水", lank: "大", aura: "opti"},
+    },
+  }
 };

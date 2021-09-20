@@ -1,20 +1,26 @@
 import React from 'react';
 import "./css/header.css";
+import Clock from '../components/Clock';
 
-class Header extends React.Component{
-    render(){
-        return(
-        <div class="head-title">
-            <h3>Granblue Poral</h3>
-            {/*
-            <span>Home</span>
-            <span>Home</span>
-            <span>Home</span>
-            <span>Home</span>
-            */}
-        </div>
-        )
+
+export const Header = (parentSetStateAddEquiped) => {
+
+    const equipedReset = () => {
+        let item = [];
+        parentSetStateAddEquiped(item);
     }
+    
+    return(
+        <div class="head-title">
+            <div style={{width: "30%", height: "100%"}}/>
+            <div onClick={()=>equipedReset()} class="wrap-equiped-reset">
+                <a >RESET</a>
+            </div>
+            <div style={{width:"20%", height:"100%"}} />
+            <div style={{padding: "0px 20px",backgroundColor: "#aaaaaa", width: "30%",textAlign: "right",color: "#333333"}}>
+                <Clock />
+            </div>
+            <div style={{width:"0.5%", height:"100%"}} />
+        </div>
+    )
 }
-
-export default Header;

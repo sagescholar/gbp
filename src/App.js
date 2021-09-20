@@ -1,15 +1,17 @@
 import React from "react";
-import Header from "./layouts/Header";
+import { Header}  from "./layouts/Header";
 import { Footer } from "./layouts/Footer";
 import "./App.css";
 import "./css/SelectWeapon.css"
 import cloneDeep from "lodash.clonedeep";
 
 import { useModal } from 'react-hooks-use-modal';
+import Typography from "@material-ui/core/Typography";
 
 //COMPONENTS
 import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
 import { buildSummonsButton } from "./components/BuildSummonsButton";
+import { SliderHp } from './components/SliderHp';
 
 //DATA
 import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
@@ -22,6 +24,7 @@ import { buildWeaponButton } from "./components/BuildWeaponButton";
 
 function App() {
   const [state_list_equiped, setStateAddEquiped] = React.useState([]);
+  const [state_hp, setStateHp] = React.useState(60)
   const [state_list_aura_boost, setStateUpdateAura] = React.useState(
     cloneDeep(AURA_BOOST_INTERFACE)
   );
@@ -62,13 +65,16 @@ function App() {
           <button onClick={close}>CLOSE</button>
           </div>
       </Modal2>
-      <Header />
       
-
+      {/*HEADER*/}
+      {Header(setStateAddEquiped)}
+    
       
-      
-
-      
+      <div style={{width: "300px"}}>
+      <a>{"RESULT:"+state_hp}</a>
+      {SliderHp(state_hp,setStateHp)};
+      </div>
+            
 
       <div class="App">
         {/* 武器選択 */}

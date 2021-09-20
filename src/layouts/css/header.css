@@ -5,8 +5,9 @@
     margin: 0px;
     vertical-align: top;
     padding: 0px 0px 0px 0px;
-    border-bottom: 1px solid #1a183a;
+    border-bottom: 0px solid #1a183a;
     background-color: #333333;
+    display: flex;
 }
 
 .head-title h3{
@@ -16,3 +17,16 @@
     color: white;
     text-align: center;
 }
+
+.wrap-equiped-reset{
+    text-align: center;
+    width: 40%;
+    background-color: #333333;
+    color: #5fb97a;
+}
+
+.wrap-equiped-reset:hover{
+    background-color: #177533;
+    color: #ececec;
+}
+

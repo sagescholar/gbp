@@ -7,6 +7,15 @@ export const ELEMENT_INTERFACE = {
     "闇": 0,
 }
 
+export const ELEMENT_TOGGLE_INTERFACE = {
+    "火": true,
+    "水": true,
+    "土": true,
+    "風": true,
+    "光": true,
+    "闇": true,
+}
+
 export const ELEMENT_STYLE = {
     火: '#f25252',
     水: "#525CF2",

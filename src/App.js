@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
 import { buildSummonsButton } from "./components/BuildSummonsButton";
 import { SliderHp } from './components/SliderHp';
+import { buildWeaponSearchElementButton } from "./components/BuildWeaponSearchElementButton";
 
 //DATA
 import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
@@ -19,10 +20,12 @@ import { BASE_SKILL, COMPOSITE_SKILL } from "./data/WEAPONSKILL";
 import { AURA_BOOST_INTERFACE } from "./data/SUMMONS";
 import { weapons } from "./data/WEAPONS";
 import { STATE_SUMMONS_INTERFACE } from "./data/SUMMONS";
-import { ELEMENT_STYLE } from "./data/ELEMENT";
+import { ELEMENT_STYLE, ELEMENT_TOGGLE_INTERFACE } from "./data/ELEMENT";
 import { buildWeaponButton } from "./components/BuildWeaponButton";
 
 function App() {
+
+  /* STATE */
   const [state_list_equiped, setStateAddEquiped] = React.useState([]);
   const [state_hp, setStateHp] = React.useState(60)
   const [state_list_aura_boost, setStateUpdateAura] = React.useState(
@@ -31,6 +34,13 @@ function App() {
   const [state_smn_toggle, setStateSmnToggle] = React.useState(
     cloneDeep(STATE_SUMMONS_INTERFACE)
   );
+  const [state_weapon_search_element, setStateWeaponSearchElement] = React.useState(
+    cloneDeep(ELEMENT_TOGGLE_INTERFACE)
+  ) 
+
+  /* STATE END */
+
+  /* MODAL */
   const [Modal2, open, close, isOpen] = useModal('root',{
     preventScroll: true,
   });
@@ -39,6 +49,9 @@ function App() {
     padding: '60px 100px',
     borderRadius: '10px',
   };
+
+  /* MODAL END */
+
   /*
   SUMMONS
   ComputeWeaponSkillに1.渡すためApp側で管理しておく必要がある。
@@ -78,8 +91,8 @@ function App() {
       <div class="App">
         {/* 武器選択 */}
         <div class="app-weapon-select-wrap">
-            
-            {buildWeaponButton(state_list_equiped,setStateAddEquiped,open)}
+            {buildWeaponSearchElementButton(state_weapon_search_element,setStateWeaponSearchElement)}
+            {buildWeaponButton(state_list_equiped,setStateAddEquiped,open,state_weapon_search_element)}
             
         </div>
 

@@ -14,7 +14,7 @@ import Typography from "@material-ui/core/Typography";
 
 
 
-export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEquiped,mordalOpen) => {
+export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEquiped,mordalOpen,parent_state_weapon_search_element) => {
     
 
     function addEquipe(value) {
@@ -45,11 +45,18 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
         },
     }))(Tooltip);
 
+    
+
     return(
         
         <div>
+
+
         
-        {Object.keys(weapons).map((key) =>
+        {Object.keys(weapons).map((key) => {
+          console.log()
+          if(parent_state_weapon_search_element[weapons[key].element])
+            return(
             <HtmlTooltip
             title={
               <React.Fragment>
@@ -74,7 +81,8 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
             <a class="btn">{weapons[key].name}</a>
             </div>
           </HtmlTooltip>
-            
+          )
+        }    
         )}
         </div>
     )

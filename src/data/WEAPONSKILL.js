@@ -32,11 +32,12 @@ const calculate_stamina = (HP,SName,SLank,SLv) => {
     }
     /*C : 渾身定数*/
     let C =   OBJ_C[SName][SLank];
-    if(HP < 25) return 0;
+    if(HP < 25) return 0.0001;
     let s = 0;
     if(SLv <= 15) s = SLv;
     else s = 15 + (0.4 * (SLv+ -15));
-    return (HP/(C-s))**2.9+2.1;
+    let Rsl = (HP/(C-s))**2.9+2.1;
+    return Rsl;
 }
 
 const calculate_enmity = (HP,SName,SLank,SLv) => {
@@ -180,7 +181,9 @@ const calculate_enmity = (HP,SName,SLank,SLv) => {
     } 
     let k = OBJ_BASE_MAGNIFICATION_ENMITY[SName][SLank][SLv]
     let r = HP / 100.0;
-    return ( 2 * (r)**2 -5*r +3) * k;
+    let Rsl = ( 2 * (r)**2 -5*r +3) * k
+    if (Rsl > 0) return ( 2 * (r)**2 -5*r +3) * k;
+    else         return 0.0001;
 }
 
 /*

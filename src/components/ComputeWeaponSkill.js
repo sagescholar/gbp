@@ -4,7 +4,7 @@ import { BASE_SKILL, COMPOSITE_SKILL } from '../data/WEAPONSKILL';
 import { AURA_BOOST_INTERFACE } from '../data/SUMMONS';
 import { weapons } from '../data/WEAPONS';
 
-export function computeWeaponSkill(list,aura) {
+export function computeWeaponSkill(list,aura,HP) {
 
     /*
     計算手順
@@ -20,7 +20,7 @@ export function computeWeaponSkill(list,aura) {
     /*AURA TEST END*/
   
     /*HP TEST*/
-    let hp = 75;
+    let hp = HP;
     /*HP TEST END*/
   
     let obj_equiped_weapon = {}
@@ -98,7 +98,7 @@ export function computeWeaponSkill(list,aura) {
                             <div style={{fontSize: "12px", textAlign: "left", paddingBottom: "5px"}}>
                                 {skill_name}|
                                 {skill_element}|
-                                {obj_output[skill_name][skill_element]}
+                                {obj_output[skill_name][skill_element] > 0.1 ? obj_output[skill_name][skill_element] : 0}
                             </div>
                         )
                 })

@@ -70,10 +70,9 @@ function App() {
       {Header(setStateAddEquiped)}
     
       
-      <div style={{width: "300px"}}>
-      <a>{"RESULT:"+state_hp}</a>
-      {SliderHp(state_hp,setStateHp)};
-      </div>
+      
+
+      
             
 
       <div class="App">
@@ -97,6 +96,10 @@ function App() {
 
         {/* 計算結果 */}
         <div class="app-compute">
+        <div style={{width: ""}}>
+        <a>{"RESULT:"+state_hp}</a>
+        {SliderHp(state_hp,setStateHp)};
+        </div>
           <p
             style={{
               textAlign: "center",
@@ -107,7 +110,7 @@ function App() {
             COMPUTE RESULT
           </p>
 
-          {computeWeaponSkill(state_list_equiped, state_list_aura_boost)}
+          {computeWeaponSkill(state_list_equiped, state_list_aura_boost, state_hp)}
         </div>
 
         

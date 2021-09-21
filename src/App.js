@@ -98,7 +98,7 @@ function App() {
         <div class="app-compute">
         <div style={{width: ""}}>
         <a>{"RESULT:"+state_hp}</a>
-        {SliderHp(state_hp,setStateHp)};
+        {SliderHp(state_hp,setStateHp)}
         </div>
           <p
             style={{

@@ -12,15 +12,13 @@ export const Header = (parentSetStateAddEquiped) => {
     
     return(
         <div class="head-title">
-            <div style={{width: "30%", height: "100%"}}/>
             <div onClick={()=>equipedReset()} class="wrap-equiped-reset">
-                <a >RESET</a>
+                <a > X </a>
             </div>
-            <div style={{width:"20%", height:"100%"}} />
-            <div style={{padding: "0px 20px",backgroundColor: "#aaaaaa", width: "30%",textAlign: "right",color: "#333333"}}>
+
+            <div style={{marginLeft: "auto",padding: "0px 20px",backgroundColor: "#aaaaaa", width: "30%",textAlign: "right",color: "#333333"}}>
                 <Clock />
             </div>
-            <div style={{width:"0.5%", height:"100%"}} />
         </div>
     )
 }

@@ -37,8 +37,8 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
           backgroundColor: "rgba(230,230,230,0.95)",
           opacity: 0.2,
           color: "rgba(0, 0, 0, 0.8)",
-          maxWidth: 220,
-          width: "200px",
+          maxWidth: "275px",
+          width: "300px",
           fontSize: "10px",
           border: "1px solid #dadde9",
           padding: "20px",
@@ -60,7 +60,12 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
             <HtmlTooltip
             title={
               <React.Fragment>
-                <a>
+                <div style={{display: "flex"}} >
+                  <div class="weapon-icon-wraper">
+                  <img style={{width: "100px"}}src={process.env.PUBLIC_URL + "/" + weapons[key]["icon"]} />
+                  </div>
+
+                  <div class="weapon-info-wraper">
                   <Typography color="inherit">{key}</Typography>
                   <hr />
                   <a>{weapons[key].element}</a>
@@ -69,7 +74,8 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
                         <p style={{marginBottom:"0px"}}>{weapons[key]["skill"][num].type}</p>
                       )}
                   </div>
-                </a>
+                  </div>
+                </div>
               </React.Fragment>
             }
           >

@@ -29,8 +29,8 @@ export function computeWeaponSkill(list,aura,HP) {
     1. data/WEAPONSから名前をkeyにして武器情報を読み込み
     2. SLvを15で仮置き
     */
-    list.forEach((value) => {
-      obj_equiped_weapon[CNT] = weapons[value];
+    Object.keys(list).forEach((key) => {
+      obj_equiped_weapon[CNT] = weapons[list[key].name];
       obj_equiped_weapon[CNT]["skill_level"] = "15";
       CNT += 1;
     })

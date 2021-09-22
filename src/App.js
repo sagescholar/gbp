@@ -13,6 +13,7 @@ import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
 import { buildSummonsButton } from "./components/BuildSummonsButton";
 import { SliderHp } from './components/SliderHp';
 import { buildWeaponSearchElementButton } from "./components/BuildWeaponSearchElementButton";
+import { alertEquipedWeapon } from "./components/AlertEquipedWeapon"
 
 //DATA
 import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
@@ -26,7 +27,7 @@ import { buildWeaponButton } from "./components/BuildWeaponButton";
 function App() {
 
   /* STATE */
-  const [state_list_equiped, setStateAddEquiped] = React.useState([]);
+  const [state_list_equiped, setStateAddEquiped] = React.useState({});
   const [state_hp, setStateHp] = React.useState(60)
   const [state_list_aura_boost, setStateUpdateAura] = React.useState(
     cloneDeep(AURA_BOOST_INTERFACE)
@@ -81,12 +82,6 @@ function App() {
       
       {/*HEADER*/}
       {Header(setStateAddEquiped)}
-    
-      
-      
-
-      
-            
 
       <div class="App">
         {/* 武器選択 */}
@@ -98,11 +93,12 @@ function App() {
 
         {/* EQUIPED */}
         <div class="app-equiped">
-          {state_list_equiped.map((value) => (
+          {alertEquipedWeapon(state_list_equiped)}
+          {Object.keys(state_list_equiped).map((key) => (
             <div
               class="equiped-btn-wrap"
             >
-            <a class="equiped-btn">{value}</a>
+            <a class="equiped-btn">{state_list_equiped[key].name}</a>
             </div>
           ))}
         </div>

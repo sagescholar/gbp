@@ -2,16 +2,20 @@ import {ELEMENT_INTERFACE} from './ELEMENT';
 import cloneDeep from 'lodash.clonedeep' 
 
 export const CALCULATE_OUT_INTERFACE = {
-    "通常攻刃": cloneDeep(ELEMENT_INTERFACE),
-    "通常背水": cloneDeep(ELEMENT_INTERFACE),
-    "通常渾身": cloneDeep(ELEMENT_INTERFACE),
-    "方陣渾身": cloneDeep(ELEMENT_INTERFACE),
-    "方陣背水": cloneDeep(ELEMENT_INTERFACE),
-    "方陣攻刃": cloneDeep(ELEMENT_INTERFACE),
-    "EX攻刃": cloneDeep(ELEMENT_INTERFACE),
-    "技巧": cloneDeep(ELEMENT_INTERFACE),
-    "DA率": cloneDeep(ELEMENT_INTERFACE),
-    "TA率": cloneDeep(ELEMENT_INTERFACE),
+    通常攻刃: cloneDeep(ELEMENT_INTERFACE),
+    通常背水: cloneDeep(ELEMENT_INTERFACE),
+    通常渾身: cloneDeep(ELEMENT_INTERFACE),
+    方陣渾身: cloneDeep(ELEMENT_INTERFACE),
+    方陣背水: cloneDeep(ELEMENT_INTERFACE),
+    方陣攻刃: cloneDeep(ELEMENT_INTERFACE),
+    EX攻刃: cloneDeep(ELEMENT_INTERFACE),
+    技巧: cloneDeep(ELEMENT_INTERFACE),
+    DA率: cloneDeep(ELEMENT_INTERFACE),
+    TA率: cloneDeep(ELEMENT_INTERFACE),
+    アビ与ダメ: cloneDeep(ELEMENT_INTERFACE),
+    D上限: cloneDeep(ELEMENT_INTERFACE),
+    与ダメージ: cloneDeep(ELEMENT_INTERFACE),
+    対有利与ダメ: cloneDeep(ELEMENT_INTERFACE),
 }
 
 /*hp,skill_name,skill_lank,skill_level*/

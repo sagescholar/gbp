@@ -1,7 +1,6 @@
 import React from "react";
 import cloneDeep from "lodash.clonedeep";
 import { weapons } from "../data/WEAPONS";
-import {EQUIPED_WEAPON_INTERFACE} from "../data/WEAPONS"
 //CSS
 
 
@@ -20,27 +19,13 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
 
     function addEquipe(value) {
         let item = cloneDeep(parent_state_list_equiped);
-        let content = cloneDeep(EQUIPED_WEAPON_INTERFACE)
-        //1.箱を作る
-        content["name"] = value;
-        //2.枠が埋まっているか確認
-        if(Object.keys(item).length > 10){
-          mordalOpen();
-          return
-        }
-        //3.埋まっていない場合は空いている枠に入れる
-        let id = 0;
-        
-        Object.keys(item).map((ID) => {
-          if(ID == String(id)){
-            id += 1;
+        //item.push(e.target.value);
+        console.log(value)
+        item.push(value);
+        if(item.length > 10){
+            mordalOpen();
             return
-          }
-        })
-        
-        item[String(id)] = content;
-        //FixMe: 終末,AW,天司武器の重複確認
-        
+        }
         console.log(item);
         parentSetStateAddEquiped(item);
     }

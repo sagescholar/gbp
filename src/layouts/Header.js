@@ -6,7 +6,7 @@ import Clock from '../components/Clock';
 export const Header = (parentSetStateAddEquiped) => {
 
     const equipedReset = () => {
-        let item = [];
+        let item = {};
         parentSetStateAddEquiped(item);
     }
     

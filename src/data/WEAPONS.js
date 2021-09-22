@@ -1,5 +1,23 @@
 //import { BASE_SKILL } from "./WEAPONSKILL";
 
+export const EQUIPED_WEAPON_INTERFACE = {
+  name: "",
+  Lv: 1,
+  SLv: 1,
+  Bonus: 0,
+  Tag: "",
+  EX_Skill: {
+    1: {
+      name: "",
+      lank: "",
+    },
+    2: {
+      name: "",
+      lank: "",
+    }
+  }
+}
+
 export const weapons = {
   イクサバ: {
     name: "イクサバ",
@@ -107,6 +125,14 @@ export const weapons = {
     skill: {
       1: { e: "火", type: "技巧", lank: "小", aura: "opti"},
       2: { e: "火", type: "通常背水", lank: "大", aura: "opti"},
+    },
+  },
+  ソルレムナント: {
+    name: "ソルレムナント",
+    element: "火",
+    icon: "images/weapon/Weapon_b_1040311800.png",
+    skill: {
+      1: { e: "火", type: "EX攻刃", lank: "支配者", aura: "None"},
     },
   }
 };

@@ -3,8 +3,10 @@ import { CALCULATE_OUT_INTERFACE } from '../data/WEAPONSKILL';
 import { BASE_SKILL, COMPOSITE_SKILL } from '../data/WEAPONSKILL';
 import { AURA_BOOST_INTERFACE } from '../data/SUMMONS';
 import { weapons } from '../data/WEAPONS';
+import { ELEMENT_INTERFACE } from '../data/ELEMENT'
+import cloneDeep from 'lodash.clonedeep';
 
-export function computeWeaponSkill(list,aura,HP) {
+export function computeWeaponSkill(list,aura,HP,isView=true) {
 
     /*
     計算手順
@@ -88,22 +90,35 @@ export function computeWeaponSkill(list,aura,HP) {
       });
     });
     
-    return (
-        <div style={{display: "flex", flexFlow: "column", padding: "0px 60px"}}>
-        {
-            Object.keys(obj_output).map((skill_name) => 
-                Object.keys(obj_output[skill_name]).map((skill_element) => {
-                    if(obj_output[skill_name][skill_element] != 0)
-                        return(
-                            <div style={{fontSize: "12px", textAlign: "left", paddingBottom: "5px"}}>
-                                {skill_name}|
-                                {skill_element}|
-                                {obj_output[skill_name][skill_element] > 0.1 ? obj_output[skill_name][skill_element] : 0}
-                            </div>
-                        )
-                })
-            )
-        }
-        </div>
-    )
+    if(isView){
+      return (
+          <div style={{display: "flex", flexFlow: "column", padding: "0px 60px"}}>
+          {
+              Object.keys(obj_output).map((skill_name) => 
+                  Object.keys(obj_output[skill_name]).map((skill_element) => {
+                      if(obj_output[skill_name][skill_element] != 0)
+                          return(
+                              <div style={{fontSize: "12px", textAlign: "left", paddingBottom: "5px"}}>
+                                  {skill_name}|
+                                  {skill_element}|
+                                  {obj_output[skill_name][skill_element] > 0.1 ? obj_output[skill_name][skill_element] : 0}
+                              </div>
+                          )
+                  })
+              )
+          }
+          </div>
+      )
+    }else{
+      let rtn = cloneDeep(ELEMENT_INTERFACE);
+      Object.keys(rtn).map((key) => rtn[key] = 1);
+      Object.keys(obj_output).map((skill_name) => 
+        Object.keys(obj_output[skill_name]).map((skill_element) => {
+            if(obj_output[skill_name][skill_element] > 0.01)
+                rtn[skill_element] = rtn[skill_element] * obj_output[skill_name][skill_element]
+        })
+      )
+      return rtn;
+    }
+
   }

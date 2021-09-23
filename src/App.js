@@ -128,7 +128,7 @@ function App() {
         <a style={{width:"100%",textAlign:"center"}}>0%-100% Graph</a>
         <LineChart width={600} height={400} data={data}>
           <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-          <YAxis />
+          <YAxis domain={[1.0,'dataMax']} />
           <XAxis dataKey="name" />
           <Tooltip />
         </LineChart>

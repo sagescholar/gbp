@@ -117,7 +117,7 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
         Object.keys(obj_output[skill_name]).map((skill_element) => {
             if(obj_output[skill_name][skill_element] > 0.1 &&
                cal_list.includes(skill_name))
-                rtn[skill_element] = rtn[skill_element] * (obj_output[skill_name][skill_element])
+                rtn[skill_element] = rtn[skill_element] * (1.0+(obj_output[skill_name][skill_element]/100.0))
         })
       )
       return rtn;

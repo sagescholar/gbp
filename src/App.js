@@ -4,7 +4,7 @@ import { Footer } from "./layouts/Footer";
 import "./App.css";
 import "./css/SelectWeapon.css"
 import cloneDeep from "lodash.clonedeep";
-import { LineChart, Line } from 'recharts'
+import { LineChart, Line, YAxis, XAxis ,Tooltip} from 'recharts'
 
 import { useModal } from 'react-hooks-use-modal';
 import Typography from "@material-ui/core/Typography";
@@ -73,17 +73,17 @@ function App() {
   /* Rechart */
   
   const data = [
-    {name: 'Page Z', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,0,false)["火"]},
-    {name: 'Page A', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,10,false)["火"]},
-    {name: 'Page B', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,20,false)["火"]},
-    {name: 'Page C', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,30,false)["火"]},
-    {name: 'Page D', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,40,false)["火"]},
-    {name: 'Page E', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,50,false)["火"]},
-    {name: 'Page F', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,60,false)["火"]},
-    {name: 'Page G', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,70,false)["火"]},
-    {name: 'Page H', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,80,false)["火"]},
-    {name: 'Page I', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,90,false)["火"]},
-    {name: 'Page J', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,100,false)["火"]},
+    {name: '0', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,0,false)["火"]},
+    {name: '10', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,10,false)["火"]},
+    {name: '20', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,20,false)["火"]},
+    {name: '30', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,30,false)["火"]},
+    {name: '40', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,40,false)["火"]},
+    {name: '50', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,50,false)["火"]},
+    {name: '60', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,60,false)["火"]},
+    {name: '70', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,70,false)["火"]},
+    {name: '80', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,80,false)["火"]},
+    {name: '90', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,90,false)["火"]},
+    {name: '100', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,100,false)["火"]},
   ]
 
   return (
@@ -123,15 +123,20 @@ function App() {
         {/* 計算結果 */}
         <div class="app-compute">
         <div style={{width: ""}}>
-        <a>{/*"RESULT:"+state_hp*/}</a>
-        {/*SliderHp(state_hp,setStateHp)*/}
+        
 
         <a style={{width:"100%",textAlign:"center"}}>0%-100% Graph</a>
         <LineChart width={600} height={400} data={data}>
           <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+          <YAxis />
+          <XAxis dataKey="name" />
+          <Tooltip />
         </LineChart>
         
         </div>
+
+        <a>{"RESULT:"+state_hp}</a>
+        {SliderHp(state_hp,setStateHp)}
           <p
             style={{
               textAlign: "center",

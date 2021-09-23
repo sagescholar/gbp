@@ -111,11 +111,13 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
       )
     }else{
       let rtn = cloneDeep(ELEMENT_INTERFACE);
+      let cal_list = ["通常攻刃","通常渾身","通常背水","方陣攻刃","方陣渾身","方陣背水","EX攻刃"]
       Object.keys(rtn).map((key) => rtn[key] = 1);
       Object.keys(obj_output).map((skill_name) => 
         Object.keys(obj_output[skill_name]).map((skill_element) => {
-            if(obj_output[skill_name][skill_element] > 0.01)
-                rtn[skill_element] = rtn[skill_element] * obj_output[skill_name][skill_element]
+            if(obj_output[skill_name][skill_element] > 0.1 &&
+               cal_list.includes(skill_name))
+                rtn[skill_element] = rtn[skill_element] * (obj_output[skill_name][skill_element])
         })
       )
       return rtn;

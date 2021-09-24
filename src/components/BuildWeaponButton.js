@@ -76,11 +76,11 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
             title={
               <React.Fragment>
                 <div style={{display: "flex"}} >
-                  <div class="weapon-icon-wraper">
+                  <div style={{justifyContent:"center"}} class="weapon-icon-wraper">
                   <img style={{width: "100px"}}src={process.env.PUBLIC_URL + "/" + weapons[key]["icon"]} />
                   </div>
 
-                  <div class="weapon-info-wraper">
+                  <div style={{borderLeft: "solid 0px gray", paddingLeft:"20px"}}class="weapon-info-wraper">
                   <Typography color="inherit">{key}</Typography>
                   <hr />
                   <a>{weapons[key].element}</a>

@@ -14,7 +14,7 @@ import Typography from "@material-ui/core/Typography";
 
 
 
-export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEquiped,mordalOpen,parent_state_weapon_search_element) => {
+export const buildEquipedWeaponButton = (parent_state_list_equiped,parentSetStateAddEquiped) => {
     
 
     function addEquipe(value) {
@@ -23,7 +23,6 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
         console.log(value)
         item.push(value);
         if(item.length > 10){
-            mordalOpen();
             return
         }
         console.log(item);
@@ -53,25 +52,25 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
 
 
         
-        {Object.keys(weapons).map((key) => {
-          console.log()
-          if(parent_state_weapon_search_element[weapons[key].element])
+        {Object.keys(parent_state_list_equiped).map((key) => {
+            let weapon_name = parent_state_list_equiped[key].name;
+            console.log(weapon_name)
             return(
             <HtmlTooltip
             title={
               <React.Fragment>
                 <div style={{display: "flex"}} >
                   <div class="weapon-icon-wraper">
-                  <img style={{width: "100px"}}src={process.env.PUBLIC_URL + "/" + weapons[key]["icon"]} />
+                  <img style={{width: "100px"}}src={process.env.PUBLIC_URL + "/" + weapons[weapon_name].icon} />
                   </div>
 
                   <div class="weapon-info-wraper">
-                  <Typography color="inherit">{key}</Typography>
+                  <Typography color="inherit">{weapon_name}</Typography>
                   <hr />
-                  <a>{weapons[key].element}</a>
+                  <a>{weapons[weapon_name].element}</a>
                   <div style={{ fontSize: "10px", }}>
-                      {Object.keys(weapons[key]["skill"]).map((num) =>
-                        <p style={{marginBottom:"0px"}}>{weapons[key]["skill"][num].type}</p>
+                      {Object.keys(weapons[weapon_name]["skill"]).map((num) =>
+                        <p style={{marginBottom:"0px"}}>{weapons[weapon_name]["skill"][num].type}</p>
                       )}
                   </div>
                   </div>
@@ -81,10 +80,10 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
           >
             <div
             class = "btn-wrap"
-            onClick={() => addEquipe(weapons[key].name)}
-            value={weapons[key].name}
+            
+            value={weapons[weapon_name].name}
             >
-            <a class="btn">{weapons[key].name}</a>
+            <a style={{backgroundColor: "#333333", color: "#eeeeee"}}class="btn">{weapons[weapon_name].name}</a>
             </div>
           </HtmlTooltip>
           )

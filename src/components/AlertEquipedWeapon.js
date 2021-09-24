@@ -16,17 +16,17 @@ export const alertEquipedWeapon = (parent_state_list_equiped) => {
     }
 
     return(
-        <dvi style={{display: "block",backgroundColor: "#666666" ,width: "", padding:"5px"}} class="weapon-element-wrapper">
+        <dvi style={{display: "flex",justifyContent: "space-evenly", backgroundColor: "#666666" ,width: "", height: "30px",padding:"5px"}} class="weapon-element-wrapper">
             <>
             {Object.keys(state_equiped).map((key) => {
                 if(state_equiped[key].toggle){
                     return <a style={{backgroundColor:""}}>
-                        <img style={{padding: "2px",width: "20px"}}src={process.env.PUBLIC_URL + "/" + state_equiped[key].icon} /> 
+                        <img style={{padding: "2px",width: "22px"}}src={process.env.PUBLIC_URL + "/" + state_equiped[key].icon} /> 
                     </a>
                 }
                 else{
                     return <a style={{backgroundColor:""}}>
-                        <img style={{padding: "2px",width: "20px",opacity: "0.5"}}src={process.env.PUBLIC_URL + "/" + state_equiped[key].icon} /> 
+                        <img style={{padding: "2px",width: "22px",opacity: "0.5"}}src={process.env.PUBLIC_URL + "/" + state_equiped[key].icon} /> 
                     </a>
                 }
             })}

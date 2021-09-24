@@ -134,5 +134,23 @@ export const weapons = {
     skill: {
       1: { e: "火", type: "EX攻刃", lank: "支配者", aura: "None"},
     },
+  },
+  泡末夢幻: {
+    name: "泡末夢幻",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040022000.png",
+    skill: {
+      1: { e: "風", type: "技巧", lank: "II", aura: "opti"},
+      2: { e: "風", type: "通常攻刃", lank: "中", aura: "opti"}
+    },
+  },
+  第八綿羊行刃: {
+    name: "第八綿羊行刃",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040313100.png",
+    skill: {
+      1: { e: "風", type: "通常乱舞", lank: "中", aura: "opti"},
+    },
   }
+  
 };

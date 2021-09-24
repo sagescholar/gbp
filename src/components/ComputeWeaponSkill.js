@@ -120,6 +120,7 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
                 rtn[skill_element] = rtn[skill_element] * (1.0+(obj_output[skill_name][skill_element]/100.0))
         })
       )
+      Object.keys(rtn).map((key) => rtn[key] = rtn[key].toFixed(2));
       return rtn;
     }
 

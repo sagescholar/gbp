@@ -1,21 +1,21 @@
 import React from "react";
-import { Header}  from "./layouts/Header";
+import { Header } from "./layouts/Header";
 import { Footer } from "./layouts/Footer";
 import "./App.css";
-import "./css/SelectWeapon.css"
+import "./css/SelectWeapon.css";
 import cloneDeep from "lodash.clonedeep";
-import { AreaChart, Area, LineChart, Line, YAxis, XAxis ,Tooltip} from 'recharts'
 
-import { useModal } from 'react-hooks-use-modal';
+import { useModal } from "react-hooks-use-modal";
 import Typography from "@material-ui/core/Typography";
 
 //COMPONENTS
 import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
 import { buildSummonsButton } from "./components/BuildSummonsButton";
-import { SliderHp } from './components/SliderHp';
+import { SliderHp } from "./components/SliderHp";
 import { buildWeaponSearchElementButton } from "./components/BuildWeaponSearchElementButton";
-import { alertEquipedWeapon } from "./components/AlertEquipedWeapon"
-import { buildEquipedWeaponButton } from './components/BuildEquipedWeaponButton'
+import { alertEquipedWeapon } from "./components/AlertEquipedWeapon";
+import { buildEquipedWeaponButton } from "./components/BuildEquipedWeaponButton";
+import { generateComputeChart } from "./components/GenerateComputeChart";
 
 //DATA
 import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
@@ -27,30 +27,32 @@ import { ELEMENT_STYLE, ELEMENT_TOGGLE_INTERFACE } from "./data/ELEMENT";
 import { buildWeaponButton } from "./components/BuildWeaponButton";
 
 function App() {
-
   /* STATE */
   const [state_list_equiped, setStateAddEquiped] = React.useState({});
-  const [state_hp, setStateHp] = React.useState(60)
+  const [state_hp, setStateHp] = React.useState(60);
   const [state_list_aura_boost, setStateUpdateAura] = React.useState(
     cloneDeep(AURA_BOOST_INTERFACE)
   );
   const [state_smn_toggle, setStateSmnToggle] = React.useState(
     cloneDeep(STATE_SUMMONS_INTERFACE)
   );
-  const [state_weapon_search_element, setStateWeaponSearchElement] = React.useState(
-    cloneDeep(ELEMENT_TOGGLE_INTERFACE)
-  ) 
+  const [
+    state_weapon_search_element,
+    setStateWeaponSearchElement,
+  ] = React.useState(cloneDeep(ELEMENT_TOGGLE_INTERFACE));
+  const [state_chart_value, setStateChartValue] = React.useState([]);
+  const [state_toggle_summon, setStateToggleSummon] = React.useState(true);
 
   /* STATE END */
 
   /* MODAL */
-  const [Modal2, open, close, isOpen] = useModal('root',{
+  const [Modal2, open, close, isOpen] = useModal("root", {
     preventScroll: true,
   });
   const modalStyle = {
-    backgroundColor: '#fff',
-    padding: '60px 100px',
-    borderRadius: '10px',
+    backgroundColor: "#fff",
+    padding: "60px 100px",
+    borderRadius: "10px",
   };
 
   /* MODAL END */
@@ -71,72 +73,64 @@ function App() {
   title: 要素に補足情報をつける
   */
 
-  /* Rechart */
-  
-  const data = [
-    {name: '0', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,0,false)},
-    {name: '10', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,10,false)},
-    {name: '20', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,20,false)},
-    {name: '30', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,30,false)},
-    {name: '40', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,40,false)},
-    {name: '50', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,50,false)},
-    {name: '60', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,60,false)},
-    {name: '70', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,70,false)},
-    {name: '80', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,80,false)},
-    {name: '90', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,90,false)},
-    {name: '100', uv: computeWeaponSkill(state_list_equiped, state_list_aura_boost,100,false)},
-  ]
-
   return (
     <>
-
       <Modal2>
-          <div style={modalStyle}>
+        <div style={modalStyle}>
           <h1>警告:武器は10本までです</h1>
           <p>更新してEquipedListをリセットしてください</p>
           <button onClick={close}>CLOSE</button>
-          </div>
+        </div>
       </Modal2>
-      
+
       {/*HEADER*/}
       {Header(setStateAddEquiped)}
 
       <div class="App">
         {/* 武器選択 */}
         <div class="app-weapon-select-wrap">
-            {buildWeaponSearchElementButton(state_weapon_search_element,setStateWeaponSearchElement)}
-            {buildWeaponButton(state_list_equiped,setStateAddEquiped,open,state_weapon_search_element)}
-            
+          {buildWeaponSearchElementButton(
+            state_weapon_search_element,
+            setStateWeaponSearchElement
+          )}
+          {buildWeaponButton(
+            state_list_equiped,
+            setStateAddEquiped,
+            open,
+            state_weapon_search_element
+          )}
         </div>
 
         {/* EQUIPED */}
         <div class="app-equiped">
           {alertEquipedWeapon(state_list_equiped)}
-          {buildEquipedWeaponButton(state_list_equiped,setStateAddEquiped)}
+          {buildEquipedWeaponButton(state_list_equiped, setStateAddEquiped)}
         </div>
 
         {/* 計算結果 */}
         <div class="app-compute">
-        <div style={{backgroundColor: ""}}>
-        
+          <div style={{ border: "0px solid #999999", backgroundColor: "" }}>
+            <div
+              style={{
+                display: "flex",
+                backgroundColor: "#666666",
+                height: "40px",
+                width: "100%",
+              }}
+            >
+              {/*Object.keys(state_list_equiped).map((key) => {
+          return(
+            <div class="icon-box" style={{margin: "1px", widht : "35px", padding: "3px", backgroundColor: "#aaaaaa", borderRaduis: "24px"}}>
+            <img height= "30px" src={process.env.PUBLIC_URL + "/" + weapons[state_list_equiped[key].name].icon} />
+            </div>
+          )
+        })*/}
+            </div>
+            {generateComputeChart(state_list_equiped, state_list_aura_boost)}
+          </div>
 
-        <a style={{width:"100%",textAlign:"center"}}>0%-100% Graph</a>
-        <AreaChart width={600} height={400} data={data}>
-          <Area type="monotone" dataKey="uv['火']" stroke="#ff6666" fillOpacity={0} fill="#ff6666"/>
-          <Area type="monotone" dataKey="uv['水']" stroke="#668cff" fillOpacity={0} fill="#668cff"/>
-          <Area type="monotone" dataKey="uv['土']" stroke="#ffb366" fillOpacity={0} fill="#ffb366"/>
-          <Area type="monotone" dataKey="uv['風']" stroke="#66ff8c" fillOpacity={0} fill="#66ff8c"/>
-          <Area type="monotone" dataKey="uv['光']" stroke="#e6b800" fillOpacity={0} fill="#e6b800"/>
-          <Area type="monotone" dataKey="uv['闇']" stroke="#8c66ff" fillOpacity={0} fill="#8c66ff"/>
-          <YAxis domain={[1.0,'dataMax+1.0']} />
-          <XAxis dataKey="name" />
-          {/*<Tooltip />*/}
-        </AreaChart>
-        
-        </div>
-
-        <a>{"RESULT:"+state_hp}</a>
-        {SliderHp(state_hp,setStateHp)}
+          <a>{"RESULT:" + state_hp}</a>
+          {SliderHp(state_hp, setStateHp)}
           <p
             style={{
               textAlign: "center",
@@ -147,25 +141,54 @@ function App() {
             COMPUTE RESULT
           </p>
 
-          {computeWeaponSkill(state_list_equiped, state_list_aura_boost, state_hp)}
+          {computeWeaponSkill(
+            state_list_equiped,
+            state_list_aura_boost,
+            state_hp
+          )}
         </div>
 
-        
-
         {/* 石選択 */}
-        <div class="app-summons">
-          {buildSummonsButton(
-            "MAIN",
-            setStateSmnToggle,
-            state_smn_toggle,
-            setStateUpdateAura
-          )}
-          {buildSummonsButton(
-            "FRIEND",
-            setStateSmnToggle,
-            state_smn_toggle,
-            setStateUpdateAura
-          )}
+        <div
+          class="wrap-summons"
+          style={{
+            width: "100px",
+            marginLeft: "auto",
+            border: "solid 0px black",
+          }}
+        >
+          <div
+            class="summons-head"
+            onClick={() => setStateToggleSummon(!state_toggle_summon)}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "40px",
+              backgroundColor: "#444444",
+              color: "white",
+            }}
+          >
+            <a style={{ verticalAlign: "middle",textAlign: "center",backgroundColor: "#557799", display: "block", width: "90%", height: "60%" }}>
+              <span style={{}}>{state_toggle_summon ? "MAIN" : "SUPPORT"}</span>
+            </a>
+          </div>
+
+          {state_toggle_summon &&
+            buildSummonsButton(
+              "MAIN",
+              setStateSmnToggle,
+              state_smn_toggle,
+              setStateUpdateAura
+            )}
+          {!state_toggle_summon &&
+            buildSummonsButton(
+              "FRIEND",
+              setStateSmnToggle,
+              state_smn_toggle,
+              setStateUpdateAura
+            )}
         </div>
       </div>
 

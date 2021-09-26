@@ -8,7 +8,7 @@ import { CALCULATE_OUT_INTERFACE } from "../data/WEAPONSKILL";
 import { BASE_SKILL, COMPOSITE_SKILL } from "../data/WEAPONSKILL";
 import { AURA_BOOST_INTERFACE } from "../data/SUMMONS";
 import { weapons } from "../data/WEAPONS";
-import { STATE_SUMMONS_INTERFACE } from "../data/SUMMONS";
+import { STATE_SUMMONS_INTERFACE, ICON_SUMMONS } from "../data/SUMMONS";
 import { ELEMENT_STYLE } from "../data/ELEMENT";
 
 //CSS
@@ -18,7 +18,6 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 //import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
-
 
 export const buildSummonsButton = (
   main_or_friend,
@@ -111,30 +110,48 @@ export const buildSummonsButton = (
                 </React.Fragment>
               }
             >
-              <button
+              <div
                 //disabled
-                style={{ transform: 'scale(0.8)',width: "150px",border: "0px", '&:hover': {textDecoration: 'underline',}}}
+                style={{
+                  transform: "scale(1)",
+                  width: "100px",
+                  border: "0px solid black",
+                }}
                 class="tooltip button"
                 value={text_value}
                 onClick={() => updateSummon(key__1, key__2, key__3, key__4)}
               >
-                <a style={{ fontSize: "10px", textAlign: "center",'&:hover': {textDecoration: 'underline',} }}>
-                  {text_value}
-                </a>
-              </button>
+                <div
+                  style={{
+                    fontSize: "10px",
+                    textAlign: "center",
+                    backgroundColor: "#222222",
+                  }}
+                >
+                  <img
+                    style={{
+                      margin: "0",
+                      padding: "0",
+                      border: "0",
+                      width: "100%",
+                      height: "20px",
+                      objectFit: "cover",
+                      opacity: "0.5",
+                    }}
+                    src={process.env.PUBLIC_URL + "/" + ICON_SUMMONS[element]}
+                  />
+                </div>
+              </div>
             </HtmlTooltip>
           );
         })
     )
   );
   return (
-    <div style={{ textAlign: "center", }}>
-      <p style={{ textAlign: "center", }}>{main_or_friend}</p>
-      <div class="opti_button">{Rsl.opti}</div>
-      <hr />
-      <div class="omega_button">{Rsl.omega}</div>
-      <hr />
-      <div class="sixdragon_button">{Rsl.sixdragon}</div>
+    <div style={{ textAlign: "center" }}>
+      <div class="wrap-opti">{Rsl.opti}</div>
+      <div class="wraup-omega">{Rsl.omega}</div>
+      <div class="wrap-sixdragon">{Rsl.sixdragon}</div>
     </div>
   );
 };

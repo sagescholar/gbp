@@ -30,6 +30,29 @@ export const OMEGA_BASE_INTERFACE = {
     }
 }
 
+export const ICON_SUMMONS = {
+    アグニス: "images/summon/Summon_b_2040094000_02.png",
+    ヴァルナ: "images/summon/Summon_b_2040100000_02.png",
+    ティターン: "images/summon/Summon_b_2040084000_02.png",
+    ゼピュロス: "images/summon/Summon_b_2040098000_02.png",
+    ゼウス: "images/summon/Summon_b_2040080000_02.png",
+    ハデス: "images/summon/Summon_b_2040090000_02.png",
+
+    コロッサス: "images/summon/Summon_b_2040034000_02.png",
+    リヴァイアサン: "images/summon/Summon_b_2040028000_02.png",
+    ユグドラシル: "images/summon/Summon_b_2040027000_02.png",
+    ティアマト: "images/summon/Summon_b_2040020000_02.png",
+    シュヴァリエ: "images/summon/Summon_b_2040047000_02.png",
+    セレスト: "images/summon/Summon_b_2040046000_02.png",
+
+    ウィルナス: "images/summon/Summon_b_2040090000_02.png",
+    ワムデュス: "images/summon/Summon_b_2040090000_02.png",
+    ガレオン: "images/summon/Summon_b_2040090000_02.png",
+    イーウィア: "images/summon/Summon_b_2040090000_02.png",
+    ルオー: "images/summon/Summon_b_2040090000_02.png",
+    フェディエル: "images/summon/Summon_b_2040090000_02.png",
+}
+
 export const SIXDRAGON_BASE_INTERFACE = {
     20:{
         value:20,

@@ -101,7 +101,7 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
                               <div style={{fontSize: "12px", textAlign: "left", paddingBottom: "5px"}}>
                                   {skill_name}|
                                   {skill_element}|
-                                  {obj_output[skill_name][skill_element] > 0.1 ? obj_output[skill_name][skill_element] : 0}
+                                  {obj_output[skill_name][skill_element] > 0.1 ? obj_output[skill_name][skill_element].toFixed(2) : 0}
                               </div>
                           )
                   })

@@ -1,6 +1,6 @@
 .app-compute {
   min-width: 500px;
-  padding: 0px 10px 10px 10px;
+  padding: 0px 0px 0px 0px;
   margin-left: 0px;
 }
 
@@ -60,7 +60,7 @@
 .app-summons{
   display: flex;
   border: 0px solid #ccc;
-  width: 290px;
+  width: 200px;
   margin-left:auto;
 }
 

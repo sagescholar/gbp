@@ -16,7 +16,7 @@ export const Header = (parentSetStateAddEquiped) => {
                 <a > X </a>
             </div>
 
-            <div style={{marginLeft: "auto",padding: "0px 20px",backgroundColor: "#aaaaaa", width: "",textAlign: "right",color: "#333333"}}>
+            <div style={{ width:"100px", marginLeft: "auto",padding: "0px 0px",backgroundColor: "#aaaaaa",color: "#333333"}}>
                 <Clock />
             </div>
         </div>

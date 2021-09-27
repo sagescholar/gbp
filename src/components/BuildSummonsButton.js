@@ -136,6 +136,7 @@ export const buildSummonsButton = (
                       border: "0",
                       width: "100%",
                       height: "20px",
+                      objectPosition: "0% 15%",
                       objectFit: "cover",
                       opacity: key_toggle? 1.0 : 0.15,
                     }}

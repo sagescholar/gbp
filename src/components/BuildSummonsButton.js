@@ -94,6 +94,7 @@ export const buildSummonsButton = (
           let key__2 = omega_or_opti;
           let key__3 = element;
           let key__4 = lank;
+          let key_toggle = parent_state_smn_toggle[main_or_friend][omega_or_opti][element][lank].toggle
           let text_value = "";
           if (key__2 == "sixdragon") text_value = element + " " + lank + "%";
           else text_value = element + "Lv." + lank;
@@ -136,7 +137,7 @@ export const buildSummonsButton = (
                       width: "100%",
                       height: "20px",
                       objectFit: "cover",
-                      opacity: "0.5",
+                      opacity: key_toggle? 1.0 : 0.15,
                     }}
                     src={process.env.PUBLIC_URL + "/" + ICON_SUMMONS[element]}
                   />

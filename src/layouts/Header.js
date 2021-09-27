@@ -12,7 +12,7 @@ export const Header = (parentSetStateAddEquiped) => {
     
     return(
         <div style={{position:"relative",width:"100%",height:"20px", backgroundColor:"#333333"}}>
-        <div class="head-title" style={{position: "", maxWidth:"1200px",margin: "0 5vw", display:"flex",alignItems:"start"}}>
+        <div class="head-title" style={{position: "", maxWidth:"1500px",marginLeft: "auto",marginRight:"auto", display:"flex",alignItems:"start"}}>
             <div onClick={()=>equipedReset()} class="wrap-equiped-reset">
                 <a > X </a>
             </div>

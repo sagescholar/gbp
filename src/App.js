@@ -85,8 +85,11 @@ function App() {
 
       {/*HEADER*/}
       {Header(setStateAddEquiped)}
-      <div class="wrap-app" style={{position:"relative",height:"auto",width:"100%",backgroundColor:"#333333"}}>
-      <div class="App" style={{maxWidth:"1200px",margin: "0 5vw", display:"flex",alignItems:"start"}}>
+
+      <div class="wrap-app" style={{position:"relative",height:"auto",width:"100%",}}>
+      
+      <div class="App" style={{minHeight: "1000px",maxWidth:"1500px",marginLeft: "auto",marginRight:"auto", display:"flex",alignItems:"start"}}>
+        
         {/* 武器選択 */}
         <div class="app-weapon-select-wrap">
           {buildWeaponSearchElementButton(

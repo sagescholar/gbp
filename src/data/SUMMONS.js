@@ -45,12 +45,12 @@ export const ICON_SUMMONS = {
     シュヴァリエ: "images/summon/Summon_b_2040047000_02.png",
     セレスト: "images/summon/Summon_b_2040046000_02.png",
 
-    ウィルナス: "images/summon/Summon_b_2040090000_02.png",
-    ワムデュス: "images/summon/Summon_b_2040090000_02.png",
-    ガレオン: "images/summon/Summon_b_2040090000_02.png",
-    イーウィア: "images/summon/Summon_b_2040090000_02.png",
-    ルオー: "images/summon/Summon_b_2040090000_02.png",
-    フェディエル: "images/summon/Summon_b_2040090000_02.png",
+    ウィルナス: "images/summon/218610.png",
+    ワムデュス: "images/summon/218609.png",
+    ガレオン: "images/summon/218559.png",
+    イーウィア: "images/summon/218608.png",
+    ルオー: "images/summon/218606.png",
+    フェディエル: "images/summon/06e572c1db4f20de7646efd9c180c90b.jpg",
 }
 
 export const SIXDRAGON_BASE_INTERFACE = {

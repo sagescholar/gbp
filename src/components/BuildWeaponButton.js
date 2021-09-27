@@ -24,7 +24,7 @@ export const buildWeaponButton = (parent_state_list_equiped,parentSetStateAddEqu
         //1.箱を作る
         content["name"] = value;
         //2.枠が埋まっているか確認
-        if(Object.keys(item).length > 10){
+        if(Object.keys(item).length > 9){
           mordalOpen();
           return
         }

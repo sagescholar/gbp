@@ -9,7 +9,7 @@ export const generateComputeChart = (parent_state_list_equiped, parent_state_lis
         火: "#ff6666",
         水: "#668cff",
         土: "#ffb366",
-        風: "#66ff8c",
+        風: "#057C27",
         光: "#e6b800",
         闇: "#8c66ff"
     }
@@ -33,7 +33,7 @@ export const generateComputeChart = (parent_state_list_equiped, parent_state_lis
     }
 
     return(
-        <LineChart width={600} height={450} data={Data} margin={{ top: 5, right: 20, bottom: 5, left: 5 }} >
+        <LineChart width={500} height={400} data={Data} >
           {Element.map((e) => {
             if(!Element_isView[e]) return 
             return <Line type="monotone" dataKey={e} stroke={Element_c[e]} fillOpacity={0} fill={Element_c[e]}/>

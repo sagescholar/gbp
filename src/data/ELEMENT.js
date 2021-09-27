@@ -8,12 +8,12 @@ export const ELEMENT_INTERFACE = {
 }
 
 export const ELEMENT_TOGGLE_INTERFACE = {
-    "火": true,
-    "水": true,
-    "土": true,
-    "風": true,
-    "光": true,
-    "闇": true,
+    "火": false,
+    "水": false,
+    "土": false,
+    "風": false,
+    "光": false,
+    "闇": false,
 }
 
 export const ELEMENT_ICON_INTERFACE = {

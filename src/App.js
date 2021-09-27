@@ -88,7 +88,7 @@ function App() {
 
       <div class="wrap-app" style={{position:"relative",height:"auto",width:"100%",}}>
       
-      <div class="App" style={{minHeight: "1000px",maxWidth:"1500px",marginLeft: "auto",marginRight:"auto", display:"flex",alignItems:"start"}}>
+      <div class="App" style={{minHeight: "1000px",maxWidth:"1500px",marginLeft: "auto",marginRight:"auto", display:"flex",display: "-webkit-flex",alignItems:"start"}}>
         
         {/* 武器選択 */}
         <div class="app-weapon-select-wrap">
@@ -111,8 +111,7 @@ function App() {
         </div>
 
         {/* 計算結果 */}
-        <div class="app-compute">
-          <div style={{ border: "0px solid #999999", backgroundColor: "" }}>
+        <div class="weap-compute-result" style={{flexGrow:"1"}}>
             <div
               style={{
                 display: "flex",
@@ -121,35 +120,33 @@ function App() {
                 width: "100%",
               }}
             >
-              {/*Object.keys(state_list_equiped).map((key) => {
-          return(
-            <div class="icon-box" style={{margin: "1px", widht : "35px", padding: "3px", backgroundColor: "#aaaaaa", borderRaduis: "24px"}}>
-            <img height= "30px" src={process.env.PUBLIC_URL + "/" + weapons[state_list_equiped[key].name].icon} />
+            {/* HEADER に 何か描きたい時はここ */}
             </div>
-          )
-        })*/}
-            </div>
+
+            <div class="wrap-chart" style={{display:"flex",width:"100%",justifyContent:"center" }}>
             {generateComputeChart(state_list_equiped, state_list_aura_boost)}
-          </div>
+            </div>
 
-          <a>{"RESULT:" + state_hp}</a>
-          {SliderHp(state_hp, setStateHp)}
-          <p
-            style={{
-              textAlign: "center",
-              paddingBottom: "5px",
-              borderBottom: "1px solid #202020",
-            }}
-          >
-            COMPUTE RESULT
-          </p>
+            <div class="wrap-hp-slider" style={{display:"flex",width:"100%",justifyContent:"center"}} >
+              <div class="wrap-slider" style={{width:"20%"}}>
+              <div style={{textAlign:"center"}}>{"RESULT:" + state_hp}</div>
+              {SliderHp(state_hp, setStateHp)}
+              </div>
+            </div>
 
-          {computeWeaponSkill(
-            state_list_equiped,
-            state_list_aura_boost,
-            state_hp
-          )}
+            
+            <div class="wrap-compute-skill" style={{width:"100%",display:"flex", justifyContent:"center"}}>
+              
+              {computeWeaponSkill(
+                state_list_equiped,
+                state_list_aura_boost,
+                state_hp
+              )}
+            </div>
         </div>
+
+        
+
 
         {/* 石選択 */}
         <div

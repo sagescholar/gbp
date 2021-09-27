@@ -7,11 +7,11 @@ export const alertEquipedWeapon = (parent_state_list_equiped) => {
         },
         終末 : {
             toggle: false,
-            icon: "images/WeaponSeries_Astral_Weapons_icon.png"
+            icon: "images/25px-WeaponSeries_Dark_Opus_Weapons_icon.png"
         },
         セラフィックウェポン : {
             toggle: false,
-            icon: "images/WeaponSeries_Astral_Weapons_icon.png"
+            icon: "images/25px-WeaponSeries_Seraphic_Weapons_icon.png"
         },
     }
 

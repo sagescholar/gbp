@@ -51,7 +51,7 @@ export const weapons = {
     element: "風",
     icon: "images/weapon/Weapon_b_1040212700.png",
     skill: {
-      1: { e: "風", type: "通常渾身", lank: "中", aura: "opti"},
+      1: { e: "風", type: "通常渾身", lank: "大", aura: "opti"},
       //2: { e: "風", type: "通常渾身", lank: "中", aura: "omega"},
     },
   },
@@ -150,6 +150,24 @@ export const weapons = {
     icon: "images/weapon/Weapon_b_1040313100.png",
     skill: {
       1: { e: "風", type: "通常乱舞", lank: "中", aura: "opti"},
+    },
+  },
+  宿命鉄拳: {
+    name: "宿命鉄拳",
+    element: "風",
+    icon: "images/weapon/462px-Weapon_b_1040614800.png",
+    skill: {
+      1: { e: "風", type: "修羅", lank: "大", aura: "opti"},
+      2: { e: "風", type: "通常背水", lank: "小", aura: "opti"},
+    },
+  },
+  ラストストームハープ: {
+    name: "ラストストームハープ",
+    element: "風",
+    icon: "images/weapon/462px-Last_Storm_Harp.png",
+    skill: {
+      1: { e: "風", type: "方陣渾身", lank: "中", aura: "omega"},
+      2: { e: "風", type: "技巧", lank: "中", aura: "omega"},
     },
   }
   

@@ -169,6 +169,24 @@ export const weapons = {
       1: { e: "風", type: "方陣渾身", lank: "中", aura: "omega"},
       2: { e: "風", type: "技巧", lank: "中", aura: "omega"},
     },
+  },
+  タアロマサラ: {
+    name: "タアロマサラ",
+    element: "闇",
+    icon: "images/weapon/Weapon_b_1040615400.png",
+    skill: {
+      1: { e: "闇", type: "通常攻刃", lank: "中", aura: "opti"},
+      2: { e: "闇", type: "通常背水", lank: "小", aura: "opti"},
+      3: { e: "闇", type: "修羅", lank: "大", aura: "opti"},
+    },
+  },
+  方天画戟: {
+    name: "方天画戟",
+    element: "闇",
+    icon: "images/weapon/Sky_Piercer.png",
+    skill: {
+      1: { e: "闇", type: "通常背水", lank: "大", aura: "opti"},
+    },
   }
   
 };

@@ -1,10 +1,10 @@
 import cloneDeep from "lodash.clonedeep";
-import { ELEMENT_ICON_INTERFACE } from "../data/ELEMENT"
+import { ELEMENT_ICON_INTERFACE, ELEMENT_TOGGLE_INTERFACE } from "../data/ELEMENT"
 
 
 export const buildWeaponSearchElementButton = (parent_state_weapon_search_element,parentSetStateWeaponSearchButton) => {
     const onClick = (element) => {
-        let rsl = cloneDeep(parent_state_weapon_search_element);
+        let rsl = cloneDeep(ELEMENT_TOGGLE_INTERFACE);
         rsl[element] = ! rsl[element];
         parentSetStateWeaponSearchButton(rsl);
     }

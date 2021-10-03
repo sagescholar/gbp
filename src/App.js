@@ -180,14 +180,16 @@ function App() {
               "MAIN",
               setStateSmnToggle,
               state_smn_toggle,
-              setStateUpdateAura
+              setStateUpdateAura,
+              state_weapon_search_element
             )}
           {!state_toggle_summon &&
             buildSummonsButton(
               "FRIEND",
               setStateSmnToggle,
               state_smn_toggle,
-              setStateUpdateAura
+              setStateUpdateAura,
+              state_weapon_search_element
             )}
         </div>
       </div>

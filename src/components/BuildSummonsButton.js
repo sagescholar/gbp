@@ -19,11 +19,35 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 
+let cvt_summonname2element = {
+  アグニス: "火",
+  ヴァルナ: "水",
+  ティターン: "土",
+  ゼピュロス: '風',
+  ゼウス: "光",
+  ハデス: "闇",
+
+  コロッサス: "火",
+  リヴァイアサン: "水",
+  ユグドラシル: "土",
+  ティアマト: '風',
+  シュヴァリエ: "光",
+  セレスト: "闇",
+
+  ウィルナス: "火",
+  ワムデュス: "水",
+  ガレオン: "土",
+  イーウィア: '風',
+  ルオー: "光",
+  フェディエル: "闇",
+}
+
 export const buildSummonsButton = (
   main_or_friend,
   parentSetStateSmnToggle,
   parent_state_smn_toggle,
-  parentSetStateUpdateAura
+  parentSetStateUpdateAura,
+  parent_state_search_element,
 ) => {
   /*
     key_1: MAIN or FRIEND
@@ -90,6 +114,9 @@ export const buildSummonsButton = (
         ).forEach((lank) => {
           if (main_or_friend == "FRIEND" && omega_or_opti == "sixdragon")
             return;
+          if (!parent_state_search_element[cvt_summonname2element[element]])
+            return;
+          console.log(element)
           let key__1 = main_or_friend;
           let key__2 = omega_or_opti;
           let key__3 = element;

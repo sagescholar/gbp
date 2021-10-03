@@ -53,6 +53,8 @@ export const ICON_SUMMONS = {
     フェディエル: "images/summon/06e572c1db4f20de7646efd9c180c90b.jpg",
 }
 
+
+
 export const SIXDRAGON_BASE_INTERFACE = {
     20:{
         value:20,

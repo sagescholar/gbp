@@ -57,6 +57,7 @@ export const buildEquipedWeaponButton = (parent_state_list_equiped,parentSetStat
             console.log(weapon_name)
             return(
             <HtmlTooltip
+            leaveTouchDelay={20000}
             title={
               <React.Fragment>
                 <div style={{display: "flex"}} >

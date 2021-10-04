@@ -13,7 +13,7 @@ import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
 import { buildSummonsButton } from "./components/BuildSummonsButton";
 import { SliderHp } from "./components/SliderHp";
 import { buildWeaponSearchElementButton } from "./components/BuildWeaponSearchElementButton";
-import { alertEquipedWeapon } from "./components/AlertEquipedWeapon";
+import { alertEquipedWeapon, changeActibeEquiped } from "./components/AlertEquipedWeapon";
 import { buildEquipedWeaponButton } from "./components/BuildEquipedWeaponButton";
 import { generateComputeChart } from "./components/GenerateComputeChart";
 
@@ -28,7 +28,8 @@ import { buildWeaponButton } from "./components/BuildWeaponButton";
 
 function App() {
   /* STATE */
-  const [state_list_equiped, setStateAddEquiped] = React.useState({});
+  const [state_list_equiped, setStateAddEquiped] = React.useState({1:{},2:{}});
+  const [state_active_equiped_number, setStateActiveEquipedNumber] = useState("1")
   const [state_hp, setStateHp] = React.useState(60);
   const [state_list_aura_boost, setStateUpdateAura] = React.useState(
     cloneDeep(AURA_BOOST_INTERFACE)
@@ -101,19 +102,22 @@ function App() {
             state_list_equiped,
             setStateAddEquiped,
             open,
-            state_weapon_search_element
+            state_weapon_search_element,
+            state_active_equiped_number
           )}
         </div>
 
         {/* EQUIPED */}
         <div class="app-equiped-1">
           {alertEquipedWeapon(state_list_equiped)}
-          {buildEquipedWeaponButton(state_list_equiped, setStateAddEquiped)}
+          {changeActibeEquiped(state_active_equiped_number,setStateActiveEquipedNumber,1)}
+          {buildEquipedWeaponButton(state_list_equiped["1"], setStateAddEquiped)}
         </div>
 
         <div class="app-equiped-2">
           {alertEquipedWeapon(state_list_equiped)}
-          {buildEquipedWeaponButton(state_list_equiped, setStateAddEquiped)}
+          {changeActibeEquiped(state_active_equiped_number,setStateActiveEquipedNumber,2)}
+          {buildEquipedWeaponButton(state_list_equiped["2"], setStateAddEquiped)}
         </div>
 
         {/* 計算結果 */}
@@ -144,7 +148,7 @@ function App() {
             <div class="wrap-compute-skill" style={{width:"100%",display:"flex", justifyContent:"center"}}>
               
               {computeWeaponSkill(
-                state_list_equiped,
+                state_list_equiped[state_active_equiped_number],
                 state_list_aura_boost,
                 state_hp
               )}

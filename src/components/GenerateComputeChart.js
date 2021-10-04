@@ -2,7 +2,7 @@ import { computeWeaponSkill } from "./ComputeWeaponSkill";
 
 import { CartesianGrid, LineChart, Line, YAxis, XAxis ,Tooltip} from 'recharts'
 
-export const generateComputeChart = (parent_state_list_equiped, parent_state_list_aura_boost) => {
+export const generateComputeChart = (parent_state_list_equiped, parent_state_list_aura_boost, parent_state_YMAX, parentSetStateYMax) => {
     let Data = []
     let Element = ["火","水","土","風","光","闇"]
     let Element_c = {
@@ -33,15 +33,19 @@ export const generateComputeChart = (parent_state_list_equiped, parent_state_lis
     }
 
     return(
-        <LineChart width={500} height={400} data={Data} >
-          {Element.map((e) => {
-            if(!Element_isView[e]) return 
-            return <Line type="monotone" dataKey={e} stroke={Element_c[e]} fillOpacity={0} fill={Element_c[e]}/>
-          })}
-          <CartesianGrid strokeDasharray="3 3" />
-          <YAxis domain={[0.0, 80.0]} />
-          <XAxis dataKey="name" />
-          <Tooltip />
-        </LineChart>
+        <>
+            <button class="button-up-ymax" onClick={()=>parentSetStateYMax(parent_state_YMAX + 10.0)}>▲</button>
+            <button class="button-dn-ymax" onClick={()=>parentSetStateYMax(parent_state_YMAX - 10.0)}>▼</button>
+            <LineChart width={500} height={400} data={Data} >
+            {Element.map((e) => {
+                if(!Element_isView[e]) return 
+                return <Line type="monotone" dataKey={e} stroke={Element_c[e]} fillOpacity={0} fill={Element_c[e]}/>
+            })}
+            <CartesianGrid strokeDasharray="3 3" />
+            <YAxis domain={[0.0, parent_state_YMAX]} />
+            <XAxis dataKey="name" />
+            <Tooltip />
+            </LineChart>
+        </>
     )
 }

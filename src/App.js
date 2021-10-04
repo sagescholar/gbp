@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "./layouts/Header";
 import { Footer } from "./layouts/Footer";
 import "./App.css";
@@ -42,6 +42,7 @@ function App() {
   ] = React.useState(cloneDeep(ELEMENT_TOGGLE_INTERFACE));
   const [state_chart_value, setStateChartValue] = React.useState([]);
   const [state_toggle_summon, setStateToggleSummon] = React.useState(true);
+  const [state_YMAX, setStateYMAX] = useState(80.0)
 
   /* STATE END */
 
@@ -105,7 +106,12 @@ function App() {
         </div>
 
         {/* EQUIPED */}
-        <div class="app-equiped">
+        <div class="app-equiped-1">
+          {alertEquipedWeapon(state_list_equiped)}
+          {buildEquipedWeaponButton(state_list_equiped, setStateAddEquiped)}
+        </div>
+
+        <div class="app-equiped-2">
           {alertEquipedWeapon(state_list_equiped)}
           {buildEquipedWeaponButton(state_list_equiped, setStateAddEquiped)}
         </div>
@@ -124,7 +130,7 @@ function App() {
             </div>
 
             <div class="wrap-chart" style={{display:"flex",width:"100%",justifyContent:"center" }}>
-            {generateComputeChart(state_list_equiped, state_list_aura_boost)}
+            {generateComputeChart(state_list_equiped, state_list_aura_boost, state_YMAX, setStateYMAX)}
             </div>
 
             <div class="wrap-hp-slider" style={{display:"flex",width:"100%",justifyContent:"center"}} >

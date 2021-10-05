@@ -14,7 +14,7 @@ import { buildSummonsButton } from "./components/BuildSummonsButton";
 import { SliderHp } from "./components/SliderHp";
 import { buildWeaponSearchElementButton } from "./components/BuildWeaponSearchElementButton";
 import { alertEquipedWeapon, changeActibeEquiped } from "./components/AlertEquipedWeapon";
-import { buildEquipedWeaponButton } from "./components/BuildEquipedWeaponButton";
+import BuildEquipedWeaponButton from "./components/BuildEquipedWeaponButton";
 import { generateComputeChart } from "./components/GenerateComputeChart";
 
 //DATA
@@ -25,6 +25,7 @@ import { weapons } from "./data/WEAPONS";
 import { STATE_SUMMONS_INTERFACE } from "./data/SUMMONS";
 import { ELEMENT_STYLE, ELEMENT_TOGGLE_INTERFACE } from "./data/ELEMENT";
 import { buildWeaponButton } from "./components/BuildWeaponButton";
+import ControlledTooltip from "./components/CastumMaterialUI/ControlledTooltips";
 
 function App() {
   /* STATE */
@@ -111,13 +112,13 @@ function App() {
         <div class="app-equiped-1">
           {alertEquipedWeapon(state_list_equiped)}
           {changeActibeEquiped(state_active_equiped_number,setStateActiveEquipedNumber,1)}
-          {buildEquipedWeaponButton(state_list_equiped["1"], setStateAddEquiped)}
+          <BuildEquipedWeaponButton parent_state_list_equiped={state_list_equiped} parentSetStateAddEquiped={setStateAddEquiped} number={1} />
         </div>
 
         <div class="app-equiped-2">
           {alertEquipedWeapon(state_list_equiped)}
           {changeActibeEquiped(state_active_equiped_number,setStateActiveEquipedNumber,2)}
-          {buildEquipedWeaponButton(state_list_equiped["2"], setStateAddEquiped)}
+          <BuildEquipedWeaponButton parent_state_list_equiped={state_list_equiped} parentSetStateAddEquiped={setStateAddEquiped} number={2} />
         </div>
 
         {/* 計算結果 */}
@@ -130,6 +131,7 @@ function App() {
                 width: "100%",
               }}
             >
+            
             {/* HEADER に 何か描きたい時はここ */}
             </div>
 
@@ -145,6 +147,8 @@ function App() {
             </div>
 
             
+
+            
             <div class="wrap-compute-skill" style={{width:"100%",display:"flex", justifyContent:"center"}}>
               
               {computeWeaponSkill(
@@ -153,6 +157,7 @@ function App() {
                 state_hp
               )}
             </div>
+            
         </div>
 
         

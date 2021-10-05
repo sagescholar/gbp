@@ -39,7 +39,7 @@ export const buildWeaponButton = (
         return;
       }
     });
-
+    content["isShow"] = false
     item[AEN][String(id)] = content;
     //FixMe: 終末,AW,天司武器の重複確認
 

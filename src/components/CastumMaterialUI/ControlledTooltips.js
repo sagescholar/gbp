@@ -1,12 +1,30 @@
-import React, { useState } from "react";
-import { Button } from "@material-ui/core";
-import { Tooltip } from "@material-ui/core";
+import React from "react";
+import ReactDOM from "react-dom";
 
-export default function ControlledTooltips() {
-  const [open, setOpen] = useState(false);
+import Tooltip from "@material-ui/core/Tooltip";
+import Button from "@material-ui/core/Button";
 
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
-
-  
+export default function ControlledTooltip() {
+  const [tooltipIsOpen, setTooltipIsOpen] = React.useState(false);
+  return (
+    <div className="App">
+      <Tooltip
+        open={tooltipIsOpen}
+        onOpen={() => setTooltipIsOpen(true)}
+        onClose={() => setTooltipIsOpen(false)}
+        title="I'm a controlled tooltip"
+      >
+        <span>Hover over me or click the button</span>
+      </Tooltip>
+      <div style={{ marginTop: 50 }}>
+        <Button
+          onClick={() => setTooltipIsOpen(!tooltipIsOpen)}
+          variant="contained"
+          color="primary"
+        >
+          Click me to {tooltipIsOpen ? "close" : "open"} the tooltip
+        </Button>
+      </div>
+    </div>
+  );
 }

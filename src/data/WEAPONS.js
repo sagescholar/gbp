@@ -214,6 +214,26 @@ export const weapons = {
       2:{},
       3:{}
     },
-  }
+  },
+  ティアマトボルトマグナ: {
+    name: "ティアマトボルトマグナ",
+    element: "風",
+    icon: "images/weapon/Tiamat_Bolt_Omega.png",
+    skill: {
+      1: { e: "風", type: "方陣背水", lank: "小", aura: "omega"},
+      2: { e: "風", type: "方陣攻刃", lank: "中", aura: "omega"},
+      3:{}
+    },
+  },
+  輝羅煌閃杖: {
+    name: "輝羅煌閃杖",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040418000.png",
+    skill: {
+      1: { e: "風", type: "方陣神威", lank: "小", aura: "omega"},
+      2: { e: "風", type: "方陣克己", lank: "中", aura: "omega"},
+      3:{}
+    },
+  },
+}
   
-};

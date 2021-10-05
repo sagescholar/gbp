@@ -2,6 +2,8 @@ import React from "react";
 import cloneDeep from "lodash.clonedeep";
 import { weapons } from "../data/WEAPONS";
 import { EQUIPED_WEAPON_INTERFACE } from "../data/WEAPONS";
+import { DARK_OPUS } from "../data/WEAPONS";
+
 //CSS
 
 //import "../css/Tooltip.css";
@@ -11,6 +13,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 //import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
+
 
 export const buildWeaponButton = (
   parent_state_list_equiped,
@@ -30,6 +33,16 @@ export const buildWeaponButton = (
       mordalOpen();
       return;
     }
+
+    //重複確認、終末、アスポン、セラフィック
+    let RTN_FLG = false
+    if(DARK_OPUS.includes(value)){
+    Object.keys(parent_state_list_equiped[AEN]).forEach((id) => {
+      if(DARK_OPUS.includes(parent_state_list_equiped[AEN][id].name))
+      RTN_FLG = true
+    })}
+    if(RTN_FLG) return
+
     //3.埋まっていない場合は空いている枠に入れる
     let id = 0;
 

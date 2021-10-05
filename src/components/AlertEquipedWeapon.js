@@ -1,4 +1,8 @@
-export const alertEquipedWeapon = (parent_state_list_equiped) => {
+import { DARK_OPUS } from "../data/WEAPONS";
+
+export default function AlertEquipedWeapon(props) {
+  const parent_state_list_equiped = props.parent_state_list_equiped
+
   const state_equiped = {
     AW: {
       toggle: false,
@@ -13,6 +17,10 @@ export const alertEquipedWeapon = (parent_state_list_equiped) => {
       icon: "images/25px-WeaponSeries_Seraphic_Weapons_icon.png",
     },
   };
+
+  Object.keys(parent_state_list_equiped).forEach((id) => {
+    if(DARK_OPUS.includes(parent_state_list_equiped[id].name)) state_equiped["終末"].toggle = true
+  })
 
   return (
     <dvi

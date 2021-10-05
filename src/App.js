@@ -13,7 +13,7 @@ import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
 import { buildSummonsButton } from "./components/BuildSummonsButton";
 import { SliderHp } from "./components/SliderHp";
 import { buildWeaponSearchElementButton } from "./components/BuildWeaponSearchElementButton";
-import { alertEquipedWeapon, changeActibeEquiped } from "./components/AlertEquipedWeapon";
+import AlertEquipedWeapon, { changeActibeEquiped } from "./components/AlertEquipedWeapon";
 import BuildEquipedWeaponButton from "./components/BuildEquipedWeaponButton";
 import { generateComputeChart } from "./components/GenerateComputeChart";
 
@@ -110,13 +110,13 @@ function App() {
 
         {/* EQUIPED */}
         <div class="app-equiped-1">
-          {alertEquipedWeapon(state_list_equiped)}
+          <AlertEquipedWeapon parent_state_list_equiped={state_list_equiped["1"]} />
           {changeActibeEquiped(state_active_equiped_number,setStateActiveEquipedNumber,1)}
           <BuildEquipedWeaponButton parent_state_list_equiped={state_list_equiped} parentSetStateAddEquiped={setStateAddEquiped} number={1} />
         </div>
 
         <div class="app-equiped-2">
-          {alertEquipedWeapon(state_list_equiped)}
+          <AlertEquipedWeapon parent_state_list_equiped={state_list_equiped["2"]} />
           {changeActibeEquiped(state_active_equiped_number,setStateActiveEquipedNumber,2)}
           <BuildEquipedWeaponButton parent_state_list_equiped={state_list_equiped} parentSetStateAddEquiped={setStateAddEquiped} number={2} />
         </div>

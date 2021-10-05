@@ -11,7 +11,7 @@ export const SliderHp = (parent_state_hp,parentSetStateHp) => {
         size="small"
         defaultValue={parent_state_hp}
         aria-label="Small"
-        valueLabelDisplay="auto"
+        valueLabelDisplay="off"
         onChange={(e,val)=>pickUpValue(val)}
         min={0}
         max={100}

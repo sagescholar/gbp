@@ -187,6 +187,16 @@ export const weapons = {
     skill: {
       1: { e: "闇", type: "通常背水", lank: "大", aura: "opti"},
     },
+  },
+  絶対否定の剣: {
+    name: "絶対否定の剣",
+    element: "光",
+    icon: "images/weapon/Weapon_b_1040017000.png",
+    skill: {
+      1: { e: "光", type: "通常神威", lank: "大", aura: "opti"},
+      2:{},
+      3:{}
+    },
   }
   
 };

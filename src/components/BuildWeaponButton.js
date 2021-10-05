@@ -109,7 +109,7 @@ export const buildWeaponButton = (
                 onClick={() => addEquipe(weapons[key].name)}
                 value={weapons[key].name}
               >
-                <a class="btn">{weapons[key].name}</a>
+                <a class="btn" style={{cursor: "default"}}>{weapons[key].name}</a>
               </div>
             </HtmlTooltip>
           );

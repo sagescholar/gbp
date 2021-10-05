@@ -46,6 +46,7 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
     Object.keys(obj_equiped_weapon/*装備中の武器*/).forEach((key_name) => {
       //key = {1,2,3...}
       Object.keys(obj_equiped_weapon[key_name]["skill"]/*装備中の武器のスキル*/).forEach((key_skill_no) => {
+        if(obj_equiped_weapon[key_name]["skill"][key_skill_no].e == undefined) return
         //keyNo = {1,2,3,...}
         let skill_element = obj_equiped_weapon[key_name]["skill"][key_skill_no].e;
         let skill_name = obj_equiped_weapon[key_name]["skill"][key_skill_no].type;

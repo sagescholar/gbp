@@ -70,7 +70,7 @@ export default function BuildEquipedWeaponButton(props)  {
                 onClick={() => updateEquipedShow(key)}
                 value={weapons[weapon_name].name}
                 >
-                <a style={{backgroundColor: "#333333", color: "#eeeeee"}} class="btn">{weapons[weapon_name].name}</a>
+                <a style={{backgroundColor: "#333333", color: "#eeeeee", cursor:"default"}} class="btn">{weapons[weapon_name].name}</a>
                 </div>
               </HtmlTooltip>
             )

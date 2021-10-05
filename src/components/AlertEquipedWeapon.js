@@ -49,7 +49,7 @@ export default function AlertEquipedWeapon(props) {
             return (
               <a style={{ backgroundColor: "" }}>
                 <img
-                  style={{ padding: "2px", width: "22px", opacity: "0.5" }}
+                  style={{ padding: "2px", width: "22px", opacity: "0.15" }}
                   src={process.env.PUBLIC_URL + "/" + state_equiped[key].icon}
                 />
               </a>

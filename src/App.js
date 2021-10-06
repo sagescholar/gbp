@@ -275,6 +275,27 @@ function App() {
                     setStateUpdateAura,
                     state_weapon_search_element
                   )}
+
+<div
+                  class="summons-head"
+                  onClick={() => setStateToggleSummon(!state_toggle_summon)}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "40px",
+                    backgroundColor: "#444444",
+                    color: "white",
+                  }}
+                >
+                  {/*<a style={{ verticalAlign: "middle",textAlign: "center",backgroundColor: "#557799", display: "block", width: "90%", height: "60%" }}>
+              <span style={{cursor:"default"}}>{state_toggle_summon ? "MAIN" : "SUPPORT"}</span>
+          </a>*/}
+                  <Button color="primary">
+                    {state_toggle_summon ? "MAIN" : "SUPPORT"}
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -298,12 +319,14 @@ function App() {
                 bgcolor: "primary.dark",
                 position: "fixed",
                 bottom: "0",
+                textAlign: "center",
+                color: "white",
                 "&:hover": {
                   backgroundColor: "primary.main",
                   opacity: [0.9, 0.8, 0.7],
                 },
               }}
-            />
+            >UNDER MENU(まだ動かないよ)</Box>
           </div>
           {/*<hr />*/}
         </>

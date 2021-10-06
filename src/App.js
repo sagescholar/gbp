@@ -7,6 +7,7 @@ import cloneDeep from "lodash.clonedeep";
 
 import { useModal } from "react-hooks-use-modal";
 import Typography from "@material-ui/core/Typography";
+import { Button } from "@material-ui/core";
 
 //COMPONENTS
 import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
@@ -185,9 +186,10 @@ function App() {
               color: "white",
             }}
           >
-            <a style={{ verticalAlign: "middle",textAlign: "center",backgroundColor: "#557799", display: "block", width: "90%", height: "60%" }}>
-              <span style={{}}>{state_toggle_summon ? "MAIN" : "SUPPORT"}</span>
-            </a>
+            {/*<a style={{ verticalAlign: "middle",textAlign: "center",backgroundColor: "#557799", display: "block", width: "90%", height: "60%" }}>
+              <span style={{cursor:"default"}}>{state_toggle_summon ? "MAIN" : "SUPPORT"}</span>
+          </a>*/}
+            <Button color="primary">{state_toggle_summon ? "MAIN" : "SUPPORT"}</Button>
           </div>
 
           {state_toggle_summon &&
@@ -210,6 +212,10 @@ function App() {
       </div>
       </div>
 
+      
+      <div class="under-menu">
+
+      </div>
       {/*<hr />*/}
 
       {/*{buildTable()}*/}

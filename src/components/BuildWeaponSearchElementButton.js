@@ -20,7 +20,7 @@ export const buildWeaponSearchElementButton = (parent_state_weapon_search_elemen
                 }
                 else{
                     return <a onClick={()=>onClick(element)} style={{backgroundColor:""}}>
-                        <img style={{padding: "2.5px",width: "15px",opacity: "0.5"}}src={process.env.PUBLIC_URL + "/" + ELEMENT_ICON_INTERFACE[element] + ".png"} /> 
+                        <img style={{padding: "2.5px",width: "15px",opacity: "0.175"}}src={process.env.PUBLIC_URL + "/" + ELEMENT_ICON_INTERFACE[element] + ".png"} /> 
                     </a>
                 }
             })}

@@ -184,7 +184,7 @@ export const weapons = {
     icon: "images/weapon/462px-Last_Storm_Harp.png",
     skill: {
       1: { e: "風", type: "方陣渾身", lank: "中", aura: "omega"},
-      2: { e: "風", type: "技巧", lank: "中", aura: "omega"},
+      2: { e: "風", type: "技巧", lank: "大", aura: "omega"},
     },
   },
   タアロマサラ: {

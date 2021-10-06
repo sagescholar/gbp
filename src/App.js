@@ -15,7 +15,9 @@ import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
 import { buildSummonsButton } from "./components/BuildSummonsButton";
 import { SliderHp } from "./components/SliderHp";
 import { buildWeaponSearchElementButton } from "./components/BuildWeaponSearchElementButton";
-import AlertEquipedWeapon, { changeActibeEquiped } from "./components/AlertEquipedWeapon";
+import AlertEquipedWeapon, {
+  changeActibeEquiped,
+} from "./components/AlertEquipedWeapon";
 import BuildEquipedWeaponButton from "./components/BuildEquipedWeaponButton";
 import { generateComputeChart } from "./components/GenerateComputeChart";
 
@@ -28,13 +30,18 @@ import { STATE_SUMMONS_INTERFACE } from "./data/SUMMONS";
 import { ELEMENT_STYLE, ELEMENT_TOGGLE_INTERFACE } from "./data/ELEMENT";
 import { buildWeaponButton } from "./components/BuildWeaponButton";
 import ControlledTooltip from "./components/CastumMaterialUI/ControlledTooltips";
+import Toppage from "./layouts/Toppage";
 
 function App() {
   /* STATE */
-  const [state_view, setStateView] = useState("top")
+  const [state_view, setStateView] = useState("top");
 
-  const [state_list_equiped, setStateAddEquiped] = React.useState({1:{},2:{}});
-  const [state_active_equiped_number, setStateActiveEquipedNumber] = useState("1")
+  const [state_list_equiped, setStateAddEquiped] = React.useState({
+    1: {},
+    2: {},
+  });
+  const [state_active_equiped_number, setStateActiveEquipedNumber] =
+    useState("1");
   const [state_hp, setStateHp] = React.useState(60);
   const [state_list_aura_boost, setStateUpdateAura] = React.useState(
     cloneDeep(AURA_BOOST_INTERFACE)
@@ -42,13 +49,11 @@ function App() {
   const [state_smn_toggle, setStateSmnToggle] = React.useState(
     cloneDeep(STATE_SUMMONS_INTERFACE)
   );
-  const [
-    state_weapon_search_element,
-    setStateWeaponSearchElement,
-  ] = React.useState(cloneDeep(ELEMENT_TOGGLE_INTERFACE));
+  const [state_weapon_search_element, setStateWeaponSearchElement] =
+    React.useState(cloneDeep(ELEMENT_TOGGLE_INTERFACE));
   const [state_chart_value, setStateChartValue] = React.useState([]);
   const [state_toggle_summon, setStateToggleSummon] = React.useState(true);
-  const [state_YMAX, setStateYMAX] = useState(80.0)
+  const [state_YMAX, setStateYMAX] = useState(80.0);
 
   /* STATE END */
 
@@ -91,148 +96,218 @@ function App() {
       </Modal2>
 
       {/*HEADER*/}
-      {Header(setStateAddEquiped,setStateView)}
+      {Header(setStateAddEquiped, setStateView)}
 
-      
-      {state_view == "app" &&(<>
-      <div class="wrap-app" style={{position:"relative",height:"auto",width:"100%",}}>
-      
-      <div class="App" style={{minHeight: "1000px",maxWidth:"1500px",marginLeft: "auto",marginRight:"auto", display:"flex",display: "-webkit-flex",alignItems:"start"}}>
-        
-        {/* 武器選択 */}
-        <div class="app-weapon-select-wrap">
-          {buildWeaponSearchElementButton(
-            state_weapon_search_element,
-            setStateWeaponSearchElement
-          )}
-          {buildWeaponButton(
-            state_list_equiped,
-            setStateAddEquiped,
-            open,
-            state_weapon_search_element,
-            state_active_equiped_number
-          )}
-        </div>
+      {state_view == "top" &&(
+      <Toppage />
+      )}
 
-        {/* EQUIPED */}
-        <div class="app-equiped-1">
-          <AlertEquipedWeapon parent_state_list_equiped={state_list_equiped["1"]} />
-          {changeActibeEquiped(state_active_equiped_number,setStateActiveEquipedNumber,1)}
-          <BuildEquipedWeaponButton parent_state_list_equiped={state_list_equiped} parentSetStateAddEquiped={setStateAddEquiped} number={1} />
-        </div>
-
-        <div class="app-equiped-2">
-          <AlertEquipedWeapon parent_state_list_equiped={state_list_equiped["2"]} />
-          {changeActibeEquiped(state_active_equiped_number,setStateActiveEquipedNumber,2)}
-          <BuildEquipedWeaponButton parent_state_list_equiped={state_list_equiped} parentSetStateAddEquiped={setStateAddEquiped} number={2} />
-        </div>
-
-        {/* 計算結果 */}
-        <div class="weap-compute-result" style={{flexGrow:"1"}}>
+      {state_view == "app" && (
+        <>
+          <div
+            class="wrap-app"
+            style={{ position: "relative", height: "auto", width: "100%" }}
+          >
             <div
+              class="App"
               style={{
+                minHeight: "1000px",
+                maxWidth: "1500px",
+                marginLeft: "auto",
+                marginRight: "auto",
                 display: "flex",
-                backgroundColor: "#666666",
-                height: "40px",
-                width: "100%",
+                display: "-webkit-flex",
+                alignItems: "start",
               }}
             >
-            
-            {/* HEADER に 何か描きたい時はここ */}
-            </div>
-
-            <div class="wrap-chart" style={{display:"flex",width:"100%",justifyContent:"center" }}>
-            {generateComputeChart(state_list_equiped, state_list_aura_boost, state_YMAX, setStateYMAX)}
-            </div>
-
-            <div class="wrap-hp-slider" style={{display:"flex",width:"100%",justifyContent:"center"}} >
-              <div class="wrap-slider" style={{width:"20%"}}>
-              <div style={{textAlign:"center"}}>{"RESULT:" + state_hp}</div>
-              {SliderHp(state_hp, setStateHp)}
+              {/* 武器選択 */}
+              <div class="app-weapon-select-wrap">
+                {buildWeaponSearchElementButton(
+                  state_weapon_search_element,
+                  setStateWeaponSearchElement
+                )}
+                {buildWeaponButton(
+                  state_list_equiped,
+                  setStateAddEquiped,
+                  open,
+                  state_weapon_search_element,
+                  state_active_equiped_number
+                )}
               </div>
-            </div>
 
-            
+              {/* EQUIPED */}
+              <div class="app-equiped-1">
+                <AlertEquipedWeapon
+                  parent_state_list_equiped={state_list_equiped["1"]}
+                />
+                {changeActibeEquiped(
+                  state_active_equiped_number,
+                  setStateActiveEquipedNumber,
+                  1
+                )}
+                <BuildEquipedWeaponButton
+                  parent_state_list_equiped={state_list_equiped}
+                  parentSetStateAddEquiped={setStateAddEquiped}
+                  number={1}
+                />
+              </div>
 
-            
-            <div class="wrap-compute-skill" style={{width:"100%",display:"flex", justifyContent:"center"}}>
-              
-              {computeWeaponSkill(
-                state_list_equiped[state_active_equiped_number],
-                state_list_aura_boost,
-                state_hp
-              )}
-            </div>
-            
-        </div>
+              <div class="app-equiped-2">
+                <AlertEquipedWeapon
+                  parent_state_list_equiped={state_list_equiped["2"]}
+                />
+                {changeActibeEquiped(
+                  state_active_equiped_number,
+                  setStateActiveEquipedNumber,
+                  2
+                )}
+                <BuildEquipedWeaponButton
+                  parent_state_list_equiped={state_list_equiped}
+                  parentSetStateAddEquiped={setStateAddEquiped}
+                  number={2}
+                />
+              </div>
 
-        
+              {/* 計算結果 */}
+              <div class="weap-compute-result" style={{ flexGrow: "1" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    backgroundColor: "#666666",
+                    height: "40px",
+                    width: "100%",
+                  }}
+                >
+                  {/* HEADER に 何か描きたい時はここ */}
+                </div>
 
+                <div
+                  class="wrap-chart"
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "center",
+                  }}
+                >
+                  {generateComputeChart(
+                    state_list_equiped,
+                    state_list_aura_boost,
+                    state_YMAX,
+                    setStateYMAX
+                  )}
+                </div>
 
-        {/* 石選択 */}
-        <div
-          class="wrap-summons"
-          style={{
-            width: "100px",
-            marginLeft: "auto",
-            border: "solid 0px black",
-          }}
-        >
-          <div
-            class="summons-head"
-            onClick={() => setStateToggleSummon(!state_toggle_summon)}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              height: "40px",
-              backgroundColor: "#444444",
-              color: "white",
-            }}
-          >
-            {/*<a style={{ verticalAlign: "middle",textAlign: "center",backgroundColor: "#557799", display: "block", width: "90%", height: "60%" }}>
+                <div
+                  class="wrap-hp-slider"
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div class="wrap-slider" style={{ width: "20%" }}>
+                    <div style={{ textAlign: "center" }}>
+                      {"RESULT:" + state_hp}
+                    </div>
+                    {SliderHp(state_hp, setStateHp)}
+                  </div>
+                </div>
+
+                <div
+                  class="wrap-compute-skill"
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  {computeWeaponSkill(
+                    state_list_equiped[state_active_equiped_number],
+                    state_list_aura_boost,
+                    state_hp
+                  )}
+                </div>
+              </div>
+
+              {/* 石選択 */}
+              <div
+                class="wrap-summons"
+                style={{
+                  width: "100px",
+                  marginLeft: "auto",
+                  border: "solid 0px black",
+                }}
+              >
+                <div
+                  class="summons-head"
+                  onClick={() => setStateToggleSummon(!state_toggle_summon)}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "40px",
+                    backgroundColor: "#444444",
+                    color: "white",
+                  }}
+                >
+                  {/*<a style={{ verticalAlign: "middle",textAlign: "center",backgroundColor: "#557799", display: "block", width: "90%", height: "60%" }}>
               <span style={{cursor:"default"}}>{state_toggle_summon ? "MAIN" : "SUPPORT"}</span>
           </a>*/}
-            <Button color="primary">{state_toggle_summon ? "MAIN" : "SUPPORT"}</Button>
+                  <Button color="primary">
+                    {state_toggle_summon ? "MAIN" : "SUPPORT"}
+                  </Button>
+                </div>
+
+                {state_toggle_summon &&
+                  buildSummonsButton(
+                    "MAIN",
+                    setStateSmnToggle,
+                    state_smn_toggle,
+                    setStateUpdateAura,
+                    state_weapon_search_element
+                  )}
+                {!state_toggle_summon &&
+                  buildSummonsButton(
+                    "FRIEND",
+                    setStateSmnToggle,
+                    state_smn_toggle,
+                    setStateUpdateAura,
+                    state_weapon_search_element
+                  )}
+              </div>
+            </div>
           </div>
 
-          {state_toggle_summon &&
-            buildSummonsButton(
-              "MAIN",
-              setStateSmnToggle,
-              state_smn_toggle,
-              setStateUpdateAura,
-              state_weapon_search_element
-            )}
-          {!state_toggle_summon &&
-            buildSummonsButton(
-              "FRIEND",
-              setStateSmnToggle,
-              state_smn_toggle,
-              setStateUpdateAura,
-              state_weapon_search_element
-            )}
-        </div>
-      </div>
-      </div>
-
-      
-      <div class="under-menu">
-        <Box
-        sx={{
-          width: 300,
-          height: 50,
-          bgcolor: 'primary.dark',
-          '&:hover': {
-            backgroundColor: 'primary.main',
-            opacity: [0.9, 0.8, 0.7],
-          },
-        }}
-      />
-      </div>
-      {/*<hr />*/}
-      </>)}
+          <div
+            class="under-menu"
+            style={{
+              minHeight: "",
+              maxWidth: "1500px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              display: "flex",
+              display: "-webkit-flex",
+              alignItems: "start",
+            }}
+          >
+            <Box
+              sx={{
+                width: 300,
+                height: 20,
+                bgcolor: "primary.dark",
+                position: "fixed",
+                bottom: "0",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                  opacity: [0.9, 0.8, 0.7],
+                },
+              }}
+            />
+          </div>
+          {/*<hr />*/}
+        </>
+      )}
 
       {/*{buildTable()}*/}
 

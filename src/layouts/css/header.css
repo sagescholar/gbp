@@ -20,7 +20,8 @@
 
 .wrap-equiped-reset{
     text-align: center;
-    width: 20px;
+    width: auto;
+    height: 20px;
     background-color: #333333;
     color: #5fb97a;
 }

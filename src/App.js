@@ -8,6 +8,7 @@ import cloneDeep from "lodash.clonedeep";
 import { useModal } from "react-hooks-use-modal";
 import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 //COMPONENTS
 import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
@@ -30,6 +31,8 @@ import ControlledTooltip from "./components/CastumMaterialUI/ControlledTooltips"
 
 function App() {
   /* STATE */
+  const [state_view, setStateView] = useState("top")
+
   const [state_list_equiped, setStateAddEquiped] = React.useState({1:{},2:{}});
   const [state_active_equiped_number, setStateActiveEquipedNumber] = useState("1")
   const [state_hp, setStateHp] = React.useState(60);
@@ -88,8 +91,10 @@ function App() {
       </Modal2>
 
       {/*HEADER*/}
-      {Header(setStateAddEquiped)}
+      {Header(setStateAddEquiped,setStateView)}
 
+      
+      {state_view == "app" &&(<>
       <div class="wrap-app" style={{position:"relative",height:"auto",width:"100%",}}>
       
       <div class="App" style={{minHeight: "1000px",maxWidth:"1500px",marginLeft: "auto",marginRight:"auto", display:"flex",display: "-webkit-flex",alignItems:"start"}}>
@@ -214,9 +219,20 @@ function App() {
 
       
       <div class="under-menu">
-
+        <Box
+        sx={{
+          width: 300,
+          height: 50,
+          bgcolor: 'primary.dark',
+          '&:hover': {
+            backgroundColor: 'primary.main',
+            opacity: [0.9, 0.8, 0.7],
+          },
+        }}
+      />
       </div>
       {/*<hr />*/}
+      </>)}
 
       {/*{buildTable()}*/}
 

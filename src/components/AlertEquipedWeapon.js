@@ -1,4 +1,5 @@
-import { DARK_OPUS } from "../data/WEAPONS";
+import { DARK_OPUS, SERAPHIC, ASTRAL } from "../data/WEAPONS";
+
 
 export default function AlertEquipedWeapon(props) {
   const parent_state_list_equiped = props.parent_state_list_equiped
@@ -20,6 +21,8 @@ export default function AlertEquipedWeapon(props) {
 
   Object.keys(parent_state_list_equiped).forEach((id) => {
     if(DARK_OPUS.includes(parent_state_list_equiped[id].name)) state_equiped["終末"].toggle = true
+    if(SERAPHIC.includes(parent_state_list_equiped[id].name)) state_equiped["セラフィックウェポン"].toggle = true
+    if(ASTRAL.includes(parent_state_list_equiped[id].name)) state_equiped["AW"].toggle = true
   })
 
   return (

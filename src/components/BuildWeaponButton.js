@@ -2,7 +2,7 @@ import React from "react";
 import cloneDeep from "lodash.clonedeep";
 import { weapons } from "../data/WEAPONS";
 import { EQUIPED_WEAPON_INTERFACE } from "../data/WEAPONS";
-import { DARK_OPUS } from "../data/WEAPONS";
+import { DARK_OPUS, SERAPHIC, ASTRAL } from "../data/WEAPONS";
 
 //CSS
 
@@ -14,7 +14,6 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 
-
 export const buildWeaponButton = (
   parent_state_list_equiped,
   parentSetStateAddEquiped,
@@ -23,7 +22,7 @@ export const buildWeaponButton = (
   parent_state_active_equiped_number
 ) => {
   function addEquipe(value) {
-    let AEN = String(parent_state_active_equiped_number)
+    let AEN = String(parent_state_active_equiped_number);
     let item = cloneDeep(parent_state_list_equiped);
     let content = cloneDeep(EQUIPED_WEAPON_INTERFACE);
     //1.箱を作る
@@ -35,13 +34,28 @@ export const buildWeaponButton = (
     }
 
     //重複確認、終末、アスポン、セラフィック
-    let RTN_FLG = false
-    if(DARK_OPUS.includes(value)){
-    Object.keys(parent_state_list_equiped[AEN]).forEach((id) => {
-      if(DARK_OPUS.includes(parent_state_list_equiped[AEN][id].name))
-      RTN_FLG = true
-    })}
-    if(RTN_FLG) return
+    let RTN_FLG = false;
+    if (DARK_OPUS.includes(value)) {
+      Object.keys(parent_state_list_equiped[AEN]).forEach((id) => {
+        if (DARK_OPUS.includes(parent_state_list_equiped[AEN][id].name))
+          RTN_FLG = true;
+      });
+    }
+
+    if (ASTRAL.includes(value)) {
+      Object.keys(parent_state_list_equiped[AEN]).forEach((id) => {
+        if (ASTRAL.includes(parent_state_list_equiped[AEN][id].name))
+          RTN_FLG = true;
+      });
+    }
+
+    if (SERAPHIC.includes(value)) {
+      Object.keys(parent_state_list_equiped[AEN]).forEach((id) => {
+        if (SERAPHIC.includes(parent_state_list_equiped[AEN][id].name))
+          RTN_FLG = true;
+      });
+    }
+    if (RTN_FLG) return;
 
     //3.埋まっていない場合は空いている枠に入れる
     let id = 0;
@@ -52,7 +66,7 @@ export const buildWeaponButton = (
         return;
       }
     });
-    content["isShow"] = false
+    content["isShow"] = false;
     item[AEN][String(id)] = content;
     //FixMe: 終末,AW,天司武器の重複確認
 
@@ -122,7 +136,9 @@ export const buildWeaponButton = (
                 onClick={() => addEquipe(weapons[key].name)}
                 value={weapons[key].name}
               >
-                <a class="btn" style={{cursor: "pointer"}}>{weapons[key].name}</a>
+                <a class="btn" style={{ cursor: "pointer" }}>
+                  {weapons[key].name}
+                </a>
               </div>
             </HtmlTooltip>
           );

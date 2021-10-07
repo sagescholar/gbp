@@ -35,6 +35,24 @@ export const DARK_OPUS = [
 
 ]
 
+export const ASTRAL = [
+  "ソルレムナント",
+  "フェイトレス",
+  "ユグドラシルブランチ",
+  "イノセントラヴ",
+  "ロンゴミニアド",
+  "黒銀の滅爪"
+]
+
+export const SERAPHIC = [
+  "ソードオブミカエル",
+  "ワンドオブガブリエル",
+  "グローブオブウリエル",
+  "リングオブラファエル",
+  "ハープオブハルワアムル",
+  "サイスオブベリアル"
+]
+
 export const weapons = {
   イクサバ: {
     name: "イクサバ",
@@ -152,6 +170,22 @@ export const weapons = {
       1: { e: "火", type: "EX攻刃", lank: "支配者", aura: "None"},
     },
   },
+  イノセントラヴ: {
+    name: "イノセントラヴ",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040811600.png",
+    skill: {
+      1: { e: "風", type: "EX攻刃", lank: "支配者", aura: "None"},
+    },
+  },
+  リングオブラファエル: {
+    name: "リングオブラファエル",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040709100.png",
+    skill: {
+      1: { e: "風", type: "通常神威", lank: "小", aura: "opti"},
+    },
+  },
   泡末夢幻: {
     name: "泡末夢幻",
     element: "風",
@@ -235,5 +269,71 @@ export const weapons = {
       3:{}
     },
   },
+  方天画戟: {
+    name: "方天画戟",
+    element: "風",
+    icon: "images/weapon/Sky_Piercer.png",
+    skill: {
+      1: { e: "風", type: "通常背水", lank: "大", aura: "opti"},
+    },
+  },
+  絶対否定の槍: {
+    name: "絶対否定の槍",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040212500.png",
+    skill: {
+      1: { e: "風", type: "通常神威", lank: "大", aura: "opti"},
+    },
+  },
+  永遠拒絶の槍: {
+    name: "永遠拒絶の槍",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040212600.png",
+    skill: {
+      1: { e: "風", type: "方陣神威", lank: "大", aura: "omega"},
+    },
+  },
+  ティアマトガントレマグナ: {
+    name: "ティアマトガントレマグナ",
+    element: "風",
+    icon: "images/weapon/Tiamat_Gauntlet_Omega.png",
+    skill: {
+      1: { e: "風", type: "方陣攻刃", lank: "大", aura: "omega"},
+    },
+  },
+  エターナルラヴ: {
+    name: "エターナルラヴ",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040105400.png",
+    skill: {
+      1: { e: "風", type: "通常攻刃", lank: "III", aura: "opti"},
+      2: { e: "風", type: "通常乱舞", lank: "中", aura: "opti"},
+    },
+  },
+  イーウィアビーク: {
+    name: "イーウィアビーク",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040912400.png",
+    skill: {
+      1: { e: "風", type: "通常攻刃", lank: "劫風の攻刃", aura: "None"},
+    }
+  },
+  ルフェイ: {
+    name: "ルフェイ",
+    element: "風",
+    icon: "images/weapon/Le_Fay.png",
+    skill: {
+      1: { e: "風", type: "通常攻刃", lank: "暴君", aura: "opti"},
+      2: { e: "風", type: "通常三手", lank: "大", aura: "opti"},
+    }
+  },
+  青竜邪槍王: {
+    name: "青竜邪槍王",
+    element: "風",
+    icon: "images/weapon/Qinglong_Spear_Regus.png",
+    skill: {
+      1: { e: "風", type: "通常攻刃", lank: "II", aura: "opti"},
+      2: { e: "風", type: "技巧", lank: "中", aura: "opti"},
+    }
+  },
 }
-  

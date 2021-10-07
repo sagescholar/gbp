@@ -275,68 +275,6 @@ function App() {
             </div>
           </div>
           {/* BOTTOM MENU */}
-          {state_summon_window && (
-            <div
-              style={{
-                position: "fixed",
-                bottom: "20px",
-                width: "100%",
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                border: "0px solid black",
-                backgroundColor: "#ededf7",
-              }}
-            >
-              {state_toggle_summon && (
-                <BuildSummonsButton
-                  main_or_friend="MAIN"
-                  parentSetStateSmnToggle={setStateSmnToggle}
-                  parent_state_smn_toggle={state_smn_toggle}
-                  parentSetStateUpdateAura={setStateUpdateAura}
-                  parent_state_search_element={state_weapon_search_element}
-                  parent_state_list_aura_boost={state_list_aura_boost}
-                  number={"1"}
-                />
-              )}
-              {!state_toggle_summon && (
-                <BuildSummonsButton
-                  main_or_friend="FRIEND"
-                  parentSetStateSmnToggle={setStateSmnToggle}
-                  parent_state_smn_toggle={state_smn_toggle}
-                  parentSetStateUpdateAura={setStateUpdateAura}
-                  parent_state_search_element={state_weapon_search_element}
-                  parent_state_list_aura_boost={state_list_aura_boost}
-                  number={"1"}
-                />
-              )}
-
-              {state_toggle_summon && (
-                <BuildSummonsButton
-                  main_or_friend="MAIN"
-                  parentSetStateSmnToggle={setStateSmnToggle}
-                  parent_state_smn_toggle={state_smn_toggle}
-                  parentSetStateUpdateAura={setStateUpdateAura}
-                  parent_state_search_element={state_weapon_search_element}
-                  parent_state_list_aura_boost={state_list_aura_boost}
-                  number={"2"}
-                />
-              )}
-              {!state_toggle_summon && (
-                <BuildSummonsButton
-                  main_or_friend="FRIEND"
-                  parentSetStateSmnToggle={setStateSmnToggle}
-                  parent_state_smn_toggle={state_smn_toggle}
-                  parentSetStateUpdateAura={setStateUpdateAura}
-                  parent_state_search_element={state_weapon_search_element}
-                  parent_state_list_aura_boost={state_list_aura_boost}
-                  number={"2"}
-                />
-              )}
-            </div>
-          )}
 
           <div
             class="under-menu"
@@ -353,56 +291,126 @@ function App() {
               backgroundColor: "#ededf7",
             }}
           >
-            <Button onClick={() => setStateAddEquiped({ 1: {}, 2: {} })}>
-              <img
-                style={{ width: "30px" }}
-                src={
-                  process.env.PUBLIC_URL +
-                  "/images/" +
-                  "outline_delete_black_24dp.png"
-                }
-              />
-            </Button>
-            <Button onClick={() => setStateToggleSummon(!state_toggle_summon)}>
-              <img
-                style={{ width: "30px" }}
-                src={
-                  process.env.PUBLIC_URL +
-                  "/images/" +
-                  "outline_upgrade_black_24dp.png"
-                }
-              />
-              {state_toggle_summon ? "MAIN" : "FRIEND"}
-            </Button>
-            <Button onClick={() => setStateSummonWindow(!state_summon_window)}>
-              <img
-                style={{ width: "30px" }}
-                src={
-                  process.env.PUBLIC_URL +
-                  "/images/" +
-                  "SummonSeries_Omega_Series_icon.png"
-                }
-              />
-              <img
-                style={{ width: "30px" }}
-                src={
-                  process.env.PUBLIC_URL +
-                  "/images/" +
-                  "SummonSeries_Optimus_Series_icon.png"
-                }
-              />
-              {state_toggle_summon && (
+            
+              {state_summon_window && (
+                <div
+                  style={{
+                    position: "fixed",
+                    bottom: "40px",
+                    width: "100%",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: "0px solid black",
+                    backgroundColor: "#ededf7",
+                  }}
+                >
+                  {state_toggle_summon && (
+                    <BuildSummonsButton
+                      main_or_friend="MAIN"
+                      parentSetStateSmnToggle={setStateSmnToggle}
+                      parent_state_smn_toggle={state_smn_toggle}
+                      parentSetStateUpdateAura={setStateUpdateAura}
+                      parent_state_search_element={state_weapon_search_element}
+                      parent_state_list_aura_boost={state_list_aura_boost}
+                      number={"1"}
+                    />
+                  )}
+                  {!state_toggle_summon && (
+                    <BuildSummonsButton
+                      main_or_friend="FRIEND"
+                      parentSetStateSmnToggle={setStateSmnToggle}
+                      parent_state_smn_toggle={state_smn_toggle}
+                      parentSetStateUpdateAura={setStateUpdateAura}
+                      parent_state_search_element={state_weapon_search_element}
+                      parent_state_list_aura_boost={state_list_aura_boost}
+                      number={"1"}
+                    />
+                  )}
+
+                  {state_toggle_summon && (
+                    <BuildSummonsButton
+                      main_or_friend="MAIN"
+                      parentSetStateSmnToggle={setStateSmnToggle}
+                      parent_state_smn_toggle={state_smn_toggle}
+                      parentSetStateUpdateAura={setStateUpdateAura}
+                      parent_state_search_element={state_weapon_search_element}
+                      parent_state_list_aura_boost={state_list_aura_boost}
+                      number={"2"}
+                    />
+                  )}
+                  {!state_toggle_summon && (
+                    <BuildSummonsButton
+                      main_or_friend="FRIEND"
+                      parentSetStateSmnToggle={setStateSmnToggle}
+                      parent_state_smn_toggle={state_smn_toggle}
+                      parentSetStateUpdateAura={setStateUpdateAura}
+                      parent_state_search_element={state_weapon_search_element}
+                      parent_state_list_aura_boost={state_list_aura_boost}
+                      number={"2"}
+                    />
+                  )}
+                </div>
+              )}
+           
+
+            
+              <Button onClick={() => setStateAddEquiped({ 1: {}, 2: {} })}>
                 <img
                   style={{ width: "30px" }}
                   src={
                     process.env.PUBLIC_URL +
                     "/images/" +
-                    "SummonSeries_Six_Dragons_icon.png"
+                    "outline_delete_black_24dp.png"
                   }
                 />
-              )}
-            </Button>
-          </div>
+              </Button>
+              <Button
+                onClick={() => setStateToggleSummon(!state_toggle_summon)}
+              >
+                <img
+                  style={{ width: "30px" }}
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/images/" +
+                    "outline_upgrade_black_24dp.png"
+                  }
+                />
+                {state_toggle_summon ? "MAIN" : "FRIEND"}
+              </Button>
+              <Button
+                onClick={() => setStateSummonWindow(!state_summon_window)}
+              >
+                <img
+                  style={{ width: "30px" }}
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/images/" +
+                    "SummonSeries_Omega_Series_icon.png"
+                  }
+                />
+                <img
+                  style={{ width: "30px" }}
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/images/" +
+                    "SummonSeries_Optimus_Series_icon.png"
+                  }
+                />
+                {state_toggle_summon && (
+                  <img
+                    style={{ width: "30px" }}
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/images/" +
+                      "SummonSeries_Six_Dragons_icon.png"
+                    }
+                  />
+                )}
+              </Button>
+            </div>
 
           {/*<hr />*/}
         </>

@@ -42,13 +42,15 @@ let cvt_summonname2element = {
   フェディエル: "闇",
 }
 
-export const buildSummonsButton = (
-  main_or_friend,
-  parentSetStateSmnToggle,
-  parent_state_smn_toggle,
-  parentSetStateUpdateAura,
-  parent_state_search_element,
-) => {
+export default function BuildSummonsButton (props) {
+  const number = props.number
+  const main_or_friend = props.main_or_friend
+  const parentSetStateSmnToggle = props.parentSetStateSmnToggle
+  const parent_state_smn_toggle = props.parent_state_smn_toggle[number]
+  const parentSetStateUpdateAura = props.parentSetStateUpdateAura
+  const parent_state_search_element = props.parent_state_search_element
+  const parent_state_list_aura_boost = props.parent_state_list_aura_boost
+  
   /*
     key_1: MAIN or FRIEND
     key_2: OPTIMUS or OMEGA or SIXDRAGON
@@ -56,6 +58,7 @@ export const buildSummonsButton = (
     key_4: 5凸 or 4凸
     */
   const updateSummon = (key_1, key_2, key_3, key_4) => {
+    let content = cloneDeep(props.parent_state_smn_toggle)
     let item = cloneDeep(parent_state_smn_toggle);
     //CHECK: ここではTrueになっている
     console.log(item);
@@ -86,8 +89,10 @@ export const buildSummonsButton = (
       .toggle;
     //console.log(item[key_1][key_2][key_3][key_4].toggle)
     console.log(item);
-    parentSetStateSmnToggle(item);
-    updateAuraBoost(item, parentSetStateUpdateAura);
+    content[number] = item
+    console.log(content)
+    parentSetStateSmnToggle(content);
+    updateAuraBoost(content, parent_state_list_aura_boost,parentSetStateUpdateAura,number);
   };
 
   const HtmlTooltip = withStyles((theme) => ({
@@ -166,6 +171,7 @@ export const buildSummonsButton = (
                       objectPosition: "0% 15%",
                       objectFit: "cover",
                       opacity: key_toggle? 1.0 : 0.15,
+                      cursor: "pointer"
                     }}
                     src={process.env.PUBLIC_URL + "/" + ICON_SUMMONS[element]}
                   />

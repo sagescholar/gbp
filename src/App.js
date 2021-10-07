@@ -7,12 +7,12 @@ import cloneDeep from "lodash.clonedeep";
 
 import { useModal } from "react-hooks-use-modal";
 import Typography from "@material-ui/core/Typography";
-import { Button } from "@material-ui/core";
+import { AppBar, Button } from "@material-ui/core";
 import { Box } from "@material-ui/core";
 
 //COMPONENTS
 import { computeWeaponSkill } from "./components/ComputeWeaponSkill";
-import { buildSummonsButton } from "./components/BuildSummonsButton";
+import BuildSummonsButton from "./components/BuildSummonsButton";
 import { SliderHp } from "./components/SliderHp";
 import { buildWeaponSearchElementButton } from "./components/BuildWeaponSearchElementButton";
 import AlertEquipedWeapon, {
@@ -35,6 +35,7 @@ import Toppage from "./layouts/Toppage";
 function App() {
   /* STATE */
   const [state_view, setStateView] = useState("top");
+  const [state_summon_window, setStateSummonWindow] = useState(false);
 
   const [state_list_equiped, setStateAddEquiped] = React.useState({
     1: {},
@@ -43,12 +44,14 @@ function App() {
   const [state_active_equiped_number, setStateActiveEquipedNumber] =
     useState("1");
   const [state_hp, setStateHp] = React.useState(60);
-  const [state_list_aura_boost, setStateUpdateAura] = React.useState(
-    cloneDeep(AURA_BOOST_INTERFACE)
-  );
-  const [state_smn_toggle, setStateSmnToggle] = React.useState(
-    cloneDeep(STATE_SUMMONS_INTERFACE)
-  );
+  const [state_list_aura_boost, setStateUpdateAura] = React.useState({
+    1: cloneDeep(AURA_BOOST_INTERFACE),
+    2: cloneDeep(AURA_BOOST_INTERFACE),
+  });
+  const [state_smn_toggle, setStateSmnToggle] = React.useState({
+    1: cloneDeep(STATE_SUMMONS_INTERFACE),
+    2: cloneDeep(STATE_SUMMONS_INTERFACE),
+  });
   const [state_weapon_search_element, setStateWeaponSearchElement] =
     React.useState(cloneDeep(ELEMENT_TOGGLE_INTERFACE));
   const [state_chart_value, setStateChartValue] = React.useState([]);
@@ -98,9 +101,7 @@ function App() {
       {/*HEADER*/}
       {Header(setStateAddEquiped, setStateView)}
 
-      {state_view == "top" &&(
-      <Toppage />
-      )}
+      {state_view == "top" && <Toppage />}
 
       {state_view == "app" && (
         <>
@@ -137,9 +138,11 @@ function App() {
 
               {/* EQUIPED */}
               <div class="app-equiped-1">
-                <AlertEquipedWeapon
-                  parent_state_list_equiped={state_list_equiped["1"]}
-                />
+                <div onClick={() => setStateActiveEquipedNumber("1")}>
+                  <AlertEquipedWeapon
+                    parent_state_list_equiped={state_list_equiped["1"]}
+                  />
+                </div>
                 {changeActibeEquiped(
                   state_active_equiped_number,
                   setStateActiveEquipedNumber,
@@ -153,9 +156,11 @@ function App() {
               </div>
 
               <div class="app-equiped-2">
-                <AlertEquipedWeapon
-                  parent_state_list_equiped={state_list_equiped["2"]}
-                />
+                <div onClick={() => setStateActiveEquipedNumber("2")}>
+                  <AlertEquipedWeapon
+                    parent_state_list_equiped={state_list_equiped["2"]}
+                  />
+                </div>
                 {changeActibeEquiped(
                   state_active_equiped_number,
                   setStateActiveEquipedNumber,
@@ -176,9 +181,17 @@ function App() {
                     backgroundColor: "#666666",
                     height: "40px",
                     width: "100%",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  {/* HEADER に 何か描きたい時はここ */}
+                  <Button onClick={() => setStateYMAX(state_YMAX + 10.0)}>
+                    ▲
+                  </Button>
+                  {state_YMAX}
+                  <Button onClick={() => setStateYMAX(state_YMAX - 10.0)}>
+                    ▼
+                  </Button>
                 </div>
 
                 <div
@@ -223,7 +236,7 @@ function App() {
                 >
                   {computeWeaponSkill(
                     state_list_equiped[state_active_equiped_number],
-                    state_list_aura_boost,
+                    state_list_aura_boost[state_active_equiped_number],
                     state_hp
                   )}
                 </div>
@@ -254,80 +267,143 @@ function App() {
                   {/*<a style={{ verticalAlign: "middle",textAlign: "center",backgroundColor: "#557799", display: "block", width: "90%", height: "60%" }}>
               <span style={{cursor:"default"}}>{state_toggle_summon ? "MAIN" : "SUPPORT"}</span>
           </a>*/}
-                  <Button color="primary">
+                  {/*<Button color="primary">
                     {state_toggle_summon ? "MAIN" : "SUPPORT"}
-                  </Button>
-                </div>
-
-                {state_toggle_summon &&
-                  buildSummonsButton(
-                    "MAIN",
-                    setStateSmnToggle,
-                    state_smn_toggle,
-                    setStateUpdateAura,
-                    state_weapon_search_element
-                  )}
-                {!state_toggle_summon &&
-                  buildSummonsButton(
-                    "FRIEND",
-                    setStateSmnToggle,
-                    state_smn_toggle,
-                    setStateUpdateAura,
-                    state_weapon_search_element
-                  )}
-
-<div
-                  class="summons-head"
-                  onClick={() => setStateToggleSummon(!state_toggle_summon)}
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                    height: "40px",
-                    backgroundColor: "#444444",
-                    color: "white",
-                  }}
-                >
-                  {/*<a style={{ verticalAlign: "middle",textAlign: "center",backgroundColor: "#557799", display: "block", width: "90%", height: "60%" }}>
-              <span style={{cursor:"default"}}>{state_toggle_summon ? "MAIN" : "SUPPORT"}</span>
-          </a>*/}
-                  <Button color="primary">
-                    {state_toggle_summon ? "MAIN" : "SUPPORT"}
-                  </Button>
+        </Button>*/}
                 </div>
               </div>
             </div>
           </div>
+          {/* BOTTOM MENU */}
+          {state_summon_window && (
+            <div
+              style={{
+                position: "fixed",
+                bottom: "20px",
+                width: "100%",
+                marginLeft: "auto",
+                marginRight: "auto",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "0px solid black",
+                backgroundColor: "#ededf7",
+              }}
+            >
+              {state_toggle_summon && (
+                <BuildSummonsButton
+                  main_or_friend="MAIN"
+                  parentSetStateSmnToggle={setStateSmnToggle}
+                  parent_state_smn_toggle={state_smn_toggle}
+                  parentSetStateUpdateAura={setStateUpdateAura}
+                  parent_state_search_element={state_weapon_search_element}
+                  parent_state_list_aura_boost={state_list_aura_boost}
+                  number={"1"}
+                />
+              )}
+              {!state_toggle_summon && (
+                <BuildSummonsButton
+                  main_or_friend="FRIEND"
+                  parentSetStateSmnToggle={setStateSmnToggle}
+                  parent_state_smn_toggle={state_smn_toggle}
+                  parentSetStateUpdateAura={setStateUpdateAura}
+                  parent_state_search_element={state_weapon_search_element}
+                  parent_state_list_aura_boost={state_list_aura_boost}
+                  number={"1"}
+                />
+              )}
+
+              {state_toggle_summon && (
+                <BuildSummonsButton
+                  main_or_friend="MAIN"
+                  parentSetStateSmnToggle={setStateSmnToggle}
+                  parent_state_smn_toggle={state_smn_toggle}
+                  parentSetStateUpdateAura={setStateUpdateAura}
+                  parent_state_search_element={state_weapon_search_element}
+                  parent_state_list_aura_boost={state_list_aura_boost}
+                  number={"2"}
+                />
+              )}
+              {!state_toggle_summon && (
+                <BuildSummonsButton
+                  main_or_friend="FRIEND"
+                  parentSetStateSmnToggle={setStateSmnToggle}
+                  parent_state_smn_toggle={state_smn_toggle}
+                  parentSetStateUpdateAura={setStateUpdateAura}
+                  parent_state_search_element={state_weapon_search_element}
+                  parent_state_list_aura_boost={state_list_aura_boost}
+                  number={"2"}
+                />
+              )}
+            </div>
+          )}
 
           <div
             class="under-menu"
             style={{
-              minHeight: "",
-              maxWidth: "1500px",
+              position: "fixed",
+              bottom: 0,
+              width: "100%",
               marginLeft: "auto",
               marginRight: "auto",
               display: "flex",
-              display: "-webkit-flex",
-              alignItems: "start",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "0px solid black",
+              backgroundColor: "#ededf7",
             }}
           >
-            <Box
-              sx={{
-                width: 300,
-                height: 20,
-                bgcolor: "primary.dark",
-                position: "fixed",
-                bottom: "0",
-                textAlign: "center",
-                color: "white",
-                "&:hover": {
-                  backgroundColor: "primary.main",
-                  opacity: [0.9, 0.8, 0.7],
-                },
-              }}
-            >UNDER MENU(まだ動かないよ)</Box>
+            <Button onClick={() => setStateAddEquiped({ 1: {}, 2: {} })}>
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "outline_delete_black_24dp.png"
+                }
+              />
+            </Button>
+            <Button onClick={() => setStateToggleSummon(!state_toggle_summon)}>
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "outline_upgrade_black_24dp.png"
+                }
+              />
+              {state_toggle_summon ? "MAIN" : "FRIEND"}
+            </Button>
+            <Button onClick={() => setStateSummonWindow(!state_summon_window)}>
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "SummonSeries_Omega_Series_icon.png"
+                }
+              />
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "SummonSeries_Optimus_Series_icon.png"
+                }
+              />
+              {state_toggle_summon && (
+                <img
+                  style={{ width: "30px" }}
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/images/" +
+                    "SummonSeries_Six_Dragons_icon.png"
+                  }
+                />
+              )}
+            </Button>
           </div>
+
           {/*<hr />*/}
         </>
       )}

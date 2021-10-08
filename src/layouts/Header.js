@@ -4,6 +4,7 @@ import Clock from '../components/Clock';
 import { Button } from '@material-ui/core';
 
 import { createTheme, ThemeProvider } from '@material-ui/core';
+import Firestore from '../components/Firebase/Firebase';
 
 const theme = createTheme({
     palette: {
@@ -44,6 +45,9 @@ export const Header = (parentSetStateAddEquiped,parentSetStateView) => {
                 </Button>
             </div>
 
+            <div>
+            <Firestore />
+            </div>
             
 
             <div style={{ display:"flex",alignItems: "center",height: "35px",width:"100px", marginLeft: "auto",padding: "0px 0px",backgroundColor: "#aaaaaa",color: "#333333"}}>

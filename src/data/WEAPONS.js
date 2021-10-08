@@ -32,8 +32,37 @@ export const DARK_OPUS = [
   "永遠拒絶の槍",
   "永遠拒絶の剣",
   "永遠拒絶の太刀",
-
 ]
+
+export const DARK_OPUS_WEAPON = {
+  絶対否定の槍: {
+    name: "絶対否定の槍",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040212500.png",
+    skill: {
+      1: { e: "風", type: "通常神威", lank: "大", aura: "opti"},
+    },
+  },
+  永遠拒絶の槍: {
+    name: "永遠拒絶の槍",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040212600.png",
+    skill: {
+      1: { e: "風", type: "方陣神威", lank: "大", aura: "omega"},
+    },
+  },
+  絶対否定の剣: {
+    name: "絶対否定の剣",
+    element: "光",
+    icon: "images/weapon/Weapon_b_1040017000.png",
+    skill: {
+      1: { e: "光", type: "通常神威", lank: "大", aura: "opti"},
+      2:{},
+      3:{}
+    },
+  },
+}
+
 
 export const ASTRAL = [
   "ソルレムナント",
@@ -239,16 +268,7 @@ export const weapons = {
       1: { e: "闇", type: "通常背水", lank: "大", aura: "opti"},
     },
   },
-  絶対否定の剣: {
-    name: "絶対否定の剣",
-    element: "光",
-    icon: "images/weapon/Weapon_b_1040017000.png",
-    skill: {
-      1: { e: "光", type: "通常神威", lank: "大", aura: "opti"},
-      2:{},
-      3:{}
-    },
-  },
+  
   ティアマトボルトマグナ: {
     name: "ティアマトボルトマグナ",
     element: "風",
@@ -275,22 +295,6 @@ export const weapons = {
     icon: "images/weapon/Sky_Piercer.png",
     skill: {
       1: { e: "風", type: "通常背水", lank: "大", aura: "opti"},
-    },
-  },
-  絶対否定の槍: {
-    name: "絶対否定の槍",
-    element: "風",
-    icon: "images/weapon/Weapon_b_1040212500.png",
-    skill: {
-      1: { e: "風", type: "通常神威", lank: "大", aura: "opti"},
-    },
-  },
-  永遠拒絶の槍: {
-    name: "永遠拒絶の槍",
-    element: "風",
-    icon: "images/weapon/Weapon_b_1040212600.png",
-    skill: {
-      1: { e: "風", type: "方陣神威", lank: "大", aura: "omega"},
     },
   },
   ティアマトガントレマグナ: {
@@ -336,4 +340,5 @@ export const weapons = {
       2: { e: "風", type: "技巧", lank: "中", aura: "opti"},
     }
   },
+  ...DARK_OPUS_WEAPON
 }

@@ -12,6 +12,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import { useState } from "react";
+import { Card } from "@material-ui/core";
 
 
 
@@ -20,12 +21,27 @@ export default function BuildEquipedWeaponButton(props)  {
     const parent_state_list_equiped = props.parent_state_list_equiped[num]
     const parentSetStateAddEquiped = props.parentSetStateAddEquiped
     
-
+    const [state_control_window, setStateControlWindow] = useState(false)
     
     const updateEquipedShow = (key) => {
       let content = cloneDeep(props.parent_state_list_equiped)
       content[num][key].isShow = !content[num][key].isShow
       parentSetStateAddEquiped(content)
+    }
+
+    const controlWindow = () => {
+
+      return(
+        <>
+          {state_control_window && (
+            <div style={{position:"fixed",bottom: "50px"}}>
+            <Card>
+              SAMPLE
+            </Card>
+            </div>
+          )}
+        </>
+      )
     }
     
 
@@ -47,6 +63,7 @@ export default function BuildEquipedWeaponButton(props)  {
     return(
         
         <div>
+          {controlWindow()}
           {Object.keys(parent_state_list_equiped).map((key) => {
               let weapon_name = parent_state_list_equiped[key].name;
               console.log(weapon_name)
@@ -68,6 +85,8 @@ export default function BuildEquipedWeaponButton(props)  {
                 <div
                 class = "btn-wrap"
                 onClick={() => updateEquipedShow(key)}
+                onMouseEnter={() => setStateControlWindow(true)}
+                onMouseLeave={() => setStateControlWindow(false)}
                 value={weapons[weapon_name].name}
                 >
                 <a style={{backgroundColor: "#333333", color: "#eeeeee", cursor:"default"}} class="btn">{weapons[weapon_name].name}</a>

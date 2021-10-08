@@ -1,4 +1,5 @@
 import { computeWeaponSkill } from "./ComputeWeaponSkill";
+import { Box, Card } from "@material-ui/core";
 
 import {
   CartesianGrid,
@@ -67,7 +68,7 @@ export const generateComputeChart = (
   }
 
   return (
-    <>
+    <Card ><Box sx={{ padding: "30px", bgcolor: 'background.paper' }}>
       <LineChart width={500} height={400} data={Data}>
         {Element.map((e) => {
           if (!Element_isView[e + String(1)]) return;
@@ -99,6 +100,6 @@ export const generateComputeChart = (
         <XAxis dataKey="name" />
         <Tooltip />
       </LineChart>
-    </>
+    </Box></Card>
   );
 };

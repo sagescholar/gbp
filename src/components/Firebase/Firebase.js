@@ -22,7 +22,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore()
 
 const setFirestore = () => {
-    console.log("Firestore")
 
     try {
         const docRef = addDoc(collection(db, "users"), {

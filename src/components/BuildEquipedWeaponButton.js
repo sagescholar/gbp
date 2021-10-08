@@ -29,14 +29,22 @@ export default function BuildEquipedWeaponButton(props)  {
       parentSetStateAddEquiped(content)
     }
 
-    const controlWindow = () => {
+    const controlWindow = (key) => {
+      let weapon_name = parent_state_list_equiped[key].name;
+      let open = parent_state_list_equiped[key].isShow
 
       return(
         <>
-          {state_control_window && (
-            <div style={{position:"fixed",bottom: "50px"}}>
+          {/*TODO: POPUP CONTROLLER -> weaponの元にATK,HPの追記*/}
+          {open && (
+            <div style={{position:"fixed",bottom: "50px",}}>
             <Card>
-              SAMPLE
+            <div style={{display: "flex",width:"300px", height:"100px"}} >
+              <div style={{display:"flex",height:"100%",alignItems:"center"}}>
+                <img style={{width: "100px"}}src={process.env.PUBLIC_URL + "/" + weapons[weapon_name].icon} />
+              </div>
+              <div>HP:{weapons[weapon_name].element}</div>
+            </div>
             </Card>
             </div>
           )}
@@ -61,15 +69,16 @@ export default function BuildEquipedWeaponButton(props)  {
     
 
     return(
-        
         <div>
-          {controlWindow()}
           {Object.keys(parent_state_list_equiped).map((key) => {
               let weapon_name = parent_state_list_equiped[key].name;
               console.log(weapon_name)
+              
               return(
+                <>
+                {controlWindow(key)}
                 <HtmlTooltip
-                open = {parent_state_list_equiped[key].isShow}
+                //open = {parent_state_list_equiped[key].isShow}
                 title={
                   <>
                     <div style={{display: "flex"}} >
@@ -91,7 +100,7 @@ export default function BuildEquipedWeaponButton(props)  {
                 >
                 <a style={{backgroundColor: "#333333", color: "#eeeeee", cursor:"default"}} class="btn">{weapons[weapon_name].name}</a>
                 </div>
-              </HtmlTooltip>
+              </HtmlTooltip></>
             )
           }    
           )}

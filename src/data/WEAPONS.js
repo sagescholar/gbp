@@ -6,7 +6,7 @@ export const EQUIPED_WEAPON_INTERFACE = {
   SLv: 1,
   Bonus: 0,
   Tag: "",
-  EX_Skill: {
+  AX_Skill: {
     1: {
       name: "",
       lank: "",

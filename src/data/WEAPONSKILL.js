@@ -9,6 +9,7 @@ export const CALCULATE_OUT_INTERFACE = {
     方陣背水: cloneDeep(ELEMENT_INTERFACE),
     方陣攻刃: cloneDeep(ELEMENT_INTERFACE),
     EX攻刃: cloneDeep(ELEMENT_INTERFACE),
+    久遠: cloneDeep(ELEMENT_INTERFACE),
     技巧: cloneDeep(ELEMENT_INTERFACE),
     DA率: cloneDeep(ELEMENT_INTERFACE),
     TA率: cloneDeep(ELEMENT_INTERFACE),

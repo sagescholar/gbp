@@ -1,5 +1,5 @@
 //DATA
-import { CALCULATE_OUT_INTERFACE } from '../data/WEAPONSKILL';
+import { CALCULATE_OUT_INTERFACE, EX_SKILL } from '../data/WEAPONSKILL';
 import { BASE_SKILL, COMPOSITE_SKILL } from '../data/WEAPONSKILL';
 import { AURA_BOOST_INTERFACE } from '../data/SUMMONS';
 import { weapons } from '../data/WEAPONS';
@@ -36,12 +36,32 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
       obj_equiped_weapon[CNT]["skill_level"] = "15";
       CNT += 1;
     })
+
+    
   
     //console.log(obj_equiped_weapon);
   
     //DeepCopyMethod -> JSON.parse(JSON.stringify(***DeepCopyTarget***))
     let obj_output = JSON.parse(JSON.stringify(CALCULATE_OUT_INTERFACE));
     
+    //EX_SKILL
+    Object.keys(list).forEach((id) => {
+      Object.keys(list[id]["EX_Skill"]).forEach((skill_num) => {
+        
+        let branch = ["EX渾身","EX背水","久遠"]
+        if(list[id]["EX_Skill"][skill_num].name == undefined) return
+        let skill_name = list[id]["EX_Skill"][skill_num].name
+        let skill_lank = list[id]["EX_Skill"][skill_num].lank
+        if(branch.includes(skill_name)){
+          Object.keys(ELEMENT_INTERFACE).forEach((ele)=>{
+            obj_output[skill_name][ele] += EX_SKILL[skill_name](HP,skill_lank)
+            console.log(obj_output[skill_name])
+          })
+        }
+        })
+    })
+
+    //EXSKILL_END
   
     Object.keys(obj_equiped_weapon/*装備中の武器*/).forEach((key_name) => {
       //key = {1,2,3...}
@@ -112,7 +132,7 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
       )
     }else{
       let rtn = cloneDeep(ELEMENT_INTERFACE);
-      let cal_list = ["通常攻刃","通常渾身","通常背水","方陣攻刃","方陣渾身","方陣背水","EX攻刃"]
+      let cal_list = ["通常攻刃","通常渾身","通常背水","方陣攻刃","方陣渾身","方陣背水","EX攻刃","EX渾身","EX背水"]
       Object.keys(rtn).map((key) => rtn[key] = 1);
       Object.keys(obj_output).map((skill_name) => 
         Object.keys(obj_output[skill_name]).map((skill_element) => {

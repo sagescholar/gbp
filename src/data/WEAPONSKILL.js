@@ -10,6 +10,8 @@ export const CALCULATE_OUT_INTERFACE = {
     方陣攻刃: cloneDeep(ELEMENT_INTERFACE),
     EX攻刃: cloneDeep(ELEMENT_INTERFACE),
     久遠: cloneDeep(ELEMENT_INTERFACE),
+    EX渾身: cloneDeep(ELEMENT_INTERFACE),
+    EX背水: cloneDeep(ELEMENT_INTERFACE),
     技巧: cloneDeep(ELEMENT_INTERFACE),
     DA率: cloneDeep(ELEMENT_INTERFACE),
     TA率: cloneDeep(ELEMENT_INTERFACE),
@@ -17,6 +19,47 @@ export const CALCULATE_OUT_INTERFACE = {
     D上限: cloneDeep(ELEMENT_INTERFACE),
     与ダメージ: cloneDeep(ELEMENT_INTERFACE),
     対有利与ダメ: cloneDeep(ELEMENT_INTERFACE),
+}
+
+/* EXLB 渾身 */
+
+const calculate_exlb_stamina = (HP,SLank) => {
+    let C = {
+        1:{100:3.0, 0: 1.0, 減少: 66.66},
+        2:{100:4.0, 0: 1.0, 減少: 100},
+        3:{100:5.0, 0: 2.0, 減少: 75},
+        4:{100:6.0, 0: 2.0, 減少: 100},
+        5:{100:7.0, 0: 3.0, 減少: 66.66},
+        6:{100:8.0, 0: 3.0, 減少: 83.33},
+        7:{100:9.0, 0: 3.0, 減少: 100},
+        8:{100:10.0, 0: 4.0, 減少: 75},
+        9:{100:11.0, 0: 4.0, 減少: 87.5},
+        10:{100:12.0, 0: 4.0, 減少: 100.0},
+    }
+
+    const MAX = C[SLank]["100"]
+    const DECREACE = C[SLank]["減少"]
+    const PLUS = C[SLank]["0"]
+    
+    return HP > DECREACE ? MAX : ((MAX/DECREACE) * HP + PLUS)
+    
+    
+}
+
+const calculate_exlb_enmity = (HP,SLank) => {
+    let lank = {
+        1:{100:1, 75:2, 50: 2.26, 0: 5.0},
+        2:{100:1, 75:2, 50: 2.33, 0: 6.0},
+        3:{100:1, 75:3, 50: 3.37, 0: 7.5},
+        4:{100:1, 75:3, 50: 3.50, 0: 9.0},
+        5:{100:1, 75:4, 50: 4.40, 0: 10.0},
+        6:{100:1, 75:4, 50: 4.50, 0: 11.0},
+        7:{100:1, 75:4, 50: 4.67, 0: 12.0},
+        8:{100:1, 75:5, 50: 5.60, 0: 12.5},
+        9:{100:1, 75:5, 50: 5.73, 0: 13.75},
+        10:{100:1, 75:5, 50: 5.83, 0: 15.0},
+    }
+    
 }
 
 /*hp,skill_name,skill_lank,skill_level*/
@@ -566,4 +609,10 @@ export const COMPOSITE_SKILL = {
             //DA率: "大"
         }
     },
+}
+
+export const EX_SKILL = {
+    EX渾身: calculate_exlb_stamina
+    //EX背水:
+    //久遠:
 }

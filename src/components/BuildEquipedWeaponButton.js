@@ -14,29 +14,6 @@ import { useState } from "react";
 import { Button, Card } from "@material-ui/core";
 import { EXSKILLICON } from "../data/WEAPONEXSKILL";
 
-const buildExSkillButton = () => {
-  return(
-  <div style={{ marginTop:"5px",width:"175px",display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-    <a style={{ fontSize: "10px" }}>EXスキル[第1] : </a>
-    <>
-    {Object.keys(EXSKILLICON).map((key)=>
-    <div
-    style={{
-      fontSize: "10px",
-      textAlign: "center",
-      backgroundColor: "#222222",
-    }}
-  >
-        <img
-        style={{ height:"15px",width: "15px", opacity:"0.5"}}
-        src={
-          process.env.PUBLIC_URL + "/" + EXSKILLICON[key]
-        }
-        /></div>
-    )}</>
-  </div>
-  )
-}
 
 export default function BuildEquipedWeaponButton(props) {
   const num = String(props.number);
@@ -51,12 +28,40 @@ export default function BuildEquipedWeaponButton(props) {
     parentSetStateAddEquiped(content);
   };
 
-  const updateAxSkill = (key) => {
+  const updateExSkill = (id,skill_name,lank) => {
+    console.log("update ex skill")
     let content = cloneDeep(props.parent_state_list_equiped);
-    content[num][key].isShow = !content[num][key].isShow;
+    content[num][id]["EX_Skill"]["1"] = {name:skill_name, lank:lank}
     parentSetStateAddEquiped(content);
   };
 
+  const buildExSkillButton = (id) => {
+    const ID = id
+
+    return(
+    <div style={{ marginTop:"5px",width:"175px",display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <a style={{ fontSize: "10px" }}>EXスキル[第1] : </a>
+      <>
+      {Object.keys(EXSKILLICON).map((key)=>
+      <div
+      onClick={()=>updateExSkill(ID,key,/*lank*/3)}
+      style={{
+        fontSize: "10px",
+        textAlign: "center",
+        backgroundColor: "#222222",
+      }}
+    >
+          <img
+          style={{ height:"15px",width: "15px", opacity:"0.5"}}
+          src={
+            process.env.PUBLIC_URL + "/" + EXSKILLICON[key]
+          }
+          /></div>
+      )}</>
+    </div>
+    )
+  }
+  
   const controlWindow = (key) => {
     let weapon_name = parent_state_list_equiped[key].name;
     let open = parent_state_list_equiped[key].isShow;
@@ -65,7 +70,7 @@ export default function BuildEquipedWeaponButton(props) {
       <>
         {/*TODO: POPUP CONTROLLER -> weaponの元にATK,HPの追記*/}
         {open && (
-          <div onClick={() => updateEquipedShow(key)} style={{ position: "fixed", left: String(10)+"px", bottom: "50px" }}>
+          <div /*onClick={() => updateEquipedShow(key)}*/ style={{ position: "fixed", left: String(10)+"px", bottom: "50px" }}>
             <Card>
               <div style={{ display: "flex", width: "300px", height: "100px" }}>
                 <div
@@ -85,7 +90,7 @@ export default function BuildEquipedWeaponButton(props) {
                 <div>
                 <a style={{ fontSize: "10px" }}>{weapon_name}</a>
                 <hr/>
-                {buildExSkillButton()}
+                {buildExSkillButton(key)}
                 </div>
               </div>
             </Card>

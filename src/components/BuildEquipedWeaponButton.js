@@ -14,7 +14,6 @@ import { useState } from "react";
 import { Button, Card } from "@material-ui/core";
 import { EXSKILLICON } from "../data/WEAPONEXSKILL";
 
-
 export default function BuildEquipedWeaponButton(props) {
   const num = String(props.number);
   const parent_state_list_equiped = props.parent_state_list_equiped[num];
@@ -28,49 +27,75 @@ export default function BuildEquipedWeaponButton(props) {
     parentSetStateAddEquiped(content);
   };
 
-  const updateExSkill = (id,skill_name,lank) => {
-    console.log("update ex skill")
+  const updateExSkill = (id, skill_name, lank,n) => {
+    console.log("update ex skill");
     let content = cloneDeep(props.parent_state_list_equiped);
-    content[num][id]["EX_Skill"]["1"] = {name:skill_name, lank:lank}
+    content[num][id]["EX_Skill"][n].name = skill_name;
+    content[num][id]["EX_Skill"][n].lank = lank;
     parentSetStateAddEquiped(content);
   };
 
-  const buildExSkillButton = (id) => {
-    const ID = id
+  const buildExSkillButton = (num,id) => {
+    const ID = id;
+    const VAL = 0;
 
-    return(
-    <div style={{ marginTop:"5px",width:"175px",display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-      <a style={{ fontSize: "10px" }}>EXスキル[第1] : </a>
-      <>
-      {Object.keys(EXSKILLICON).map((key)=>
+    const skill_name = parent_state_list_equiped[id]["EX_Skill"][num].name
+
+    return (
       <div
-      onClick={()=>updateExSkill(ID,key,/*lank*/3)}
-      style={{
-        fontSize: "10px",
-        textAlign: "center",
-        backgroundColor: "#222222",
-      }}
-    >
-          <img
-          style={{ height:"15px",width: "15px", opacity:"0.5"}}
-          src={
-            process.env.PUBLIC_URL + "/" + EXSKILLICON[key]
-          }
-          /></div>
-      )}</>
-    </div>
-    )
-  }
-  
+        style={{
+          marginTop: "5px",
+          width: "175px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <a style={{ fontSize: "10px" }}>{"EXスキル[第" + num + "] : "}</a>
+        <>
+          {Object.keys(EXSKILLICON).map((key) => (
+            <div
+              onClick={() => updateExSkill(ID, key, /*lank*/ 3,num)}
+              style={{
+                fontSize: "10px",
+                textAlign: "center",
+                backgroundColor: "#222222",
+              }}
+            >
+              {skill_name == key ? (
+              <img
+                style={{ height: "15px", width: "15px", opacity: "1.0" }}
+                src={process.env.PUBLIC_URL + "/" + EXSKILLICON[key]}
+              />
+              ):
+              <img
+                style={{ height: "15px", width: "15px", opacity: "0.5" }}
+                src={process.env.PUBLIC_URL + "/" + EXSKILLICON[key]}
+              />}
+            
+            </div>
+          ))}
+        </>
+      </div>
+    );
+  };
+
   const controlWindow = (key) => {
     let weapon_name = parent_state_list_equiped[key].name;
     let open = parent_state_list_equiped[key].isShow;
+    let bool_ex_skill = weapons[parent_state_list_equiped[key].name]["EX_Skill"];
 
     return (
       <>
         {/*TODO: POPUP CONTROLLER -> weaponの元にATK,HPの追記*/}
         {open && (
-          <div /*onClick={() => updateEquipedShow(key)}*/ style={{ position: "fixed", left: String(10)+"px", bottom: "50px" }}>
+          <div
+            /*onClick={() => updateEquipedShow(key)}*/ style={{
+              position: "fixed",
+              left: String(10) + "px",
+              bottom: "50px",
+            }}
+          >
             <Card>
               <div style={{ display: "flex", width: "300px", height: "100px" }}>
                 <div
@@ -88,9 +113,16 @@ export default function BuildEquipedWeaponButton(props) {
                   />
                 </div>
                 <div>
-                <a style={{ fontSize: "10px" }}>{weapon_name}</a>
-                <hr/>
-                {buildExSkillButton(key)}
+                  <a style={{ fontSize: "10px" }}>{weapon_name}</a>
+                  <hr />
+                  {bool_ex_skill && (
+                  <>
+                  {buildExSkillButton(1,key)}
+                  {buildExSkillButton(2,key)}
+                  {/*//TODO: 効果量を手動で入力できるようにする*/}
+                  <a style={{fontSize: "4px"}}>Test mode: Fixed effect quantity of 3</a>
+                  </>
+                  )}
                 </div>
               </div>
             </Card>

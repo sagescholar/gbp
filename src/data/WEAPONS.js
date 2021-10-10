@@ -39,14 +39,17 @@ export const DARK_OPUS_WEAPON = {
     name: "絶対否定の槍",
     element: "風",
     icon: "images/weapon/Weapon_b_1040212500.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "通常神威", lank: "大", aura: "opti"},
     },
+    
   },
   永遠拒絶の槍: {
     name: "永遠拒絶の槍",
     element: "風",
     icon: "images/weapon/Weapon_b_1040212600.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "方陣神威", lank: "大", aura: "omega"},
     },
@@ -55,6 +58,7 @@ export const DARK_OPUS_WEAPON = {
     name: "絶対否定の剣",
     element: "光",
     icon: "images/weapon/Weapon_b_1040017000.png",
+    EX_Skill: false,
     skill: {
       1: { e: "光", type: "通常神威", lank: "大", aura: "opti"},
       2:{},
@@ -62,6 +66,41 @@ export const DARK_OPUS_WEAPON = {
     },
   },
 }
+
+export const ASTRAL_WEAPON = {
+  ソルレムナント: {
+    name: "ソルレムナント",
+    element: "火",
+    icon: "images/weapon/Weapon_b_1040311800.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "火", type: "EX攻刃", lank: "支配者", aura: "None"},
+    },
+  },
+  イノセントラヴ: {
+    name: "イノセントラヴ",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040811600.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "風", type: "EX攻刃", lank: "支配者", aura: "None"},
+    },
+  },
+}
+
+export const SERAPHIC_WEAPON = {
+  リングオブラファエル: {
+    name: "リングオブラファエル",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040709100.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "風", type: "通常神威", lank: "小", aura: "opti"},
+    },
+  },
+  
+}
+
 
 
 export const ASTRAL = [
@@ -87,6 +126,7 @@ export const weapons = {
     name: "イクサバ",
     element: "火",
     icon: "images/weapon/Weapon_b_1040906400.png",
+    EX_Skill: false,
     skill: {
       1: { e: "火", type: "通常攻刃", lank: "特大", aura: "opti"},
       2: { e: "火", type: "通常渾身", lank: "中", aura: "opti"},
@@ -96,6 +136,7 @@ export const weapons = {
     name: "絶拳",
     element: "火",
     icon: "images/weapon/Weapon_b_1040612700.png",
+    EX_Skill: false,
     skill: {
       1: { e: "火", type: "通常刹那", lank: "特大", aura: "opti"},
       2: { e: "火", type: "通常三手", lank: "小", aura: "opti"},
@@ -105,6 +146,7 @@ export const weapons = {
     name: "ガリレオサイト",
     element: "水",
     icon: "images/weapon/Weapon_b_1040211600.png",
+    EX_Skill: false,
     skill: {
       1: { e: "水", type: "通常克己", lank: "中", aura: "opti"},
       2: { e: "水", type: "通常渾身", lank: "大", aura: "opti"},
@@ -114,6 +156,7 @@ export const weapons = {
     name: "虚無乃哭風",
     element: "風",
     icon: "images/weapon/Weapon_b_1040212700.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "通常渾身", lank: "大", aura: "opti"},
       //2: { e: "風", type: "通常渾身", lank: "中", aura: "omega"},
@@ -123,6 +166,7 @@ export const weapons = {
     name: "エデン",
     element: "光",
     icon: "images/weapon/Weapon_b_1040207000.png",
+    EX_Skill: false,
     skill: {
       1: { e: "光", type: "通常攻刃", lank: "特大", aura: "opti"},
       2: { e: "光", type: "通常渾身", lank: "中", aura: "opti"},
@@ -132,6 +176,7 @@ export const weapons = {
     name: "アーク",
     element: "光",
     icon: "images/weapon/Weapon_b_1040112500.png",
+    EX_Skill: false,
     skill: {
       1: { e: "光", type: "通常刹那", lank: "特大", aura: "opti"},
       //2: { e: "光", type: "通常渾身", lank: "中", aura: "omega"},
@@ -141,6 +186,7 @@ export const weapons = {
     name: "シュヴァリエソードマグナ",
     element: "光",
     icon: "images/weapon/Luminiera_Sword_Omega.png",
+    EX_Skill: true,
     skill: {
       1: { e: "光", type: "方陣攻刃", lank: "中", aura: "omega"},
       2: { e: "光", type: "通常攻刃", lank: "小", aura: "opti"},
@@ -150,6 +196,7 @@ export const weapons = {
     name: "扇抜",
     element: "水",
     icon: "images/weapon/Weapon_b_1040704800.png",
+    EX_Skill: false,
     skill: {
       1: { e: "火", type: "通常攻刃", lank: "特大", aura: "opti"},
       2: { e: "火", type: "通常渾身", lank: "中", aura: "opti"},
@@ -159,6 +206,7 @@ export const weapons = {
     name: "太歳精弓",
     element: "水",
     icon: "images/weapon/Weapon_b_1040708700.png",
+    EX_Skill: false,
     skill: {
       1: { e: "火", type: "通常攻刃", lank: "特大", aura: "opti"},
       2: { e: "火", type: "通常渾身", lank: "中", aura: "opti"},
@@ -168,6 +216,7 @@ export const weapons = {
     name: "グラーシーザー",
     element: "闇",
     icon: "images/weapon/Weapon_b_1040200700.png",
+    EX_Skill: false,
     skill: {
       1: { e: "闇", type: "通常攻刃", lank: "II", aura: "opti"},
       2: { e: "闇", type: "通常背水", lank: "中", aura: "opti"},
@@ -177,6 +226,7 @@ export const weapons = {
     name: "エッケザックス",
     element: "火",
     icon: "images/weapon/Ecke_Sachs.png",
+    EX_Skill: false,
     skill: {
       1: { e: "火", type: "通常刹那", lank: "中", aura: "opti"},
       2: { e: "火", type: "通常背水", lank: "小", aura: "opti"},
@@ -186,39 +236,19 @@ export const weapons = {
     name: "ドス",
     element: "火",
     icon: "images/weapon/Weapon_b_1040112600.png",
+    EX_Skill: false,
     skill: {
       1: { e: "火", type: "技巧", lank: "小", aura: "opti"},
       2: { e: "火", type: "通常背水", lank: "大", aura: "opti"},
     },
   },
-  ソルレムナント: {
-    name: "ソルレムナント",
-    element: "火",
-    icon: "images/weapon/Weapon_b_1040311800.png",
-    skill: {
-      1: { e: "火", type: "EX攻刃", lank: "支配者", aura: "None"},
-    },
-  },
-  イノセントラヴ: {
-    name: "イノセントラヴ",
-    element: "風",
-    icon: "images/weapon/Weapon_b_1040811600.png",
-    skill: {
-      1: { e: "風", type: "EX攻刃", lank: "支配者", aura: "None"},
-    },
-  },
-  リングオブラファエル: {
-    name: "リングオブラファエル",
-    element: "風",
-    icon: "images/weapon/Weapon_b_1040709100.png",
-    skill: {
-      1: { e: "風", type: "通常神威", lank: "小", aura: "opti"},
-    },
-  },
+  
+  
   泡末夢幻: {
     name: "泡末夢幻",
     element: "風",
     icon: "images/weapon/Weapon_b_1040022000.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "技巧", lank: "II", aura: "opti"},
       2: { e: "風", type: "通常攻刃", lank: "中", aura: "opti"}
@@ -228,6 +258,7 @@ export const weapons = {
     name: "第八綿羊行刃",
     element: "風",
     icon: "images/weapon/Weapon_b_1040313100.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "通常乱舞", lank: "中", aura: "opti"},
     },
@@ -236,6 +267,7 @@ export const weapons = {
     name: "宿命鉄拳",
     element: "風",
     icon: "images/weapon/462px-Weapon_b_1040614800.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "修羅", lank: "大", aura: "opti"},
       2: { e: "風", type: "通常背水", lank: "小", aura: "opti"},
@@ -245,6 +277,7 @@ export const weapons = {
     name: "ラストストームハープ",
     element: "風",
     icon: "images/weapon/462px-Last_Storm_Harp.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "方陣渾身", lank: "中", aura: "omega"},
       2: { e: "風", type: "技巧", lank: "大", aura: "omega"},
@@ -254,6 +287,7 @@ export const weapons = {
     name: "タアロマサラ",
     element: "闇",
     icon: "images/weapon/Weapon_b_1040615400.png",
+    EX_Skill: false,
     skill: {
       1: { e: "闇", type: "通常攻刃", lank: "中", aura: "opti"},
       2: { e: "闇", type: "通常背水", lank: "小", aura: "opti"},
@@ -264,6 +298,7 @@ export const weapons = {
     name: "方天画戟",
     element: "闇",
     icon: "images/weapon/Sky_Piercer.png",
+    EX_Skill: false,
     skill: {
       1: { e: "闇", type: "通常背水", lank: "大", aura: "opti"},
     },
@@ -273,6 +308,7 @@ export const weapons = {
     name: "ティアマトボルトマグナ",
     element: "風",
     icon: "images/weapon/Tiamat_Bolt_Omega.png",
+    EX_Skill: true,
     skill: {
       1: { e: "風", type: "方陣背水", lank: "小", aura: "omega"},
       2: { e: "風", type: "方陣攻刃", lank: "中", aura: "omega"},
@@ -283,6 +319,7 @@ export const weapons = {
     name: "輝羅煌閃杖",
     element: "風",
     icon: "images/weapon/Weapon_b_1040418000.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "方陣神威", lank: "小", aura: "omega"},
       2: { e: "風", type: "方陣克己", lank: "中", aura: "omega"},
@@ -293,6 +330,7 @@ export const weapons = {
     name: "方天画戟",
     element: "風",
     icon: "images/weapon/Sky_Piercer.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "通常背水", lank: "大", aura: "opti"},
     },
@@ -301,6 +339,7 @@ export const weapons = {
     name: "ティアマトガントレマグナ",
     element: "風",
     icon: "images/weapon/Tiamat_Gauntlet_Omega.png",
+    EX_Skill: true,
     skill: {
       1: { e: "風", type: "方陣攻刃", lank: "大", aura: "omega"},
     },
@@ -309,6 +348,7 @@ export const weapons = {
     name: "エターナルラヴ",
     element: "風",
     icon: "images/weapon/Weapon_b_1040105400.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "通常攻刃", lank: "III", aura: "opti"},
       2: { e: "風", type: "通常乱舞", lank: "中", aura: "opti"},
@@ -318,6 +358,7 @@ export const weapons = {
     name: "イーウィアビーク",
     element: "風",
     icon: "images/weapon/Weapon_b_1040912400.png",
+    EX_Skill: true,
     skill: {
       1: { e: "風", type: "通常攻刃", lank: "劫風の攻刃", aura: "None"},
     }
@@ -326,6 +367,7 @@ export const weapons = {
     name: "ルフェイ",
     element: "風",
     icon: "images/weapon/Le_Fay.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "通常攻刃", lank: "暴君", aura: "opti"},
       2: { e: "風", type: "通常三手", lank: "大", aura: "opti"},
@@ -335,10 +377,13 @@ export const weapons = {
     name: "青竜邪槍王",
     element: "風",
     icon: "images/weapon/Qinglong_Spear_Regus.png",
+    EX_Skill: false,
     skill: {
       1: { e: "風", type: "通常攻刃", lank: "II", aura: "opti"},
       2: { e: "風", type: "技巧", lank: "中", aura: "opti"},
     }
   },
-  ...DARK_OPUS_WEAPON
+  ...DARK_OPUS_WEAPON,
+  ...SERAPHIC_WEAPON,
+  ...ASTRAL_WEAPON,
 }

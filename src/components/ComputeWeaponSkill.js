@@ -48,10 +48,13 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
     Object.keys(list).forEach((id) => {
       Object.keys(list[id]["EX_Skill"]).forEach((skill_num) => {
         
-        let branch = ["EX渾身","EX背水","久遠"]
+        let branch = ["EX渾身","EX背水","EX攻撃"]
         if(list[id]["EX_Skill"][skill_num].name == undefined) return
         let skill_name = list[id]["EX_Skill"][skill_num].name
         let skill_lank = list[id]["EX_Skill"][skill_num].lank
+        console.log(skill_name)
+        console.log(skill_lank)
+
         if(branch.includes(skill_name)){
           Object.keys(ELEMENT_INTERFACE).forEach((ele)=>{
             obj_output[skill_name][ele] += EX_SKILL[skill_name](HP,skill_lank)

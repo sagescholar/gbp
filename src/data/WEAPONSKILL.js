@@ -9,9 +9,6 @@ export const CALCULATE_OUT_INTERFACE = {
     方陣背水: cloneDeep(ELEMENT_INTERFACE),
     方陣攻刃: cloneDeep(ELEMENT_INTERFACE),
     EX攻刃: cloneDeep(ELEMENT_INTERFACE),
-    久遠: cloneDeep(ELEMENT_INTERFACE),
-    EX渾身: cloneDeep(ELEMENT_INTERFACE),
-    EX背水: cloneDeep(ELEMENT_INTERFACE),
     技巧: cloneDeep(ELEMENT_INTERFACE),
     DA率: cloneDeep(ELEMENT_INTERFACE),
     TA率: cloneDeep(ELEMENT_INTERFACE),
@@ -19,22 +16,28 @@ export const CALCULATE_OUT_INTERFACE = {
     D上限: cloneDeep(ELEMENT_INTERFACE),
     与ダメージ: cloneDeep(ELEMENT_INTERFACE),
     対有利与ダメ: cloneDeep(ELEMENT_INTERFACE),
+
+    EX攻撃: cloneDeep(ELEMENT_INTERFACE),
+    EX渾身: cloneDeep(ELEMENT_INTERFACE),
+    EX背水: cloneDeep(ELEMENT_INTERFACE),
+    EXHP: cloneDeep(ELEMENT_INTERFACE),
+    EX防御: cloneDeep(ELEMENT_INTERFACE),
 }
 
 /* EXLB 渾身 */
 
 const calculate_exlb_stamina = (HP,SLank) => {
     let C = {
-        1:{100:3.0, 0: 1.0, 減少: 66.66},
-        2:{100:4.0, 0: 1.0, 減少: 100},
-        3:{100:5.0, 0: 2.0, 減少: 75},
-        4:{100:6.0, 0: 2.0, 減少: 100},
-        5:{100:7.0, 0: 3.0, 減少: 66.66},
-        6:{100:8.0, 0: 3.0, 減少: 83.33},
-        7:{100:9.0, 0: 3.0, 減少: 100},
-        8:{100:10.0, 0: 4.0, 減少: 75},
-        9:{100:11.0, 0: 4.0, 減少: 87.5},
-        10:{100:12.0, 0: 4.0, 減少: 100.0},
+        1:{100:3 ,減少:66.66, 0:1.0},
+        2:{100:4 ,減少:100, 0:1.0},
+        3:{100:5 ,減少:75, 0:2.0},
+        4:{100:6 ,減少:100, 0:2.0},
+        5:{100:7 ,減少:66.66, 0:3.0},
+        6:{100:8 ,減少:83.33, 0:3.0},
+        7:{100:9 ,減少:100, 0:3.0},
+        8:{100:10 ,減少:75, 0:4.0},
+        9:{100:11, 減少:87.5, 0:4.0},
+        10:{100:12 ,減少:100, 0:4.0},
     }
 
     const MAX = C[SLank]["100"]
@@ -42,12 +45,10 @@ const calculate_exlb_stamina = (HP,SLank) => {
     const PLUS = C[SLank]["0"]
     
     return HP > DECREACE ? MAX : ((MAX/DECREACE) * HP + PLUS)
-    
-    
 }
 
 const calculate_exlb_enmity = (HP,SLank) => {
-    let lank = {
+    let C = {
         1:{100:1, 75:2, 50: 2.26, 0: 5.0},
         2:{100:1, 75:2, 50: 2.33, 0: 6.0},
         3:{100:1, 75:3, 50: 3.37, 0: 7.5},
@@ -59,6 +60,19 @@ const calculate_exlb_enmity = (HP,SLank) => {
         9:{100:1, 75:5, 50: 5.73, 0: 13.75},
         10:{100:1, 75:5, 50: 5.83, 0: 15.0},
     }
+
+    const HP_100 = C[SLank]["100"]
+    const HP_75 = C[SLank]["75"]
+    const HP_50 = C[SLank]["50"]
+    const HP_0 = C[SLank]["0"]
+
+    let RSL = 0
+
+    if(HP >= 75)      RSL = HP_100
+    else if(HP >= 50) RSL = (HP_75 - (HP_50-HP_75)/(75.0-50.0) * (HP - 50.0) )
+    else              RSL = (HP_0 - (HP_0-HP_50)/(50.0-0) * (HP) )
+    
+    return RSL
     
 }
 
@@ -612,7 +626,8 @@ export const COMPOSITE_SKILL = {
 }
 
 export const EX_SKILL = {
-    EX渾身: calculate_exlb_stamina
-    //EX背水:
+    /* EX渾身,EX背水 -> ComputeWeaponSkillから呼ばれる */
+    EX渾身: calculate_exlb_stamina,
+    EX背水: calculate_exlb_enmity
     //久遠:
 }

@@ -19,7 +19,7 @@ import AlertEquipedWeapon, {
   changeActibeEquiped,
 } from "./components/AlertEquipedWeapon";
 import BuildEquipedWeaponButton from "./components/BuildEquipedWeaponButton";
-import { generateComputeChart } from "./components/GenerateComputeChart";
+import GenerateComputeChart from "./components/GenerateComputeChart";
 
 //DATA
 import { CALCULATE_OUT_INTERFACE } from "./data/WEAPONSKILL";
@@ -202,12 +202,12 @@ function App() {
                     justifyContent: "center",
                   }}
                 >
-                  {generateComputeChart(
-                    state_list_equiped,
-                    state_list_aura_boost,
-                    state_YMAX,
-                    setStateYMAX
-                  )}
+                  <GenerateComputeChart
+                    parent_state_list_equiped = {state_list_equiped}
+                    parent_state_list_aura_boost = {state_list_aura_boost}
+                    parent_state_YMAX = {state_YMAX}
+                    parentSetStateYMAX = {setStateYMAX}
+                  />
                 </div>
 
                 <div

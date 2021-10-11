@@ -1,5 +1,7 @@
 import { computeWeaponSkill } from "./ComputeWeaponSkill";
 import { Box, Card } from "@material-ui/core";
+import cloneDeep from "lodash.clonedeep";
+import {useState} from 'react'
 
 import {
   CartesianGrid,
@@ -10,12 +12,13 @@ import {
   Tooltip,
 } from "recharts";
 
-export const generateComputeChart = (
-  parent_state_list_equiped,
-  parent_state_list_aura_boost,
-  parent_state_YMAX,
-  parentSetStateYMax
-) => {
+export default function GenerateComputeChart(props) {
+  const parent_state_list_equiped = props.parent_state_list_equiped
+  const parent_state_list_aura_boost = props.parent_state_list_aura_boost
+  const parent_state_YMAX = props.parent_state_YMAX
+  const parentSetStateYMax = props.parentSetStateYMax
+
+
   let Data = [];
   let Element = ["火", "水", "土", "風", "光", "闇"];
   let Element_c = {
@@ -42,6 +45,23 @@ export const generateComputeChart = (
     闇2: false,
   };
 
+  let Element_isView_2 = {
+    火1: true,
+    水1: true,
+    土1: true,
+    風1: true,
+    光1: true,
+    闇1: true,
+
+    火2: true,
+    水2: true,
+    土2: true,
+    風2: true,
+    光2: true,
+    闇2: true,
+  };
+  const [ state_show_radio, setStateShowRadio] = useState(cloneDeep(Element_isView_2))
+
   let Rsl_compute = undefined;
   let Rsl_push = undefined;
 
@@ -60,7 +80,7 @@ export const generateComputeChart = (
       );
       Element.map((e) => {
         Rsl_push[e + String(index)] = Rsl_compute[e];
-        if (nam == 50 && Rsl_compute[e] > 1)
+        if (nam == 50 && Rsl_compute[e] > 1　&& state_show_radio[e + String(index)])
           Element_isView[e + String(index)] = true;
       });
     }
@@ -100,6 +120,21 @@ export const generateComputeChart = (
         <XAxis dataKey="name" />
         <Tooltip />
       </LineChart>
-    </Box></Card>
+    </Box>
+    <Box>
+      {Object.keys(state_show_radio).map((key)=>
+        <a
+          onClick={()=> {
+            let content = cloneDeep(state_show_radio)
+            content[key] = !content[key]
+            setStateShowRadio(content)
+          }}
+        >
+        {state_show_radio[key] ? "○" : "●"}
+        </a>
+      )}
+    </Box>
+    
+    </Card>
   );
 };

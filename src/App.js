@@ -7,7 +7,7 @@ import cloneDeep from "lodash.clonedeep";
 
 import { useModal } from "react-hooks-use-modal";
 import Typography from "@material-ui/core/Typography";
-import { AppBar, Button } from "@material-ui/core";
+import { AppBar, Button, Card } from "@material-ui/core";
 import { Box } from "@material-ui/core";
 
 //COMPONENTS
@@ -291,22 +291,72 @@ function App() {
               backgroundColor: "#ededf7",
             }}
           >
-            
-              {state_summon_window && (
+            <Button onClick={() => setStateAddEquiped({ 1: {}, 2: {} })}>
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "outline_delete_black_24dp.png"
+                }
+              />
+            </Button>
+            <Button onClick={() => setStateToggleSummon(!state_toggle_summon)}>
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "outline_upgrade_black_24dp.png"
+                }
+              />
+              {state_toggle_summon ? "MAIN" : "FRIEND"}
+            </Button>
+            <Button onClick={() => setStateSummonWindow(!state_summon_window)}>
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "SummonSeries_Omega_Series_icon.png"
+                }
+              />
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "SummonSeries_Optimus_Series_icon.png"
+                }
+              />
+              {state_toggle_summon && (
+                <img
+                  style={{ width: "30px" }}
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/images/" +
+                    "SummonSeries_Six_Dragons_icon.png"
+                  }
+                />
+              )}
+            </Button>
+          </div>
+          {/* BOTTOM MENU END */}
+
+          {state_summon_window && (
                 <div
                   style={{
                     position: "fixed",
-                    bottom: "40px",
-                    width: "100%",
-                    marginLeft: "auto",
-                    marginRight: "auto",
+                    bottom: "45px",
+                    right: "10px",
+                    width: "202px",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
+                    justifyContent: "space-between",
                     border: "0px solid black",
-                    backgroundColor: "#ededf7",
                   }}
                 >
+                <Card>  
                   {state_toggle_summon && (
                     <BuildSummonsButton
                       main_or_friend="MAIN"
@@ -329,7 +379,8 @@ function App() {
                       number={"1"}
                     />
                   )}
-
+                </Card>
+                <Card>
                   {state_toggle_summon && (
                     <BuildSummonsButton
                       main_or_friend="MAIN"
@@ -352,65 +403,9 @@ function App() {
                       number={"2"}
                     />
                   )}
+                </Card>
                 </div>
               )}
-           
-
-            
-              <Button onClick={() => setStateAddEquiped({ 1: {}, 2: {} })}>
-                <img
-                  style={{ width: "30px" }}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/" +
-                    "outline_delete_black_24dp.png"
-                  }
-                />
-              </Button>
-              <Button
-                onClick={() => setStateToggleSummon(!state_toggle_summon)}
-              >
-                <img
-                  style={{ width: "30px" }}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/" +
-                    "outline_upgrade_black_24dp.png"
-                  }
-                />
-                {state_toggle_summon ? "MAIN" : "FRIEND"}
-              </Button>
-              <Button
-                onClick={() => setStateSummonWindow(!state_summon_window)}
-              >
-                <img
-                  style={{ width: "30px" }}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/" +
-                    "SummonSeries_Omega_Series_icon.png"
-                  }
-                />
-                <img
-                  style={{ width: "30px" }}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/" +
-                    "SummonSeries_Optimus_Series_icon.png"
-                  }
-                />
-                {state_toggle_summon && (
-                  <img
-                    style={{ width: "30px" }}
-                    src={
-                      process.env.PUBLIC_URL +
-                      "/images/" +
-                      "SummonSeries_Six_Dragons_icon.png"
-                    }
-                  />
-                )}
-              </Button>
-            </div>
 
           {/*<hr />*/}
         </>

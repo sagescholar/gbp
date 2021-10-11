@@ -23,8 +23,19 @@ export default function BuildEquipedWeaponButton(props) {
 
   const updateEquipedShow = (key) => {
     let content = cloneDeep(props.parent_state_list_equiped);
+    Object.keys(content).forEach((n) => 
+      Object.keys(content[n]).forEach((id) =>
+        content[n][id].isShow = false
+      )
+    )
+    if(props.parent_state_list_equiped[num][key].isShow){
+      parentSetStateAddEquiped(content);
+      const b = () => 1+1
+    }
+    else{
     content[num][key].isShow = !content[num][key].isShow;
     parentSetStateAddEquiped(content);
+    }
   };
 
   const updateExSkill = (id, skill_name, lank,n) => {
@@ -94,6 +105,7 @@ export default function BuildEquipedWeaponButton(props) {
               position: "fixed",
               left: String(10) + "px",
               bottom: "50px",
+              zIndex: "1000",
             }}
           >
             <Card>
@@ -149,6 +161,7 @@ export default function BuildEquipedWeaponButton(props) {
     <div>
       {Object.keys(parent_state_list_equiped).map((key) => {
         let weapon_name = parent_state_list_equiped[key].name;
+        let isStateShow = parent_state_list_equiped[key].isShow
         console.log(weapon_name);
 
         return (
@@ -183,14 +196,15 @@ export default function BuildEquipedWeaponButton(props) {
               >
                 <a
                   style={{
-                    backgroundColor: "#333333",
-                    color: "#eeeeee",
+                    backgroundColor: !isStateShow ? "#333333": "#66a3ff",
+                    color:  "#eeeeee",
                     cursor: "default",
                   }}
                   class="btn"
                 >
                   {weapons[weapon_name].name}
                 </a>
+                
               </div>
             </HtmlTooltip>
           </>

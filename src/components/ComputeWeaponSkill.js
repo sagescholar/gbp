@@ -52,13 +52,13 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
         if(list[id]["EX_Skill"][skill_num].name == undefined) return
         let skill_name = list[id]["EX_Skill"][skill_num].name
         let skill_lank = list[id]["EX_Skill"][skill_num].lank
-        console.log(skill_name)
-        console.log(skill_lank)
+        //console.log(skill_name)
+        //console.log(skill_lank)
 
         if(branch.includes(skill_name)){
           Object.keys(ELEMENT_INTERFACE).forEach((ele)=>{
             obj_output[skill_name][ele] += EX_SKILL[skill_name](HP,skill_lank)
-            console.log(obj_output[skill_name])
+            //console.log(obj_output[skill_name])
           })
         }
         })

@@ -77,7 +77,7 @@ export const changeActibeEquiped = (
         height: "3px",
         padding: "0px",
         margin: "0px",
-        backgroundColor: parent_state_active_equiped_number == number ? "red" : "black"
+        backgroundColor: parent_state_active_equiped_number == number ? "#005ce6" : "black"
 
       }}
       onClick={() => parentSetStateActiveEquipedNumber(number)}

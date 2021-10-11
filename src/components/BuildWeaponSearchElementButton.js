@@ -5,8 +5,13 @@ import { ELEMENT_ICON_INTERFACE, ELEMENT_TOGGLE_INTERFACE } from "../data/ELEMEN
 export const buildWeaponSearchElementButton = (parent_state_weapon_search_element,parentSetStateWeaponSearchButton) => {
     const onClick = (element) => {
         let rsl = cloneDeep(ELEMENT_TOGGLE_INTERFACE);
+        if(parent_state_weapon_search_element[element]){
+            parentSetStateWeaponSearchButton(rsl);
+        }
+        else{
         rsl[element] = ! rsl[element];
         parentSetStateWeaponSearchButton(rsl);
+        }
     }
     
     return(

@@ -11,6 +11,7 @@ import {
   XAxis,
   Tooltip,
 } from "recharts";
+import Draggable from "react-draggable";
 
 export default function GenerateComputeChart(props) {
   const parent_state_list_equiped = props.parent_state_list_equiped
@@ -88,6 +89,7 @@ export default function GenerateComputeChart(props) {
   }
 
   return (
+    
     <Card ><Box sx={{ padding: "30px", bgcolor: 'background.paper' }}>
       <LineChart width={500} height={400} data={Data}>
         {Element.map((e) => {

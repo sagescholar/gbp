@@ -31,6 +31,7 @@ import { ELEMENT_STYLE, ELEMENT_TOGGLE_INTERFACE } from "./data/ELEMENT";
 import { buildWeaponButton } from "./components/BuildWeaponButton";
 import ControlledTooltip from "./components/CastumMaterialUI/ControlledTooltips";
 import Toppage from "./layouts/Toppage";
+import Draggable from "react-draggable";
 
 function App() {
   /* STATE */
@@ -193,7 +194,7 @@ function App() {
                     ▼
                   </Button>
                 </div>
-
+                
                 <div
                   class="wrap-chart"
                   style={{
@@ -344,6 +345,7 @@ function App() {
           {/* BOTTOM MENU END */}
 
           {state_summon_window && (
+                <Draggable>
                 <div
                   style={{
                     position: "fixed",
@@ -356,6 +358,7 @@ function App() {
                     border: "0px solid black",
                   }}
                 >
+                
                 <Card>  
                   {state_toggle_summon && (
                     <BuildSummonsButton
@@ -404,7 +407,7 @@ function App() {
                     />
                   )}
                 </Card>
-                </div>
+                </div></Draggable>
               )}
 
           {/*<hr />*/}

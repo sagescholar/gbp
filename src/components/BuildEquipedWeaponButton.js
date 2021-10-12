@@ -23,22 +23,22 @@ export default function BuildEquipedWeaponButton(props) {
 
   const updateEquipedShow = (key) => {
     let content = cloneDeep(props.parent_state_list_equiped);
-    Object.keys(content).forEach((n) => 
+    Object.keys(content).forEach((n) =>
       Object.keys(content[n]).forEach((id) =>
         content[n][id].isShow = false
       )
     )
-    if(props.parent_state_list_equiped[num][key].isShow){
+    if (props.parent_state_list_equiped[num][key].isShow) {
       parentSetStateAddEquiped(content);
-      const b = () => 1+1
+      const b = () => 1 + 1
     }
-    else{
-    content[num][key].isShow = !content[num][key].isShow;
-    parentSetStateAddEquiped(content);
+    else {
+      content[num][key].isShow = !content[num][key].isShow;
+      parentSetStateAddEquiped(content);
     }
   };
 
-  const updateExSkill = (id, skill_name, lank,n) => {
+  const updateExSkill = (id, skill_name, lank, n) => {
     console.log("update ex skill");
     let content = cloneDeep(props.parent_state_list_equiped);
     content[num][id]["EX_Skill"][n].name = skill_name;
@@ -46,7 +46,7 @@ export default function BuildEquipedWeaponButton(props) {
     parentSetStateAddEquiped(content);
   };
 
-  const buildExSkillButton = (num,id) => {
+  const buildExSkillButton = (num, id) => {
     const ID = id;
     const VAL = 0;
 
@@ -66,24 +66,25 @@ export default function BuildEquipedWeaponButton(props) {
         <>
           {Object.keys(EXSKILLICON).map((key) => (
             <div
-              onClick={() => updateExSkill(ID, key, /*lank*/ 3,num)}
+              onClick={() => updateExSkill(ID, key, /*lank*/ 3, num)}
               style={{
                 fontSize: "10px",
                 textAlign: "center",
                 backgroundColor: "#222222",
+                cursor: "pointer",
               }}
             >
               {skill_name == key ? (
-              <img
-                style={{ height: "15px", width: "15px", opacity: "1.0" }}
-                src={process.env.PUBLIC_URL + "/" + EXSKILLICON[key]}
-              />
-              ):
-              <img
-                style={{ height: "15px", width: "15px", opacity: "0.5" }}
-                src={process.env.PUBLIC_URL + "/" + EXSKILLICON[key]}
-              />}
-            
+                <img
+                  style={{ height: "15px", width: "15px", opacity: "1.0" }}
+                  src={process.env.PUBLIC_URL + "/" + EXSKILLICON[key]}
+                />
+              ) :
+                <img
+                  style={{ height: "15px", width: "15px", opacity: "0.5" }}
+                  src={process.env.PUBLIC_URL + "/" + EXSKILLICON[key]}
+                />}
+
             </div>
           ))}
         </>
@@ -128,12 +129,12 @@ export default function BuildEquipedWeaponButton(props) {
                   <a style={{ fontSize: "10px" }}>{weapon_name}</a>
                   <hr />
                   {bool_ex_skill && (
-                  <>
-                  {buildExSkillButton(1,key)}
-                  {buildExSkillButton(2,key)}
-                  {/*//TODO: 効果量を手動で入力できるようにする*/}
-                  <a style={{fontSize: "4px"}}>Test mode: Fixed effect quantity of 3</a>
-                  </>
+                    <>
+                      {buildExSkillButton(1, key)}
+                      {buildExSkillButton(2, key)}
+                      {/*//TODO: 効果量を手動で入力できるようにする*/}
+                      <a style={{ fontSize: "4px" }}>Test mode: Fixed effect quantity of 3</a>
+                    </>
                   )}
                 </div>
               </div>
@@ -196,15 +197,15 @@ export default function BuildEquipedWeaponButton(props) {
               >
                 <a
                   style={{
-                    backgroundColor: !isStateShow ? "#333333": "#66a3ff",
-                    color:  "#eeeeee",
+                    backgroundColor: !isStateShow ? "#333333" : "#66a3ff",
+                    color: "#eeeeee",
                     cursor: "default",
                   }}
                   class="btn"
                 >
                   {weapons[weapon_name].name}
                 </a>
-                
+
               </div>
             </HtmlTooltip>
           </>

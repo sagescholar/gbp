@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app"
-import { getFirestore, collection,addDoc } from "@firebase/firestore";
+import { getFirestore, collection,addDoc, query } from "@firebase/firestore";
+import { getDocs } from "@firebase/firestore";
+import { useState, useEffect } from "react";
 
 import { doc, setDoc, Timestamp } from "firebase/firestore";
 import { Button } from "@material-ui/core";
@@ -17,9 +19,9 @@ const firebaseConfig = {
   appId: "1:481723174191:web:d9e6b834ad53b742b925da"
 };
 
-// Initialize Firebase
+// Initialize Firebaseß
 const app = initializeApp(firebaseConfig);
-const db = getFirestore()
+export const db = getFirestore()
 
 const setFirestore = () => {
 
@@ -42,5 +44,39 @@ export default function Firestore(){
         <Button>submit</Button>
         </div>
         
+    )
+}
+
+
+const ShowFireStore = () => {
+    const [posts, setPosts] = useState([]);
+    
+    useEffect( () => { 
+        async function fetchData() {
+            try {
+                let content = []
+                const snap = await getDocs(collection(db, "users"))
+                const bornList = snap.docs.map((doc) => {
+                    //console.log(doc.id)
+                    //console.log(doc.data().born)
+                    content.push(doc.data().first)
+                })
+                setPosts(content);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchData();
+    }, []);
+    return posts
+}
+
+
+export const buildChatLog = () =>{
+    
+    return(
+        <>
+        <a>Add Words Test：</a>{ShowFireStore().map((data) => <a>{data}</a>)}
+        </>
     )
 }

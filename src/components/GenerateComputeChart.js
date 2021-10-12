@@ -89,7 +89,7 @@ export default function GenerateComputeChart(props) {
   }
 
   return (
-    
+    <Draggable>
     <Card ><Box sx={{ padding: "30px", bgcolor: 'background.paper' }}>
       <LineChart width={500} height={400} data={Data}>
         {Element.map((e) => {
@@ -137,6 +137,6 @@ export default function GenerateComputeChart(props) {
       )}
     </Box>
     
-    </Card>
+    </Card></Draggable>
   );
 };

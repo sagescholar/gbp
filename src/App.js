@@ -32,6 +32,7 @@ import { buildWeaponButton } from "./components/BuildWeaponButton";
 import ControlledTooltip from "./components/CastumMaterialUI/ControlledTooltips";
 import Toppage from "./layouts/Toppage";
 import Draggable from "react-draggable";
+import { buildChatLog } from "./components/Firebase/Firebase";
 
 function App() {
   /* STATE */
@@ -91,6 +92,7 @@ function App() {
 
   return (
     <>
+      {buildChatLog()}
       <Modal2>
         <div style={modalStyle}>
           <h1>警告:武器は10本までです</h1>
@@ -275,6 +277,7 @@ function App() {
               </div>
             </div>
           </div>
+          
           {/* BOTTOM MENU */}
 
           <div
@@ -406,6 +409,7 @@ function App() {
                       number={"2"}
                     />
                   )}
+                  
                 </Card>
                 </div></Draggable>
               )}
@@ -415,7 +419,8 @@ function App() {
       )}
 
       {/*{buildTable()}*/}
-
+      
+      
       {Footer()}
     </>
   );

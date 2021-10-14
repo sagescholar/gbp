@@ -8,6 +8,7 @@ export const CALCULATE_OUT_INTERFACE = {
     方陣渾身: cloneDeep(ELEMENT_INTERFACE),
     方陣背水: cloneDeep(ELEMENT_INTERFACE),
     方陣攻刃: cloneDeep(ELEMENT_INTERFACE),
+    
     EX攻刃: cloneDeep(ELEMENT_INTERFACE),
     技巧: cloneDeep(ELEMENT_INTERFACE),
     DA率: cloneDeep(ELEMENT_INTERFACE),
@@ -15,6 +16,7 @@ export const CALCULATE_OUT_INTERFACE = {
     アビ与ダメ: cloneDeep(ELEMENT_INTERFACE),
     D上限: cloneDeep(ELEMENT_INTERFACE),
     与ダメージ: cloneDeep(ELEMENT_INTERFACE),
+    奥義与ダメ: cloneDeep(ELEMENT_INTERFACE),
     対有利与ダメ: cloneDeep(ELEMENT_INTERFACE),
 
     EX攻撃: cloneDeep(ELEMENT_INTERFACE),
@@ -22,6 +24,9 @@ export const CALCULATE_OUT_INTERFACE = {
     EX背水: cloneDeep(ELEMENT_INTERFACE),
     EXHP: cloneDeep(ELEMENT_INTERFACE),
     EX防御: cloneDeep(ELEMENT_INTERFACE),
+
+    通常進境: cloneDeep(ELEMENT_INTERFACE),
+    堅守: cloneDeep(ELEMENT_INTERFACE),
 }
 
 /* EXLB 渾身 */
@@ -516,6 +521,47 @@ export const BASE_SKILL = {
             "10": 20.0,
             "15": 0.0,
             "20": 0.0,
+        },
+    },
+    "堅守": {
+        "小": { /*乱舞小*/
+            "10": 1.35,
+            "15": 2.0,
+            "20": 0.0,
+        },
+        "中": {
+            "10": 2.15,
+            "15": 2.9,
+            "20": 3.65,
+        },
+        "大": {
+            "10": 2.15,
+            "15": 2.9,
+            "20": 3.65,
+        },
+    },
+    "通常進境": {
+        "小": { /*乱舞小*/
+            "10": 1.35,
+            "15": 2.0,
+            "20": 0.0,
+        },
+        "中": {
+            "10": 2.15,
+            "15": 2.9,
+            "20": 3.65,
+        },
+        "大": {
+            "10": 2.15,
+            "15": 2.9,
+            "20": 3.65,
+        },
+    },
+    "奥義与ダメ": {
+        "雪の極意": {
+            "10": 4e5,
+            "15": 4e5,
+            "20": 4e5,
         },
     }
 }

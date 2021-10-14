@@ -92,7 +92,7 @@ function App() {
 
   return (
     <>
-      {buildChatLog()}
+      {/*buildChatLog()*/}
       <Modal2>
         <div style={modalStyle}>
           <h1>警告:武器は10本までです</h1>

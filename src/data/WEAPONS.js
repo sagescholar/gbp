@@ -45,6 +45,16 @@ export const DARK_OPUS_WEAPON = {
     },
     
   },
+  絶対否定の杖: {
+    name: "絶対否定の杖",
+    element: "水",
+    icon: "images/weapon/Weapon_b_1040415000.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "水", type: "通常神威", lank: "大", aura: "opti"},
+    },
+    
+  },
   永遠拒絶の槍: {
     name: "永遠拒絶の槍",
     element: "風",
@@ -198,8 +208,8 @@ export const weapons = {
     icon: "images/weapon/Weapon_b_1040704800.png",
     EX_Skill: false,
     skill: {
-      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "opti"},
-      2: { e: "火", type: "通常渾身", lank: "中", aura: "opti"},
+      1: { e: "水", type: "通常神威", lank: "中", aura: "opti"},
+      2: { e: "水", type: "堅守", lank: "中", aura: "opti"},
     },
   },
   太歳精弓: {
@@ -208,8 +218,8 @@ export const weapons = {
     icon: "images/weapon/Weapon_b_1040708700.png",
     EX_Skill: false,
     skill: {
-      1: { e: "火", type: "通常攻刃", lank: "特大", aura: "opti"},
-      2: { e: "火", type: "通常渾身", lank: "中", aura: "opti"},
+      1: { e: "水", type: "通常攻刃", lank: "II", aura: "opti"},
+      2: { e: "水", type: "技巧", lank: "大", aura: "opti"},
     },
   },
   グラーシーザー: {
@@ -383,6 +393,47 @@ export const weapons = {
       2: { e: "風", type: "技巧", lank: "中", aura: "opti"},
     }
   },
+  暁: {
+    name: "暁",
+    element: "水",
+    icon: "images/weapon/Weapon_b_1040912300.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "水", type: "技巧", lank: "中", aura: "opti"},
+      2: { e: "水", type: "通常背水", lank: "大", aura: "opti"},
+    }
+  },
+  第九申行棒: {
+    name: "第九申行棒",
+    element: "水",
+    icon: "images/weapon/Weapon_b_1040314200.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "水", type: "通常神威", lank: "中", aura: "opti"},
+      2: { e: "水", type: "通常進境", lank: "中", aura: "opti"},
+    }
+  },
+  アトランティス: {
+    name: "アトランティス",
+    element: "水",
+    icon: "images/weapon/Weapon_b_1040216300.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "水", type: "通常背水", lank: "大", aura: "opti"},
+      2: { e: "水", type: "堅守", lank: "大", aura: "opti"},
+    }
+  },
+  コロンバ: {
+    name: "コロンバ",
+    element: "水",
+    icon: "images/weapon/Weapon_b_1040711000.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "水", type: "奥義与ダメ", lank: "雪の極意", aura: "opti"},
+      2: { e: "水", type: "EX攻刃", lank: "大", aura: "None"},
+    }
+  },
+
   ...DARK_OPUS_WEAPON,
   ...SERAPHIC_WEAPON,
   ...ASTRAL_WEAPON,

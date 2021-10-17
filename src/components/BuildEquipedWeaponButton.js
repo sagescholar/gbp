@@ -46,6 +46,14 @@ export default function BuildEquipedWeaponButton(props) {
     parentSetStateAddEquiped(content);
   };
 
+  const deleteEquiped = (id) => {
+    const ID = String(id)
+    let content = cloneDeep(props.parent_state_list_equiped);
+    console.log(content[num][ID])
+    delete content[num][ID]
+    parentSetStateAddEquiped(content);
+  }
+
   const buildExSkillButton = (num, id) => {
     const ID = id;
     const VAL = 0;
@@ -63,6 +71,7 @@ export default function BuildEquipedWeaponButton(props) {
         }}
       >
         <a style={{ fontSize: "10px" }}>{"EXスキル[第" + num + "] : "}</a>
+        
         <>
           {Object.keys(EXSKILLICON).map((key) => (
             <div
@@ -127,6 +136,16 @@ export default function BuildEquipedWeaponButton(props) {
                 </div>
                 <div>
                   <a style={{ fontSize: "10px" }}>{weapon_name}</a>
+                  <Button onClick={()=>deleteEquiped(key)}>
+                  <img
+                    style={{ width: "15px",paddingRight: "auto" }}
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/images/" +
+                      "2550273.png"
+                    }
+                  />
+                  </Button>
                   <hr />
                   {bool_ex_skill && (
                     <>

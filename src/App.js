@@ -39,6 +39,9 @@ function App() {
   const [state_view, setStateView] = useState("top");
   const [state_summon_window, setStateSummonWindow] = useState(false);
 
+  const [state_show_graph_1,setStateShowGraph1] = useState(false)
+  const [state_show_graph_2,setStateShowGraph2] = useState(false)
+
   const [state_list_equiped, setStateAddEquiped] = React.useState({
     1: {},
     2: {},
@@ -205,13 +208,15 @@ function App() {
                     justifyContent: "center",
                   }}
                 >
+                {state_show_graph_1 && (
                   <GenerateComputeChart
                     parent_state_list_equiped = {state_list_equiped}
                     parent_state_list_aura_boost = {state_list_aura_boost}
                     parent_state_YMAX = {state_YMAX}
                     parentSetStateYMAX = {setStateYMAX}
-                  />
+                  />)}
                 </div>
+                
 
                 <div
                   class="wrap-hp-slider"
@@ -243,6 +248,7 @@ function App() {
                     state_hp
                   )}
                 </div>
+                
               </div>
 
               {/* 石選択 */}
@@ -344,6 +350,30 @@ function App() {
                 />
               )}
             </Button>
+
+            {/* Graph Show Button */}
+            <Button  onClick={() => setStateShowGraph1(!state_show_graph_1)}>
+                  <img
+                  style={{width: "30px"}}
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/images/" +
+                    "893216.png"
+                  }
+                  />
+            </Button>
+            <Button onClick={() => setStateShowGraph2(!state_show_graph_2)}>
+                  <img
+                  style={{width: "30px"}}
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/images/" +
+                    "893216.png"
+                  }
+                  />
+            </Button>
+            {/* Graph Show Button End */}
+
           </div>
           {/* BOTTOM MENU END */}
 

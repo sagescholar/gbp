@@ -354,6 +354,16 @@ export const weapons = {
       1: { e: "風", type: "方陣攻刃", lank: "大", aura: "omega"},
     },
   },
+  セレストホーンマグナ: {
+    name: "セレストホーンマグナ",
+    element: "闇",
+    icon: "images/weapon/Celeste_Horn_Omega.png",
+    EX_Skill: true,
+    skill: {
+      1: { e: "闇", type: "方陣攻刃", lank: "大", aura: "omega"},
+      2: { e: "風", type: "通常背水", lank: "大", aura: "opti"},
+    },
+  },
   エターナルラヴ: {
     name: "エターナルラヴ",
     element: "風",
@@ -431,6 +441,36 @@ export const weapons = {
     skill: {
       1: { e: "水", type: "奥義与ダメ", lank: "雪の極意", aura: "opti"},
       2: { e: "水", type: "EX攻刃", lank: "大", aura: "None"},
+    }
+  },
+  ゲイアサイル: {
+    name: "ゲイアサイル",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040212200.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "風", type: "通常攻刃", lank: "大", aura: "opti"},
+      2: { e: "風", type: "通常背水", lank: "中", aura: "opti"},
+    }
+  },
+  ディアドリッククロー: {
+    name: "ディアドリッククロー",
+    element: "風",
+    icon: "images/weapon/Weapon_b_1040607200.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "風", type: "技巧", lank: "中", aura: "opti"},
+      2: { e: "風", type: "通常背水", lank: "大", aura: "opti"},
+    }
+  },
+  クリーピィクロウ: {
+    name: "クリーピィクロウ",
+    element: "風",
+    icon: "images/weapon/1040615500.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "風", type: "通常背水", lank: "大", aura: "opti"},
+      //2: { e: "風", type: "通常三手", lank: "大", aura: "opti"},
     }
   },
 

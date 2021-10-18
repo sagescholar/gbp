@@ -125,6 +125,10 @@ export default function BuildEquipedWeaponButton(props) {
             <Card>
               <AppbarEquiped
                 name = {weapon_name}
+                parentDeleteEquiped = {deleteEquiped}
+                id = {key}
+                number = {num}
+                parentUpdateEquipedShow = {updateEquipedShow}
               />
               <div style={{ display: "flex", width: "300px", height: "100px" }}>
                 <div
@@ -142,8 +146,11 @@ export default function BuildEquipedWeaponButton(props) {
                   />
                 </div>
                 <div>
-                  <a style={{fontSize:"9px"}}>TEST SPACE</a>
-                  <hr />
+                  <a style={{fontSize:"9px"}}>ATK:{weapons[weapon_name].atk} 
+                  HP:{weapons[weapon_name].hp} 
+                  TYPE:{weapons[weapon_name].type}
+                  SLV:{weapons[weapon_name].skill_level} 
+                  </a>
                   {bool_ex_skill && (
                     <>
                       {buildExSkillButton(1, key)}

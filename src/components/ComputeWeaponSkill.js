@@ -33,7 +33,6 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
     */
     Object.keys(list).forEach((key) => {
       obj_equiped_weapon[CNT] = weapons[list[key].name];
-      obj_equiped_weapon[CNT]["skill_level"] = "15";
       CNT += 1;
     })
 
@@ -58,7 +57,7 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
         if(branch.includes(skill_name)){
           Object.keys(ELEMENT_INTERFACE).forEach((ele)=>{
             obj_output[skill_name][ele] += EX_SKILL[skill_name](HP,skill_lank)
-            //console.log(obj_output[skill_name])
+            console.log(obj_output[skill_name])
           })
         }
         })

@@ -1,35 +1,49 @@
+import Tooltip from "@material-ui/core/Tooltip";
 
-export default function AppbarEquiped(props){
+export default function AppbarEquiped(props) {
+  //const state_toggle_summon = props.parent_state_toggle_summon
+  //const setStateToggleSummon = props.parentSetStateToggleSummon
+  //const setStateSummonWindow = props.parentSetStateSummonWindow
+  const name = props.name;
+  const deleteEquiped = props.parentDeleteEquiped;
+  const updateEquipedShow = props.parentUpdateEquipedShow;
+  const ID = props.id;
+  const num = props.number;
 
-    //const state_toggle_summon = props.parent_state_toggle_summon
-    //const setStateToggleSummon = props.parentSetStateToggleSummon
-    //const setStateSummonWindow = props.parentSetStateSummonWindow
-    const name = props.name
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        height: "18px",
+        backgroundColor: "#333333",
+      }}
+    >
+      <a style={{ fontSize: "9px", color: "white" }}>{name}</a>
+      <div style={{ marginLeft: "auto" }}>
+        <Tooltip title="装備から外す">
+          <img
+            style={{
+              width: "15px",
+              height: "15px",
+              marginLeft: "auto",
+              cursor: "pointer",
+            }}
+            onClick={() => deleteEquiped(ID)}
+            src={process.env.PUBLIC_URL + "/images/" + "1048442.png"}
+          />
+        </Tooltip>
 
-    return(
-
-    <div style={{display:"flex",justifyContent:"center",width:"100%",height:"18px",backgroundColor:"#333333"}}>
-                    <a style={{fontSize:"9px",color:"white"}}>{name}</a>
-                    <div style={{marginLeft:"auto" }}>
-                    <img
-                    style={{ width: "15px",height: "15px",marginLeft:"auto",cursor:"pointer" }}
-                    //onClick={()  => setStateToggleSummon(!state_toggle_summon)}
-                    src={
-                    process.env.PUBLIC_URL +
-                    "/images/" +
-                    "834775.png"
-                    }
-                />
-                    
-                    <img
-                    style={{ width: "15px",height: "15px",cursor:"pointer" }}
-                    //onClick={()=>setStateSummonWindow(false)}
-                    src={
-                    process.env.PUBLIC_URL +
-                    "/images/" +
-                    "2550273.png"
-                    }
-                /></div>
-                    </div>
-    )
+        <Tooltip title="閉じる">
+          <img
+            style={{ width: "15px", height: "15px", cursor: "pointer" }}
+            onClick={() => updateEquipedShow(ID)}
+            updateEquipedShow
+            src={process.env.PUBLIC_URL + "/images/" + "2550273.png"}
+          />
+        </Tooltip>
+      </div>
+    </div>
+  );
 }

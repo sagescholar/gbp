@@ -1,7 +1,7 @@
 import { computeWeaponSkill } from "./ComputeWeaponSkill";
 import { Box, Card } from "@material-ui/core";
 import cloneDeep from "lodash.clonedeep";
-import {useState} from 'react'
+import { useState } from "react";
 
 import {
   CartesianGrid,
@@ -13,13 +13,13 @@ import {
 } from "recharts";
 import Draggable from "react-draggable";
 import AppbarChart from "../layouts/AppbarChart";
+import { ELEMENT_ICON_INTERFACE } from "../data/ELEMENT";
 
 export default function GenerateComputeChart(props) {
-  const parent_state_list_equiped = props.parent_state_list_equiped
-  const parent_state_list_aura_boost = props.parent_state_list_aura_boost
-  const parent_state_YMAX = props.parent_state_YMAX
-  const parentSetStateYMax = props.parentSetStateYMax
-
+  const parent_state_list_equiped = props.parent_state_list_equiped;
+  const parent_state_list_aura_boost = props.parent_state_list_aura_boost;
+  const parent_state_YMAX = props.parent_state_YMAX;
+  const parentSetStateYMax = props.parentSetStateYMax;
 
   let Data = [];
   let Element = ["火", "水", "土", "風", "光", "闇"];
@@ -62,7 +62,54 @@ export default function GenerateComputeChart(props) {
     光2: true,
     闇2: true,
   };
-  const [ state_show_radio, setStateShowRadio] = useState(cloneDeep(Element_isView_2))
+  const [state_show_radio, setStateShowRadio] = useState(
+    cloneDeep(Element_isView_2)
+  );
+
+  const buildChartShow = (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "start",
+        width: "100%",
+        height: "18px",
+        backgroundColor: "#333333",
+      }}
+    >
+      {Object.keys(state_show_radio).map((key) => (
+        <>
+          {key.substr(0, 1) == "火" && (
+            <a style={{ color: "white", fontSize: "11px" }}>
+              Chart[{key.substr(-1)}]
+            </a>
+          )}
+          <a
+            onClick={() => {
+              let content = cloneDeep(state_show_radio);
+              content[key] = !content[key];
+              setStateShowRadio(content);
+            }}
+          >
+            <img
+              style={{
+                height: "15px",
+                width: "15px",
+                opacity: "1.0",
+                opacity: state_show_radio[key] ? "1" : "0.4",
+                cursor: "pointer"
+              }}
+              src={
+                process.env.PUBLIC_URL +
+                "/" +
+                ELEMENT_ICON_INTERFACE[key.substr(0, 1)] +
+                ".png"
+              }
+            />
+          </a>
+        </>
+      ))}
+    </div>
+  );
 
   let Rsl_compute = undefined;
   let Rsl_push = undefined;
@@ -82,7 +129,11 @@ export default function GenerateComputeChart(props) {
       );
       Element.map((e) => {
         Rsl_push[e + String(index)] = Rsl_compute[e];
-        if (nam == 50 && Rsl_compute[e] > 1　&& state_show_radio[e + String(index)])
+        if (
+          nam == 50 &&
+          Rsl_compute[e] > 1 &&
+          state_show_radio[e + String(index)]
+        )
           Element_isView[e + String(index)] = true;
       });
     }
@@ -91,55 +142,46 @@ export default function GenerateComputeChart(props) {
 
   return (
     <Draggable>
-    <Card >
-      <AppbarChart />
-      <Box sx={{ padding: "30px", bgcolor: 'background.paper' }}>
-      <LineChart width={500} height={400} data={Data}>
-        {Element.map((e) => {
-          if (!Element_isView[e + String(1)]) return;
-          return (
-            <Line
-              type="monotone"
-              dataKey={e + String(1)}
-              stroke={Element_c[e]}
-              fillOpacity={0}
-              fill={Element_c[e]}
-            />
-          );
-        })}
-        {Element.map((e) => {
-          if (!Element_isView[e + String(2)]) return;
-          return (
-            <Line
-              type="monotone"
-              dataKey={e + String(2)}
-              stroke={Element_c[e]}
-              fillOpacity={0}
-              fill={Element_c[e]}
-              strokeDasharray="3 4 5"
-            />
-          );
-        })}
-        <CartesianGrid strokeDasharray="3 3" />
-        <YAxis domain={[0.0, parent_state_YMAX]} />
-        <XAxis dataKey="name" />
-        <Tooltip />
-      </LineChart>
-    </Box>
-    <Box>
-      {Object.keys(state_show_radio).map((key)=>
-        <a
-          onClick={()=> {
-            let content = cloneDeep(state_show_radio)
-            content[key] = !content[key]
-            setStateShowRadio(content)
-          }}
-        >
-        {state_show_radio[key] ? "○" : "●"}
-        </a>
-      )}
-    </Box>
-    
-    </Card></Draggable>
+      <Card>
+        <AppbarChart
+          parentSetStateShowGraph={props.parentSetStateShowGraph}
+          parent_state_show_graph={props.parent_state_show_graph}
+        />
+        <Box sx={{ padding: "30px", bgcolor: "background.paper" }}>
+          <LineChart width={500} height={400} data={Data}>
+            {Element.map((e) => {
+              if (!Element_isView[e + String(1)]) return;
+              return (
+                <Line
+                  type="monotone"
+                  dataKey={e + String(1)}
+                  stroke={Element_c[e]}
+                  fillOpacity={0}
+                  fill={Element_c[e]}
+                />
+              );
+            })}
+            {Element.map((e) => {
+              if (!Element_isView[e + String(2)]) return;
+              return (
+                <Line
+                  type="monotone"
+                  dataKey={e + String(2)}
+                  stroke={Element_c[e]}
+                  fillOpacity={0}
+                  fill={Element_c[e]}
+                  strokeDasharray="3 4 5"
+                />
+              );
+            })}
+            <CartesianGrid strokeDasharray="3 3" />
+            <YAxis domain={[0.0, parent_state_YMAX]} />
+            <XAxis dataKey="name" />
+            <Tooltip />
+          </LineChart>
+        </Box>
+        <Box>{buildChartShow}</Box>
+      </Card>
+    </Draggable>
   );
-};
+}

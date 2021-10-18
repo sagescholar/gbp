@@ -40,8 +40,8 @@ function App() {
   const [state_view, setStateView] = useState("top");
   const [state_summon_window, setStateSummonWindow] = useState(false);
 
-  const [state_show_graph_1,setStateShowGraph1] = useState(false)
-  const [state_show_graph_2,setStateShowGraph2] = useState(false)
+  const [state_show_graph_1, setStateShowGraph1] = useState(false);
+  const [state_show_graph_2, setStateShowGraph2] = useState(false);
 
   const [state_list_equiped, setStateAddEquiped] = React.useState({
     1: {},
@@ -75,7 +75,6 @@ function App() {
     padding: "60px 100px",
     borderRadius: "10px",
   };
-
 
   /* MODAL END */
 
@@ -201,7 +200,7 @@ function App() {
                     ▼
                   </Button>
                 </div>
-                
+
                 <div
                   class="wrap-chart"
                   style={{
@@ -210,15 +209,17 @@ function App() {
                     justifyContent: "center",
                   }}
                 >
-                {state_show_graph_1 && (
-                  <GenerateComputeChart
-                    parent_state_list_equiped = {state_list_equiped}
-                    parent_state_list_aura_boost = {state_list_aura_boost}
-                    parent_state_YMAX = {state_YMAX}
-                    parentSetStateYMAX = {setStateYMAX}
-                  />)}
+                  {state_show_graph_1 && (
+                    <GenerateComputeChart
+                      parent_state_list_equiped={state_list_equiped}
+                      parent_state_list_aura_boost={state_list_aura_boost}
+                      parent_state_YMAX={state_YMAX}
+                      parentSetStateYMAX={setStateYMAX}
+                      parentSetStateShowGraph = {setStateShowGraph1}
+                      parent_state_show_graph = {state_show_graph_1}
+                    />
+                  )}
                 </div>
-                
 
                 <div
                   class="wrap-hp-slider"
@@ -250,7 +251,6 @@ function App() {
                     state_hp
                   )}
                 </div>
-                
               </div>
 
               {/* 石選択 */}
@@ -285,7 +285,7 @@ function App() {
               </div>
             </div>
           </div>
-          
+
           {/* BOTTOM MENU */}
 
           <div
@@ -354,111 +354,113 @@ function App() {
             </Button>
 
             {/* Graph Show Button */}
-            <Button  onClick={() => setStateShowGraph1(!state_show_graph_1)}>
-                  <img
-                  style={{width: "30px"}}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/" +
-                    "893216.png"
-                  }
-                  />
+            <Button onClick={() => setStateShowGraph1(!state_show_graph_1)}>
+              <img
+                style={{ width: "30px" }}
+                src={process.env.PUBLIC_URL + "/images/" + "893216.png"}
+              />
             </Button>
             <Button onClick={() => setStateShowGraph2(!state_show_graph_2)}>
-                  <img
-                  style={{width: "30px"}}
-                  src={
-                    process.env.PUBLIC_URL +
-                    "/images/" +
-                    "893216.png"
-                  }
-                  />
+              <img
+                style={{ width: "30px" }}
+                src={process.env.PUBLIC_URL + "/images/" + "893216.png"}
+              />
             </Button>
             {/* Graph Show Button End */}
-
           </div>
           {/* BOTTOM MENU END */}
 
           {state_summon_window && (
-                <Draggable>
-                <div
-                  style={{
-                    position: "fixed",
-                    bottom: "45px",
-                    right: "10px",
-                    width: "200px",
-                    //display: "flex",
-                    alignItems: "start",
-                    justifyContent: "space-between",
-                    border: "0px solid black",
-                  }}
-                >
-                <Card>  
-                <AppbarSummons
-                  parent_state_toggle_summon = {state_toggle_summon}
-                  parentSetStateToggleSummon = {setStateToggleSummon}
-                  parentSetStateSummonWindow = {setStateSummonWindow}
-                />
-                <div style={{display: "flex",
-                alignItems: "start",justifyContent: "space-between"}}>
-                
-                  {state_toggle_summon && (
-                    <BuildSummonsButton
-                      main_or_friend="MAIN"
-                      parentSetStateSmnToggle={setStateSmnToggle}
-                      parent_state_smn_toggle={state_smn_toggle}
-                      parentSetStateUpdateAura={setStateUpdateAura}
-                      parent_state_search_element={state_weapon_search_element}
-                      parent_state_list_aura_boost={state_list_aura_boost}
-                      number={"1"}
-                    />
-                  )}
-                  {!state_toggle_summon && (
-                    <BuildSummonsButton
-                      main_or_friend="FRIEND"
-                      parentSetStateSmnToggle={setStateSmnToggle}
-                      parent_state_smn_toggle={state_smn_toggle}
-                      parentSetStateUpdateAura={setStateUpdateAura}
-                      parent_state_search_element={state_weapon_search_element}
-                      parent_state_list_aura_boost={state_list_aura_boost}
-                      number={"1"}
-                    />
-                  )}
-                  {state_toggle_summon && (
-                    <BuildSummonsButton
-                      main_or_friend="MAIN"
-                      parentSetStateSmnToggle={setStateSmnToggle}
-                      parent_state_smn_toggle={state_smn_toggle}
-                      parentSetStateUpdateAura={setStateUpdateAura}
-                      parent_state_search_element={state_weapon_search_element}
-                      parent_state_list_aura_boost={state_list_aura_boost}
-                      number={"2"}
-                    />
-                  )}
-                  {!state_toggle_summon && (
-                    <BuildSummonsButton
-                      main_or_friend="FRIEND"
-                      parentSetStateSmnToggle={setStateSmnToggle}
-                      parent_state_smn_toggle={state_smn_toggle}
-                      parentSetStateUpdateAura={setStateUpdateAura}
-                      parent_state_search_element={state_weapon_search_element}
-                      parent_state_list_aura_boost={state_list_aura_boost}
-                      number={"2"}
-                    />
-                  )}
-                  
-                
-                </div></Card>
-                </div></Draggable>
-              )}
+            <Draggable>
+              <div
+                style={{
+                  position: "fixed",
+                  bottom: "45px",
+                  right: "10px",
+                  width: "200px",
+                  //display: "flex",
+                  alignItems: "start",
+                  justifyContent: "space-between",
+                  border: "0px solid black",
+                }}
+              >
+                <Card>
+                  <AppbarSummons
+                    parent_state_toggle_summon={state_toggle_summon}
+                    parentSetStateToggleSummon={setStateToggleSummon}
+                    parentSetStateSummonWindow={setStateSummonWindow}
+                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "start",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {state_toggle_summon && (
+                      <BuildSummonsButton
+                        main_or_friend="MAIN"
+                        parentSetStateSmnToggle={setStateSmnToggle}
+                        parent_state_smn_toggle={state_smn_toggle}
+                        parentSetStateUpdateAura={setStateUpdateAura}
+                        parent_state_search_element={
+                          state_weapon_search_element
+                        }
+                        parent_state_list_aura_boost={state_list_aura_boost}
+                        number={"1"}
+                      />
+                    )}
+                    {!state_toggle_summon && (
+                      <BuildSummonsButton
+                        main_or_friend="FRIEND"
+                        parentSetStateSmnToggle={setStateSmnToggle}
+                        parent_state_smn_toggle={state_smn_toggle}
+                        parentSetStateUpdateAura={setStateUpdateAura}
+                        parent_state_search_element={
+                          state_weapon_search_element
+                        }
+                        parent_state_list_aura_boost={state_list_aura_boost}
+                        number={"1"}
+                      />
+                    )}
+                    {state_toggle_summon && (
+                      <BuildSummonsButton
+                        main_or_friend="MAIN"
+                        parentSetStateSmnToggle={setStateSmnToggle}
+                        parent_state_smn_toggle={state_smn_toggle}
+                        parentSetStateUpdateAura={setStateUpdateAura}
+                        parent_state_search_element={
+                          state_weapon_search_element
+                        }
+                        parent_state_list_aura_boost={state_list_aura_boost}
+                        number={"2"}
+                      />
+                    )}
+                    {!state_toggle_summon && (
+                      <BuildSummonsButton
+                        main_or_friend="FRIEND"
+                        parentSetStateSmnToggle={setStateSmnToggle}
+                        parent_state_smn_toggle={state_smn_toggle}
+                        parentSetStateUpdateAura={setStateUpdateAura}
+                        parent_state_search_element={
+                          state_weapon_search_element
+                        }
+                        parent_state_list_aura_boost={state_list_aura_boost}
+                        number={"2"}
+                      />
+                    )}
+                  </div>
+                </Card>
+              </div>
+            </Draggable>
+          )}
 
           {/*<hr />*/}
         </>
       )}
 
       {/*{buildTable()}*/}
-      
-      
+
       {Footer()}
     </>
   );

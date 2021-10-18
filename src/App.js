@@ -7,7 +7,7 @@ import cloneDeep from "lodash.clonedeep";
 
 import { useModal } from "react-hooks-use-modal";
 import Typography from "@material-ui/core/Typography";
-import { AppBar, Button, Card } from "@material-ui/core";
+import { AppBar, Button, Card, Tooltip } from "@material-ui/core";
 import { Box } from "@material-ui/core";
 
 //COMPONENTS
@@ -33,6 +33,7 @@ import ControlledTooltip from "./components/CastumMaterialUI/ControlledTooltips"
 import Toppage from "./layouts/Toppage";
 import Draggable from "react-draggable";
 import { buildChatLog } from "./components/Firebase/Firebase";
+import AppbarSummons from "./layouts/AppbarSummons";
 
 function App() {
   /* STATE */
@@ -74,6 +75,7 @@ function App() {
     padding: "60px 100px",
     borderRadius: "10px",
   };
+
 
   /* MODAL END */
 
@@ -384,15 +386,22 @@ function App() {
                     position: "fixed",
                     bottom: "45px",
                     right: "10px",
-                    width: "202px",
-                    display: "flex",
-                    alignItems: "center",
+                    width: "200px",
+                    //display: "flex",
+                    alignItems: "start",
                     justifyContent: "space-between",
                     border: "0px solid black",
                   }}
                 >
-                
                 <Card>  
+                <AppbarSummons
+                  parent_state_toggle_summon = {state_toggle_summon}
+                  parentSetStateToggleSummon = {setStateToggleSummon}
+                  parentSetStateSummonWindow = {setStateSummonWindow}
+                />
+                <div style={{display: "flex",
+                alignItems: "start",justifyContent: "space-between"}}>
+                
                   {state_toggle_summon && (
                     <BuildSummonsButton
                       main_or_friend="MAIN"
@@ -415,8 +424,6 @@ function App() {
                       number={"1"}
                     />
                   )}
-                </Card>
-                <Card>
                   {state_toggle_summon && (
                     <BuildSummonsButton
                       main_or_friend="MAIN"
@@ -440,7 +447,8 @@ function App() {
                     />
                   )}
                   
-                </Card>
+                
+                </div></Card>
                 </div></Draggable>
               )}
 

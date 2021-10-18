@@ -13,6 +13,8 @@ import Typography from "@material-ui/core/Typography";
 import { useState } from "react";
 import { Button, Card } from "@material-ui/core";
 import { EXSKILLICON } from "../data/WEAPONEXSKILL";
+import AppbarEquiped from "../layouts/AppbarEquiped";
+import Draggable from "react-draggable";
 
 export default function BuildEquipedWeaponButton(props) {
   const num = String(props.number);
@@ -108,8 +110,10 @@ export default function BuildEquipedWeaponButton(props) {
 
     return (
       <>
+        
         {/*TODO: POPUP CONTROLLER -> weaponの元にATK,HPの追記*/}
         {open && (
+          <Draggable>
           <div
             /*onClick={() => updateEquipedShow(key)}*/ style={{
               position: "fixed",
@@ -119,6 +123,9 @@ export default function BuildEquipedWeaponButton(props) {
             }}
           >
             <Card>
+              <AppbarEquiped
+                name = {weapon_name}
+              />
               <div style={{ display: "flex", width: "300px", height: "100px" }}>
                 <div
                   style={{
@@ -135,17 +142,7 @@ export default function BuildEquipedWeaponButton(props) {
                   />
                 </div>
                 <div>
-                  <a style={{ fontSize: "10px" }}>{weapon_name}</a>
-                  <Button onClick={()=>deleteEquiped(key)}>
-                  <img
-                    style={{ width: "15px",paddingRight: "auto" }}
-                    src={
-                      process.env.PUBLIC_URL +
-                      "/images/" +
-                      "2550273.png"
-                    }
-                  />
-                  </Button>
+                  <a style={{fontSize:"9px"}}>TEST SPACE</a>
                   <hr />
                   {bool_ex_skill && (
                     <>
@@ -159,7 +156,9 @@ export default function BuildEquipedWeaponButton(props) {
               </div>
             </Card>
           </div>
+          </Draggable>
         )}
+        
       </>
     );
   };

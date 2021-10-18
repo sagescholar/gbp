@@ -652,6 +652,7 @@ export const weapons = {
       //2: { e: "風", type: "通常三手", lank: "大", aura: "opti"},
     }
   },
+  ...OMEGA_WEAPON,
   ...GRAND_WEAPON,
   ...DARK_OPUS_WEAPON,
   ...SERAPHIC_WEAPON,

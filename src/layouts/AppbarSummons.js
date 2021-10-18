@@ -1,3 +1,4 @@
+import { Tooltip } from "@material-ui/core"
 
 export default function AppbarSummons(props){
 
@@ -8,8 +9,9 @@ export default function AppbarSummons(props){
     return(
 
     <div style={{display:"flex",justifyContent:"center",width:"100%",height:"18px",backgroundColor:"#333333"}}>
-                    <a style={{fontSize:"9px",color:"white"}}>SUMMONS SETTING</a>
+                    <a style={{fontSize:"9px",color:"white"}}>{!state_toggle_summon ? "フレンド" : "メイン"}</a>
                     <div style={{marginLeft:"auto" }}>
+                    <Tooltip title={(state_toggle_summon ? "フレンド" : "メイン") + "に切り替える"}>
                     <img
                     style={{ width: "15px",height: "15px",marginLeft:"auto",cursor:"pointer" }}
                     onClick={()  => setStateToggleSummon(!state_toggle_summon)}
@@ -18,8 +20,9 @@ export default function AppbarSummons(props){
                     "/images/" +
                     "834775.png"
                     }
-                />
                     
+                /></Tooltip>
+                    <Tooltip title="閉じる">
                     <img
                     style={{ width: "15px",height: "15px",cursor:"pointer" }}
                     onClick={()=>setStateSummonWindow(false)}
@@ -28,7 +31,7 @@ export default function AppbarSummons(props){
                     "/images/" +
                     "2550273.png"
                     }
-                /></div>
+                /></Tooltip></div>
                     </div>
     )
 }

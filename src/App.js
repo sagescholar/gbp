@@ -303,6 +303,7 @@ function App() {
               backgroundColor: "#ededf7",
             }}
           >
+            <Tooltip title="武器をリセット">
             <Button onClick={() => setStateAddEquiped({ 1: {}, 2: {} })}>
               <img
                 style={{ width: "30px" }}
@@ -312,18 +313,8 @@ function App() {
                   "outline_delete_black_24dp.png"
                 }
               />
-            </Button>
-            <Button onClick={() => setStateToggleSummon(!state_toggle_summon)}>
-              <img
-                style={{ width: "30px" }}
-                src={
-                  process.env.PUBLIC_URL +
-                  "/images/" +
-                  "outline_upgrade_black_24dp.png"
-                }
-              />
-              {state_toggle_summon ? "MAIN" : "FRIEND"}
-            </Button>
+            </Button></Tooltip>
+            <Tooltip title="召喚石を設定する">
             <Button onClick={() => setStateSummonWindow(!state_summon_window)}>
               <img
                 style={{ width: "30px" }}
@@ -351,15 +342,17 @@ function App() {
                   }
                 />
               )}
-            </Button>
+            </Button></Tooltip>
 
+            
             {/* Graph Show Button */}
+            <Tooltip title="グラフを表示 倍率">
             <Button onClick={() => setStateShowGraph1(!state_show_graph_1)}>
               <img
                 style={{ width: "30px" }}
                 src={process.env.PUBLIC_URL + "/images/" + "893216.png"}
               />
-            </Button>
+            </Button></Tooltip>
             <Button onClick={() => setStateShowGraph2(!state_show_graph_2)}>
               <img
                 style={{ width: "30px" }}

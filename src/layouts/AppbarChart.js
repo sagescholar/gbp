@@ -32,12 +32,12 @@ export default function AppbarChart(props) {
           //onClick={()  => setStateToggleSummon(!state_toggle_summon)}
           src={process.env.PUBLIC_URL + "/images/" + "834775.png"}
         />
-
+        <Tooltip title="閉じる">
         <img
           style={{ width: "15px", height: "15px", cursor: "pointer" }}
           onClick={()=>setStateShowGraph(false)}
           src={process.env.PUBLIC_URL + "/images/" + "2550273.png"}
-        />
+        /></Tooltip>
       </div>
     </div>
   );

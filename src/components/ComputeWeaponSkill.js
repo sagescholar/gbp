@@ -18,8 +18,11 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
     /*AURA TEST*/
     let aura_boost = aura;
     console.log(aura_boost)
-
     /*AURA TEST END*/
+
+    /*SUM ATK */
+    let SUM_ATK = 0
+    let SUM_HP = 0
   
     /*HP TEST*/
     let hp = HP;
@@ -33,6 +36,8 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
     */
     Object.keys(list).forEach((key) => {
       obj_equiped_weapon[CNT] = weapons[list[key].name];
+      SUM_ATK += weapons[list[key].name].atk;
+      SUM_HP += weapons[list[key].name].hp;
       CNT += 1;
     })
 
@@ -130,6 +135,10 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
                   })
               )
           }
+          <div style={{fontSize: "12px", textAlign: "left", paddingBottom: "5px"}}>
+          ATK: {SUM_ATK}<br/>
+          HP: {SUM_HP}
+          </div>
           </div>
       )
     }else{

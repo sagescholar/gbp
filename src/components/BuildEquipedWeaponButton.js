@@ -224,7 +224,7 @@ export default function BuildEquipedWeaponButton(props) {
                   style={{
                     backgroundColor: !isStateShow ? "#333333" : "#66a3ff",
                     color: "#eeeeee",
-                    cursor: "default",
+                    cursor: "pointer",
                   }}
                   class="btn"
                 >

@@ -44,6 +44,7 @@ function App() {
   const [state_show_graph_1, setStateShowGraph1] = useState(false);
   const [state_show_graph_detail_1, setStateShowGraphDetail1] = useState(false);
   const [state_show_graph_2, setStateShowGraph2] = useState(false);
+  const [state_show_graph_detail_2, setStateShowGraphDetail2] = useState(false);
 
   const [state_list_equiped, setStateAddEquiped] = React.useState({
     1: {},
@@ -185,9 +186,11 @@ function App() {
               {/* 計算結果 */}
               
               <div class="weap-compute-result" style={{ flexGrow: "1" }}>
+                
                 <div
                   style={{
                     backgroundColor: "#666666",
+                    
                     display: "flex",
                     height: "40px",
                     width: "100%",
@@ -195,15 +198,18 @@ function App() {
                     alignItems: "center",
                   }}
                 />
+                {/* 倍率 */}
                 <Draggable handle="#imhandle"><div style={{maxWidth:"550px"}}>
                 <div
-                  
+                  className="draggable-wrapper"
                   style={{
+                    position: "relative",
                     display: "flex",
                     width: "100%",
                     justifyContent: "center",
                   }}
                 >
+                  
                   {state_show_graph_1 && (
                     <GenerateComputeChart
                       parent_state_list_equiped={state_list_equiped}
@@ -219,7 +225,8 @@ function App() {
                 </div>
                 {state_show_graph_detail_1 && (
                 <Draggable handle="#imhandle-child"><Card>
-                <AppbarChartDetail 
+                <AppbarChartDetail
+                    parent_state_show_graph_detail = {state_show_graph_detail_1}
                     parentSetStateShowGraphDetail = {setStateShowGraphDetail1}
                 />
                 <div style={{
@@ -249,8 +256,76 @@ function App() {
                       state_hp
                     )}
                   </div>
-                </div></Card></Draggable>)}</div>
+                </div></Card></Draggable>)}
+                </div>
                 </Draggable>
+                {/* 倍率 終わり*/}
+
+                {/* 予測ダメージ */}
+                <Draggable handle="#imhandle"><div style={{maxWidth:"550px"}}>
+                <div
+                  className="draggable-wrapper"
+                  style={{
+                    position: "relative",
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "center",
+                  }}
+                >
+                  
+                  {state_show_graph_2 && (
+                    <GenerateComputeChart
+                      parent_state_list_equiped={state_list_equiped}
+                      parent_state_list_aura_boost={state_list_aura_boost}
+                      parent_state_YMAX={state_YMAX}
+                      parentSetStateYMAX={setStateYMAX}
+                      parentSetStateShowGraph = {setStateShowGraph2}
+                      parent_state_show_graph = {state_show_graph_2}
+                      parentSetStateShowGraphDetail = {setStateShowGraphDetail2}
+                      parent_state_show_graph_detail = {state_show_graph_detail_2}
+                    />
+                  )}
+                </div>
+                {state_show_graph_detail_2 && (
+                <Draggable handle="#imhandle-child"><Card>
+                <AppbarChartDetail
+                    parent_state_show_graph_detail = {state_show_graph_detail_2}
+                    parentSetStateShowGraphDetail = {setStateShowGraphDetail2}
+                />
+                <div style={{
+                    display: "block",
+                    width: "50%",
+                    justifyContent: "center",
+                    alignItems:"center"
+                  }}>
+                    <div class="wrap-slider" style={{ width: "50%",}}>
+                      <div style={{ textAlign: "center",}}>
+                        {"RESULT:" + state_hp}
+                      </div>
+                      {SliderHp(state_hp, setStateHp)}
+                    </div>
+
+                  <div
+                    class="wrap-compute-skill"
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {computeWeaponSkill(
+                      state_list_equiped[state_active_equiped_number],
+                      state_list_aura_boost[state_active_equiped_number],
+                      state_hp
+                    )}
+                  </div>
+                </div></Card></Draggable>)}
+                </div>
+                </Draggable>
+                {/* 予測ダメージ 終わり*/}
+                
+
+                
               </div>
 
               {/* 石選択 */}
@@ -347,19 +422,20 @@ function App() {
 
             
             {/* Graph Show Button */}
-            <Tooltip title="グラフを表示 倍率">
+            <Tooltip title="倍率">
             <Button onClick={() => setStateShowGraph1(!state_show_graph_1)}>
               <img
                 style={{ width: "30px" }}
                 src={process.env.PUBLIC_URL + "/images/" + "893216.png"}
               />
             </Button></Tooltip>
+            <Tooltip title="予測ダメージ量">
             <Button onClick={() => setStateShowGraph2(!state_show_graph_2)}>
               <img
                 style={{ width: "30px" }}
                 src={process.env.PUBLIC_URL + "/images/" + "893216.png"}
               />
-            </Button>
+            </Button></Tooltip>
             {/* Graph Show Button End */}
           </div>
           {/* BOTTOM MENU END */}

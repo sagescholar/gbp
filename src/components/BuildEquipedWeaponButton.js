@@ -105,6 +105,7 @@ export default function BuildEquipedWeaponButton(props) {
 
   const controlWindow = (key) => {
     let weapon_name = parent_state_list_equiped[key].name;
+    let bonus = parent_state_list_equiped[key].Bonus;
     let open = parent_state_list_equiped[key].isShow;
     let bool_ex_skill = weapons[parent_state_list_equiped[key].name]["EX_Skill"];
 
@@ -129,6 +130,7 @@ export default function BuildEquipedWeaponButton(props) {
                 id = {key}
                 number = {num}
                 parentUpdateEquipedShow = {updateEquipedShow}
+                bonus = {bonus}
               />
               <div style={{ display: "flex", width: "300px", height: "100px" }}>
                 <div

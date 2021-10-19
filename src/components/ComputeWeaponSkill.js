@@ -38,6 +38,9 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
       obj_equiped_weapon[CNT] = weapons[list[key].name];
       SUM_ATK += weapons[list[key].name].atk;
       SUM_HP += weapons[list[key].name].hp;
+
+      SUM_ATK += list[key].Bonus * 5
+      SUM_HP += list[key].Bonus * 1
       CNT += 1;
     })
 

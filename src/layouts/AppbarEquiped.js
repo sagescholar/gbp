@@ -9,6 +9,7 @@ export default function AppbarEquiped(props) {
   const updateEquipedShow = props.parentUpdateEquipedShow;
   const ID = props.id;
   const num = props.number;
+  const bonus = props.bonus
 
   return (
     <div
@@ -21,7 +22,7 @@ export default function AppbarEquiped(props) {
         backgroundColor: "#333333",
       }}
     >
-      <a style={{ fontSize: "9px", color: "white" }}>{name}</a>
+      <a style={{ fontSize: "9px", color: "white" }}>{name}&nbsp;+{bonus}</a>
       <div style={{ marginLeft: "auto" }}>
         <Tooltip title="装備から外す">
           <img

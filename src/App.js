@@ -186,6 +186,7 @@ function App() {
               <div class="weap-compute-result" style={{ flexGrow: "1" }}>
                 <div
                   style={{
+                    backgroundColor: "#666666",
                     display: "flex",
                     height: "40px",
                     width: "100%",
@@ -201,7 +202,7 @@ function App() {
                     ▼
                   </Button>
                 </div>
-                <Draggable handle="#imhandle"><div style={{width:"100%"}}>
+                <Draggable handle="#imhandle"><div style={{maxWidth:"550px"}}>
                 <div
                   
                   style={{
@@ -224,37 +225,44 @@ function App() {
                   )}
                 </div>
                 {state_show_graph_detail_1 && (
-                <Card>
-                <div
-                  className="wrap-hp-slider"
-                  style={{
-                    display: "flex",
+                <Draggable><Card>
+                <div style={{
+                    display: "block",
                     width: "100%",
                     justifyContent: "center",
-                  }}
-                >
-                  <div class="wrap-slider" style={{ width: "20%",}}>
-                    <div style={{ textAlign: "center",}}>
-                      {"RESULT:" + state_hp}
+                    alignItems:"center"
+                  }}>
+                  <div
+                    className="wrap-hp-slider"
+                    style={{
+                      display: "flex",
+                      width: "70%",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div class="wrap-slider" style={{ width: "40%",}}>
+                      <div style={{ textAlign: "center",}}>
+                        {"RESULT:" + state_hp}
+                      </div>
+                      {SliderHp(state_hp, setStateHp)}
                     </div>
-                    {SliderHp(state_hp, setStateHp)}
                   </div>
-                </div>
 
-                <div
-                  class="wrap-compute-skill"
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  {computeWeaponSkill(
-                    state_list_equiped[state_active_equiped_number],
-                    state_list_aura_boost[state_active_equiped_number],
-                    state_hp
-                  )}
-                </div></Card>)}</div>
+                  <div
+                    class="wrap-compute-skill"
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {computeWeaponSkill(
+                      state_list_equiped[state_active_equiped_number],
+                      state_list_aura_boost[state_active_equiped_number],
+                      state_hp
+                    )}
+                  </div>
+                </div></Card></Draggable>)}</div>
                 </Draggable>
               </div>
 

@@ -120,7 +120,7 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
     
     if(isView){
       return (
-          <div style={{display: "flex", flexFlow: "column", padding: "0px 60px"}}>
+          <div style={{width:"100%",display: "flex", flexFlow: "column", padding: "0px 60px"}}>
           {
               Object.keys(obj_output).map((skill_name) => 
                   Object.keys(obj_output[skill_name]).map((skill_element) => {

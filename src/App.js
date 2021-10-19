@@ -41,6 +41,7 @@ function App() {
   const [state_summon_window, setStateSummonWindow] = useState(false);
 
   const [state_show_graph_1, setStateShowGraph1] = useState(false);
+  const [state_show_graph_detail_1, setStateShowGraphDetail1] = useState(false);
   const [state_show_graph_2, setStateShowGraph2] = useState(false);
 
   const [state_list_equiped, setStateAddEquiped] = React.useState({
@@ -181,11 +182,11 @@ function App() {
               </div>
 
               {/* 計算結果 */}
+              
               <div class="weap-compute-result" style={{ flexGrow: "1" }}>
                 <div
                   style={{
                     display: "flex",
-                    backgroundColor: "#666666",
                     height: "40px",
                     width: "100%",
                     justifyContent: "center",
@@ -200,9 +201,9 @@ function App() {
                     ▼
                   </Button>
                 </div>
-
+                <Draggable handle="#imhandle"><div style={{width:"100%"}}>
                 <div
-                  class="wrap-chart"
+                  
                   style={{
                     display: "flex",
                     width: "100%",
@@ -217,20 +218,23 @@ function App() {
                       parentSetStateYMAX={setStateYMAX}
                       parentSetStateShowGraph = {setStateShowGraph1}
                       parent_state_show_graph = {state_show_graph_1}
+                      parentSetStateShowGraphDetail = {setStateShowGraphDetail1}
+                      parent_state_show_graph_detail = {state_show_graph_detail_1}
                     />
                   )}
                 </div>
-
+                {state_show_graph_detail_1 && (
+                <Card>
                 <div
-                  class="wrap-hp-slider"
+                  className="wrap-hp-slider"
                   style={{
                     display: "flex",
                     width: "100%",
                     justifyContent: "center",
                   }}
                 >
-                  <div class="wrap-slider" style={{ width: "20%" }}>
-                    <div style={{ textAlign: "center" }}>
+                  <div class="wrap-slider" style={{ width: "20%",}}>
+                    <div style={{ textAlign: "center",}}>
                       {"RESULT:" + state_hp}
                     </div>
                     {SliderHp(state_hp, setStateHp)}
@@ -250,7 +254,8 @@ function App() {
                     state_list_aura_boost[state_active_equiped_number],
                     state_hp
                   )}
-                </div>
+                </div></Card>)}</div>
+                </Draggable>
               </div>
 
               {/* 石選択 */}
@@ -316,6 +321,7 @@ function App() {
             </Button></Tooltip>
             <Tooltip title="召喚石を設定する">
             <Button onClick={() => setStateSummonWindow(!state_summon_window)}>
+              <div style={{display:"flex",justifyContent:"center",width:"90px",alignItems:"center"}}>
               <img
                 style={{ width: "30px" }}
                 src={
@@ -341,7 +347,7 @@ function App() {
                     "SummonSeries_Six_Dragons_icon.png"
                   }
                 />
-              )}
+              )}</div>
             </Button></Tooltip>
 
             
@@ -371,6 +377,7 @@ function App() {
                   bottom: "45px",
                   right: "10px",
                   width: "200px",
+                  height: "500px",
                   //display: "flex",
                   alignItems: "start",
                   justifyContent: "space-between",

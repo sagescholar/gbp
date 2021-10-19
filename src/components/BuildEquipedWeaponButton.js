@@ -146,10 +146,10 @@ export default function BuildEquipedWeaponButton(props) {
                   />
                 </div>
                 <div>
-                  <a style={{fontSize:"9px"}}>ATK:{weapons[weapon_name].atk} 
-                  HP:{weapons[weapon_name].hp} 
-                  TYPE:{weapons[weapon_name].type}
-                  SLV:{weapons[weapon_name].skill_level} 
+                  <a style={{fontSize:"9px"}}>ATK:{weapons[weapon_name].atk}&nbsp;
+                  HP:{weapons[weapon_name].hp}&nbsp;
+                  TYPE:{weapons[weapon_name].type}&nbsp;
+                  SLV:{weapons[weapon_name].skill_level}&nbsp;
                   </a>
                   {bool_ex_skill && (
                     <>

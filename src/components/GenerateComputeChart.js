@@ -141,11 +141,12 @@ export default function GenerateComputeChart(props) {
   }
 
   return (
-    <Draggable>
       <Card>
         <AppbarChart
           parentSetStateShowGraph={props.parentSetStateShowGraph}
           parent_state_show_graph={props.parent_state_show_graph}
+          parentSetStateShowGraphDetail={props.parentSetStateShowGraphDetail}
+          parent_state_show_graph_detail={props.parent_state_show_graph_detail}
         />
         <Box sx={{ padding: "30px", bgcolor: "background.paper" }}>
           <LineChart width={500} height={400} data={Data}>
@@ -182,6 +183,5 @@ export default function GenerateComputeChart(props) {
         </Box>
         <Box>{buildChartShow}</Box>
       </Card>
-    </Draggable>
   );
 }

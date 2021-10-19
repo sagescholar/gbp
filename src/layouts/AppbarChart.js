@@ -7,9 +7,12 @@ export default function AppbarChart(props) {
 
   const setStateShowGraph = props.parentSetStateShowGraph
   const state_show_graph = props.parent_state_show_graph
+  const setStateShowGraphDetail = props.parentSetStateShowGraphDetail
+  const state_show_graph_detail = props.parent_state_show_graph_detail
 
   return (
     <div
+      id="imhandle"
       style={{
         display: "flex",
         justifyContent: "center",
@@ -22,6 +25,7 @@ export default function AppbarChart(props) {
         Chart
       </a>
       <div style={{ marginLeft: "auto" }}>
+        <Tooltip title={!state_show_graph_detail ? "計算詳細表示" : "計算詳細閉じる"}>
         <img
           style={{
             width: "15px",
@@ -29,9 +33,9 @@ export default function AppbarChart(props) {
             marginLeft: "auto",
             cursor: "pointer",
           }}
-          //onClick={()  => setStateToggleSummon(!state_toggle_summon)}
+          onClick={()  => setStateShowGraphDetail(!state_show_graph_detail)}
           src={process.env.PUBLIC_URL + "/images/" + "834775.png"}
-        />
+        /></Tooltip>
         <Tooltip title="閉じる">
         <img
           style={{ width: "15px", height: "15px", cursor: "pointer" }}

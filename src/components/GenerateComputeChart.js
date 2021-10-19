@@ -19,7 +19,6 @@ export default function GenerateComputeChart(props) {
   const parent_state_list_equiped = props.parent_state_list_equiped;
   const parent_state_list_aura_boost = props.parent_state_list_aura_boost;
   const parent_state_YMAX = props.parent_state_YMAX;
-  const parentSetStateYMax = props.parentSetStateYMax;
 
   let Data = [];
   let Element = ["火", "水", "土", "風", "光", "闇"];
@@ -147,6 +146,8 @@ export default function GenerateComputeChart(props) {
           parent_state_show_graph={props.parent_state_show_graph}
           parentSetStateShowGraphDetail={props.parentSetStateShowGraphDetail}
           parent_state_show_graph_detail={props.parent_state_show_graph_detail}
+          parentSetStateYMAX = {props.parentSetStateYMAX}
+          parent_state_YMAX = {props.parent_state_YMAX}
         />
         <Box sx={{ padding: "30px", bgcolor: "background.paper" }}>
           <LineChart width={500} height={400} data={Data}>

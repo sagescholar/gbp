@@ -9,11 +9,14 @@ export default function AppbarChart(props) {
   const state_show_graph = props.parent_state_show_graph
   const setStateShowGraphDetail = props.parentSetStateShowGraphDetail
   const state_show_graph_detail = props.parent_state_show_graph_detail
+  const state_YMAX = props.parent_state_YMAX
+  const setStateYMAX = props.parentSetStateYMAX
 
   return (
     <div
       id="imhandle"
       style={{
+        cursor:"move",
         display: "flex",
         justifyContent: "center",
         width: "100%",
@@ -25,6 +28,31 @@ export default function AppbarChart(props) {
         Chart
       </a>
       <div style={{ marginLeft: "auto" }}>
+
+      <Tooltip title="+10">
+        <img
+          style={{
+            width: "12px",
+            height: "12px",
+            marginLeft: "auto",
+            cursor: "pointer",
+            transform: "rotate(180deg)"
+          }}
+          onClick={()  => setStateYMAX(state_YMAX - 10.0)}
+          src={process.env.PUBLIC_URL + "/images/" + "892681.png"}
+        /></Tooltip>
+      <a style={{fontSize:"11px",color:"white",cursor:"default"}}>{state_YMAX}</a>
+      <Tooltip title="+10">
+        <img
+          style={{
+            width: "12px",
+            height: "12px",
+            marginLeft: "auto",
+            cursor: "pointer",
+          }}
+          onClick={()  => setStateYMAX(state_YMAX + 10.0)}
+          src={process.env.PUBLIC_URL + "/images/" + "892681.png"}
+        /></Tooltip>
         <Tooltip title={!state_show_graph_detail ? "計算詳細表示" : "計算詳細閉じる"}>
         <img
           style={{

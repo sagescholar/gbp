@@ -13,6 +13,7 @@ export default function AppbarEquiped(props) {
   return (
     <div
       style={{
+        cursor:"move",
         display: "flex",
         justifyContent: "center",
         width: "100%",

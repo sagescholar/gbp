@@ -34,6 +34,7 @@ import Toppage from "./layouts/Toppage";
 import Draggable from "react-draggable";
 import { buildChatLog } from "./components/Firebase/Firebase";
 import AppbarSummons from "./layouts/AppbarSummons";
+import AppbarChartDetail from "./layouts/AppbarChartDetail"
 
 function App() {
   /* STATE */
@@ -193,15 +194,7 @@ function App() {
                     justifyContent: "center",
                     alignItems: "center",
                   }}
-                >
-                  <Button onClick={() => setStateYMAX(state_YMAX + 10.0)}>
-                    ▲
-                  </Button>
-                  {state_YMAX}
-                  <Button onClick={() => setStateYMAX(state_YMAX - 10.0)}>
-                    ▼
-                  </Button>
-                </div>
+                />
                 <Draggable handle="#imhandle"><div style={{maxWidth:"550px"}}>
                 <div
                   
@@ -225,28 +218,22 @@ function App() {
                   )}
                 </div>
                 {state_show_graph_detail_1 && (
-                <Draggable><Card>
+                <Draggable handle="#imhandle-child"><Card>
+                <AppbarChartDetail 
+                    parentSetStateShowGraphDetail = {setStateShowGraphDetail1}
+                />
                 <div style={{
                     display: "block",
-                    width: "100%",
+                    width: "50%",
                     justifyContent: "center",
                     alignItems:"center"
                   }}>
-                  <div
-                    className="wrap-hp-slider"
-                    style={{
-                      display: "flex",
-                      width: "70%",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div class="wrap-slider" style={{ width: "40%",}}>
+                    <div class="wrap-slider" style={{ width: "50%",}}>
                       <div style={{ textAlign: "center",}}>
                         {"RESULT:" + state_hp}
                       </div>
                       {SliderHp(state_hp, setStateHp)}
                     </div>
-                  </div>
 
                   <div
                     class="wrap-compute-skill"

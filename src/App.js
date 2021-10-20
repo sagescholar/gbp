@@ -67,6 +67,9 @@ function App() {
   const [state_toggle_summon, setStateToggleSummon] = React.useState(true);
   const [state_YMAX, setStateYMAX] = useState(80.0);
 
+  const [state_total_boost,setStateTotalBoost] = useState(cloneDeep(CALCULATE_OUT_INTERFACE))
+  const [state_total_atk,setStateTotalAtk] = useState(0)
+
   /* STATE END */
 
   /* MODAL */
@@ -199,11 +202,10 @@ function App() {
                   }}
                 />
                 {/* 倍率 */}
-                <Draggable handle="#imhandle"><div style={{maxWidth:"550px"}}>
+                <Draggable handle="#imhandle"><div style={{maxWidth:"550px",position: "absolute",}}>
                 <div
                   className="draggable-wrapper"
                   style={{
-                    position: "relative",
                     display: "flex",
                     width: "100%",
                     justifyContent: "center",
@@ -262,11 +264,12 @@ function App() {
                 {/* 倍率 終わり*/}
 
                 {/* 予測ダメージ */}
-                <Draggable handle="#imhandle"><div style={{maxWidth:"550px"}}>
+                <Draggable handle="#imhandle"><div style={{maxWidth:"550px",position: "absolute"}}>
                 <div
                   className="draggable-wrapper"
                   style={{
-                    position: "relative",
+                    
+                    left: "100px",
                     display: "flex",
                     width: "100%",
                     justifyContent: "center",

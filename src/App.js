@@ -35,6 +35,7 @@ import Draggable from "react-draggable";
 import { buildChatLog } from "./components/Firebase/Firebase";
 import AppbarSummons from "./layouts/AppbarSummons";
 import AppbarChartDetail from "./layouts/AppbarChartDetail"
+import GenerateComputeDamageChart from "./components/GenerateComputeDamageChart"
 
 function App() {
   /* STATE */
@@ -67,8 +68,26 @@ function App() {
   const [state_toggle_summon, setStateToggleSummon] = React.useState(true);
   const [state_YMAX, setStateYMAX] = useState(80.0);
 
-  const [state_total_boost,setStateTotalBoost] = useState(cloneDeep(CALCULATE_OUT_INTERFACE))
-  const [state_total_atk,setStateTotalAtk] = useState(0)
+  /*
+  召喚石
+  TODO:
+  1.攻撃力
+  2.サブ効果
+  */
+  const [state_summon_equiped,setStateSummonEquiped] = useState({1:{},2:{}})
+
+  /*
+  MAIN CHARACTER https://gbf.wiki/Main_Character
+  TODO:
+  1. ジョブ
+  2. 攻撃力
+  */
+  const [state_main_character, setStateMainCharacter] = useState({1:{},2:{}}) 
+
+  /*
+  
+  */
+  const [state_list_character, setStateListCharacter] = useState({1:{},2:{}})
 
   /* STATE END */
 
@@ -277,7 +296,7 @@ function App() {
                 >
                   
                   {state_show_graph_2 && (
-                    <GenerateComputeChart
+                    <GenerateComputeDamageChart
                       parent_state_list_equiped={state_list_equiped}
                       parent_state_list_aura_boost={state_list_aura_boost}
                       parent_state_YMAX={state_YMAX}

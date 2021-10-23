@@ -103,3 +103,172 @@ export const STATE_SUMMONS_INTERFACE = {
     FRIEND: cloneDeep(SUMMONS_MAIN_INTERFACE),
 }
 
+export const SUMMONS_OPTIMUS = {
+    アグニス:{
+        element: "火",
+        ATK:3685,
+        HP:1253,
+    },
+    ヴァルナ:{
+        element: "水",
+        ATK:3485,
+        HP:1303,
+    },
+    ティターン:{
+        element: "土",
+        ATK:3163,
+        HP:1505,
+    },
+    ゼピュロス:{
+        element: "風",
+        ATK:3653,
+        HP:1259,
+    },
+    ゼウス:{
+        element: "光",
+        ATK:3608,
+        HP:1285,
+    },
+    ハデス:{
+        element: "闇",
+        ATK:3798,
+        HP:1229,
+    },
+}
+
+export const SUMMONS_BONUS = {
+    セキトバ:{
+        element: "火",
+        ATK:2042,
+        HP:812,
+    },
+    カリュブディス:{
+        element: "水",
+        ATK:1680,
+        HP:900,
+    },
+    マンモス:{
+        element: "土",
+        ATK:2012,
+        HP:818,
+    },
+    オウルキャット:{
+        element: "風",
+        ATK:2057,
+        HP:809,
+    },
+    アルテミス:{
+        element: "光",
+        ATK:2032,
+        HP:814,
+    },
+    ジルニトラ:{
+        element: "闇",
+        ATK:2174,
+        HP:804,
+    },
+}
+
+export const SUMMONS_ARCARUM = {
+    デス:{
+        element: "闇",
+        ATK:2850,
+        HP:1128,
+    },
+    ジャスティス:{
+        element: "水",
+        ATK:2717,
+        HP:1134,
+    },
+    ムーン:{
+        element: "水",
+        ATK:2820,
+        HP:1094,
+    },
+    スター:{
+        element: "光",
+        ATK:2830,
+        HP:1132,
+    },
+    サン:{
+        element: "火",
+        ATK:2837,
+        HP:1090,
+    },
+    デビル:{
+        element: "火",
+        ATK:2737,
+        HP:1130,
+    },
+    ジャッジメント:{
+        element: "風",
+        ATK:2832,
+        HP:1091,
+    },
+    テンペランス:{
+        element: "風",
+        ATK:2732,
+        HP:1131,
+    },
+    ハングドマン:{
+        element: "土",
+        ATK:2825,
+        HP:1093,
+    },
+    タワー:{
+        element: "土",
+        ATK:2722,
+        HP:1133,
+    },
+}
+
+export const SUMMONS_PROVIDENSE = {
+    ベリアル:{
+        element: "闇",
+        ATK:3265,
+        HP:1140,
+    }
+}
+
+export const SUMMONS_ARCHANGEL = {
+    ミカエル:{
+        element: "火",
+        ATK:2240,
+        HP:832,
+    },
+    ガブリエル:{
+        element: "水",
+        ATK:2100,
+        HP:850,
+    },
+    ウリエル:{
+        element: "土",
+        ATK:2180,
+        HP:844,
+    },
+    ラファエル:{
+        element: "風",
+        ATK:1750,
+        HP:930,
+    },
+    メタトロン:{
+        element: "光",
+        ATK:2022,
+        HP:816,
+    },
+    サリエル:{
+        element: "闇",
+        ATK:2155,
+        HP:790,
+    },
+}
+
+export const DATA_SUMMONS = {
+    ...SUMMONS_OPTIMUS,
+    ...SUMMONS_BONUS,
+    ...SUMMONS_ARCARUM,
+    ...SUMMONS_PROVIDENSE,
+    ...SUMMONS_ARCHANGEL
+
+
+}

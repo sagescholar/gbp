@@ -64,6 +64,7 @@ export function computeDamage(list,aura,HP,isView=true) {
     SUM_ATK += ATK_MAINCHARACTER
     SUM_ATK += ATK_SUMMONCHARACTER
     
+    //FIXME: テストモードなので防御値は10固定
     let DEF = 10
 
     let SUM_HP = 0
@@ -148,6 +149,7 @@ export function computeDamage(list,aura,HP,isView=true) {
           let branch_enmity_list = ["通常背水","方陣背水"];
           let branch_damagecap_list = ["ダメージ上限_通常攻撃枠","ダメージ上限_武器枠"]
           let branch_supplement_list = ["与ダメージ上昇_クラフト枠"]
+          let branch_seraphic_list = ["対有利与ダメUP"]
           if(branch_stamina_list.includes(skill_name)){
             obj_output[skill_name][skill_element] +=
             BASE_SKILL[skill_name][skill_lank][skill_level](hp,skill_name,skill_lank,skill_level)*
@@ -166,7 +168,9 @@ export function computeDamage(list,aura,HP,isView=true) {
           }
           else if(branch_supplement_list.includes(skill_name)){
             obj_output[skill_name][skill_element] += skill_lank
-            
+          }
+          else if(branch_seraphic_list.includes(skill_name)){
+            obj_output[skill_name][skill_element] += skill_lank
           }
           else{
             obj_output[skill_name][skill_element] +=
@@ -231,10 +235,17 @@ export function computeDamage(list,aura,HP,isView=true) {
         d_cap += obj_output["ダメージ上限_武器枠"][key]
         rtn[key] = computeDamageCap(rtn[key],d_cap)
       })
-      //与ダメージ上昇
-
 
       //与ダメージUP
+      Object.keys(rtn).map((key) => {
+        let d_seraphic = 0
+        d_seraphic += obj_output["対有利与ダメUP"][key]
+        d_seraphic += 10.0
+        rtn[key] *= (1.0 + d_seraphic / 100.0 )
+      })
+      
+
+      //与ダメージ上昇
 
       return rtn;
     }

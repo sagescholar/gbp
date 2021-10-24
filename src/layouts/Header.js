@@ -24,7 +24,7 @@ export const Header = (parentSetStateAddEquiped,parentSetStateView) => {
     }
     
     return(
-        <div style={{position:"relative",width:"100%",height:"35px", backgroundColor:"#333333"}}>
+        <div style={{position:"relative",width:"100%",height:"40px", backgroundColor:"#333333"}}>
         <div class="head-title" style={{position: "", maxWidth:"1500px",marginLeft: "auto",marginRight:"auto", display:"flex",alignItems:"start"}}>
             
 

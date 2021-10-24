@@ -14,6 +14,7 @@ export const CALCULATE_OUT_INTERFACE = {
     DA率: cloneDeep(ELEMENT_INTERFACE),
     TA率: cloneDeep(ELEMENT_INTERFACE),
     アビ与ダメ: cloneDeep(ELEMENT_INTERFACE),
+
     ダメージ上限_武器枠: cloneDeep(ELEMENT_INTERFACE),
     ダメージ上限_召喚石枠: cloneDeep(ELEMENT_INTERFACE),
     ダメージ上限_通常攻撃枠: cloneDeep(ELEMENT_INTERFACE),
@@ -23,7 +24,8 @@ export const CALCULATE_OUT_INTERFACE = {
     与ダメージ上昇_耳飾り枠: cloneDeep(ELEMENT_INTERFACE),
 
     奥義与ダメ: cloneDeep(ELEMENT_INTERFACE),
-    対有利与ダメ: cloneDeep(ELEMENT_INTERFACE), //アーカルム石or天司
+    
+    対有利与ダメUP: cloneDeep(ELEMENT_INTERFACE), //アーカルム石or天司
 
     EX攻撃: cloneDeep(ELEMENT_INTERFACE),
     EX渾身: cloneDeep(ELEMENT_INTERFACE),

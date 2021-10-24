@@ -134,6 +134,35 @@ export const SERAPHIC_WEAPON = {
     EX_Skill: false,
     skill: {
       1: { e: "風", type: "通常神威", lank: "小", aura: "opti"},
+      2: { e: "風", type: "対有利与ダメUP", lank: 23, aura: "None"},
+    },
+  },
+  グローブオブウリエル: {
+    name: "グローブオブウリエル",
+    element: "土",
+    skill_level:15,
+    atk: 2780,
+    hp:290,
+    type:"melee",
+    icon: "images/weapon/Weapon_b_1040611300.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "土", type: "通常神威", lank: "小", aura: "opti"},
+      2: { e: "土", type: "対有利与ダメUP", lank: 23, aura: "None"},
+    },
+  }, 
+  ワンドオブガブリエル: {
+    name: "ワンドオブガブリエル",
+    element: "水",
+    skill_level:15,
+    atk: 2540,
+    hp:340,
+    type:"",
+    icon: "images/weapon/Weapon_b_1040415300.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "水", type: "通常神威", lank: "小", aura: "opti"},
+      2: { e: "水", type: "対有利与ダメUP", lank: 23, aura: "None"},
     },
   }, 
 }

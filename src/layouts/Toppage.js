@@ -10,7 +10,7 @@ export default function Toppage(props) {
     <Card sx={{ maxWidth: 200 }}>
       <CardMedia
         component="img"
-        height="300"
+        height="400"
         image={
           process.env.PUBLIC_URL +
           "/images/summon/" +
@@ -42,12 +42,15 @@ export default function Toppage(props) {
             height: "100%",
             display: 'flex', 
             alignItems: 'center', 
-            justifyContent:'center'
+            justifyContent:'center',
+            backgroundColor:"#888888"
         }}
       >
-        {content}
-        {content}
-        {content}
+      <p style={{fontSize:"26px",cursor:"default",backgroundColor:"#888888"}}>
+      Let's calculate before we collect the equipment.<br />
+      You can start a new experience with the&nbsp;
+      <a style={{backgroundColor:"white",color:"black",borderRadius:"10px"}}>&nbsp;APP&nbsp;</a> above.
+      </p>
       </div>
     </div>
   );

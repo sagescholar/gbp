@@ -101,7 +101,8 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
           let branch_enmity_list = ["通常背水","方陣背水"];
           let branch_miss_list = [
             "ダメージ上限_通常攻撃枠","ダメージ上限_武器枠",
-            "与ダメージ上昇_クラフト枠"
+            "与ダメージ上昇_クラフト枠",
+            "アビ与ダメ","対有利与ダメUP"
           ]
           if(branch_stamina_list.includes(skill_name)){
             obj_output[skill_name][skill_element] +=

@@ -278,6 +278,7 @@ function App() {
                       state_list_aura_boost[state_active_equiped_number],
                       state_hp
                     )}
+                    
                   </div>
                 </div></Card></Draggable>)}
                 </div>
@@ -328,7 +329,6 @@ function App() {
                       </div>
                       {SliderHp(state_hp, setStateHp)}
                     </div>
-
                   <div
                     class="wrap-compute-skill"
                     style={{
@@ -342,6 +342,7 @@ function App() {
                       state_list_aura_boost[state_active_equiped_number],
                       state_hp
                     )}
+                    
                   </div>
                 </div></Card></Draggable>)}
                 </div>

@@ -224,7 +224,8 @@ export function computeDamage(list,aura,HP,isView=true) {
       //基礎ダメージ
       Object.keys(rtn).map((key) => rtn[key] = rtn[key].toFixed(2) * SUM_ATK);
 
-      //防御値
+      //防御値 
+      Object.keys(rtn).map((key) => rtn[key] = rtn[key].toFixed(2) / DEF);
 
       //弱点補正 -> 有利を殴る前提
 

@@ -19,6 +19,7 @@ export default function GenerateComputeDamageChart(props) {
   const parent_state_list_equiped = props.parent_state_list_equiped;
   const parent_state_list_aura_boost = props.parent_state_list_aura_boost;
   const parent_state_YMAX = props.parent_state_YMAX;
+  console.log(parent_state_YMAX)
 
   let Data = [];
   let Element = ["火", "水", "土", "風", "光", "闇"];
@@ -177,9 +178,10 @@ export default function GenerateComputeDamageChart(props) {
               );
             })}
             <CartesianGrid strokeDasharray="3 3" />
-            <YAxis domain={[0.0, 'auto']} allowDecimals={false} tickFormatter={5} fontSize={9} />
+            {/*<YAxis domain={[0.0, 'auto']} allowDecimals={false} tickFormatter={5} fontSize={9} />*/}
+            <YAxis domain={[0.0, parent_state_YMAX]}  allowDecimals={false} tickFormatter={5} fontSize={9} />
             <XAxis dataKey="name" />
-            <Tooltip />
+            <Tooltip allowDecimals={false} />
           </LineChart>
         </Box>
         <Box>{buildChartShow}</Box>

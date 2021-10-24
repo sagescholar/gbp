@@ -227,6 +227,9 @@ export const SUMMONS_PROVIDENSE = {
         element: "闇",
         ATK:3265,
         HP:1140,
+        Skill:{
+            1:{name:"与ダメージ上昇_ベリアル枠",boost:30000}
+        }
     }
 }
 
@@ -235,6 +238,9 @@ export const SUMMONS_ARCHANGEL = {
         element: "火",
         ATK:2240,
         HP:832,
+        Skill:{
+            1:{name:"ダメージ上限_召喚石枠",boost:"10"}
+        }
     },
     ガブリエル:{
         element: "水",

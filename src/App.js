@@ -36,6 +36,7 @@ import { buildChatLog } from "./components/Firebase/Firebase";
 import AppbarSummons from "./layouts/AppbarSummons";
 import AppbarChartDetail from "./layouts/AppbarChartDetail"
 import GenerateComputeDamageChart from "./components/GenerateComputeDamageChart"
+import { computeDamage } from "./components/ComputeDamage"
 
 function App() {
   /* STATE */
@@ -67,6 +68,7 @@ function App() {
   const [state_chart_value, setStateChartValue] = React.useState([]);
   const [state_toggle_summon, setStateToggleSummon] = React.useState(true);
   const [state_YMAX, setStateYMAX] = useState(80.0);
+  const [state_damage_YMAX, setStateDamageYMAX] = useState(1000000.0);
 
   /*
   召喚石
@@ -299,8 +301,8 @@ function App() {
                     <GenerateComputeDamageChart
                       parent_state_list_equiped={state_list_equiped}
                       parent_state_list_aura_boost={state_list_aura_boost}
-                      parent_state_YMAX={state_YMAX}
-                      parentSetStateYMAX={setStateYMAX}
+                      parent_state_YMAX={state_damage_YMAX}
+                      parentSetStateYMAX={setStateDamageYMAX}
                       parentSetStateShowGraph = {setStateShowGraph2}
                       parent_state_show_graph = {state_show_graph_2}
                       parentSetStateShowGraphDetail = {setStateShowGraphDetail2}
@@ -335,7 +337,7 @@ function App() {
                       justifyContent: "center",
                     }}
                   >
-                    {computeWeaponSkill(
+                    {computeDamage(
                       state_list_equiped[state_active_equiped_number],
                       state_list_aura_boost[state_active_equiped_number],
                       state_hp

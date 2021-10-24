@@ -6,6 +6,43 @@ import { weapons } from '../data/WEAPONS';
 import { ELEMENT_INTERFACE } from '../data/ELEMENT'
 import cloneDeep from 'lodash.clonedeep';
 
+export const computeDamageCap = (damage, damage_cap) => {
+  let rsl = 0
+  let raw_damage = damage
+
+  const damagecap = {
+    0:{damage: 0, reduction: 0},
+    1:{damage: 300000, reduction: 0},
+    2:{damage: 400000, reduction: 20},
+    3:{damage: 500000, reduction: 40},
+    4:{damage: 600000, reduction: 95},
+    5:{damage: 999999, reduction: 99}
+  }
+
+  Object.keys(damagecap).forEach((key) => damagecap[key].damage *= (1.0+damage_cap/100.0))
+
+  Object.keys(damagecap).forEach((key) => {
+
+    if(key == 0) return
+    if(raw_damage == 0) return 
+
+    let raw_section = damagecap[key].damage - damagecap[key-1].damage
+    
+    if(raw_damage >= raw_section){
+      raw_damage -= raw_section
+      rsl += raw_section * (1.0 - damagecap[key].reduction / 100.0)
+    }
+    else{
+      rsl += raw_damage * (1.0 - damagecap[key].reduction / 100.0)
+      raw_damage -= raw_damage
+    }
+  })
+  
+  return rsl
+  
+
+}
+
 export function computeDamage(list,aura,HP,isView=true) {
 
     /*
@@ -21,8 +58,18 @@ export function computeDamage(list,aura,HP,isView=true) {
     /*AURA TEST END*/
 
     /*SUM ATK */
-    let SUM_ATK = 60000
+    let SUM_ATK = 0
+    let ATK_MAINCHARACTER = 20000
+    let ATK_SUMMONCHARACTER = 16000
+    SUM_ATK += ATK_MAINCHARACTER
+    SUM_ATK += ATK_SUMMONCHARACTER
+    
+    let DEF = 10
+
     let SUM_HP = 0
+    //DamageCap
+    let DamageCap = 0
+
   
     /*HP TEST*/
     let hp = HP;
@@ -99,6 +146,8 @@ export function computeDamage(list,aura,HP,isView=true) {
           //console.log("BASE_SKILL")
           let branch_stamina_list = ["通常渾身","方陣渾身"];
           let branch_enmity_list = ["通常背水","方陣背水"];
+          let branch_damagecap_list = ["ダメージ上限_通常攻撃枠","ダメージ上限_武器枠"]
+          let branch_supplement_list = ["与ダメージ上昇_クラフト枠"]
           if(branch_stamina_list.includes(skill_name)){
             obj_output[skill_name][skill_element] +=
             BASE_SKILL[skill_name][skill_lank][skill_level](hp,skill_name,skill_lank,skill_level)*
@@ -111,6 +160,13 @@ export function computeDamage(list,aura,HP,isView=true) {
             obj_output[skill_name][skill_element] +=
             BASE_SKILL[skill_name][skill_lank][skill_level](hp,skill_name,skill_lank,skill_level)*
             (1+aura_boost[skill_aura][skill_element])
+          }
+          else if(branch_damagecap_list.includes(skill_name)){
+            obj_output[skill_name][skill_element] += skill_lank
+          }
+          else if(branch_supplement_list.includes(skill_name)){
+            obj_output[skill_name][skill_element] += skill_lank
+            
           }
           else{
             obj_output[skill_name][skill_element] +=
@@ -145,6 +201,8 @@ export function computeDamage(list,aura,HP,isView=true) {
           </div>
       )
     }else{
+
+      //武器
       let rtn = cloneDeep(ELEMENT_INTERFACE);
       let cal_list = ["通常攻刃","通常渾身","通常背水","方陣攻刃","方陣渾身","方陣背水","EX攻刃","EX渾身","EX背水"]
       Object.keys(rtn).map((key) => rtn[key] = 1);
@@ -158,7 +216,26 @@ export function computeDamage(list,aura,HP,isView=true) {
                 rtn[skill_element] = rtn[skill_element] * 1.5
         })
       )
+
+      //基礎ダメージ
       Object.keys(rtn).map((key) => rtn[key] = rtn[key].toFixed(2) * SUM_ATK);
+
+      //防御値
+
+      //弱点補正 -> 有利を殴る前提
+
+      //減衰計算
+      Object.keys(rtn).map((key) => {
+        let d_cap = 0
+        d_cap += obj_output["ダメージ上限_通常攻撃枠"][key]
+        d_cap += obj_output["ダメージ上限_武器枠"][key]
+        rtn[key] = computeDamageCap(rtn[key],d_cap)
+      })
+      //与ダメージ上昇
+
+
+      //与ダメージUP
+
       return rtn;
     }
 

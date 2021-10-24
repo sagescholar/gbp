@@ -99,6 +99,10 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
           //console.log("BASE_SKILL")
           let branch_stamina_list = ["通常渾身","方陣渾身"];
           let branch_enmity_list = ["通常背水","方陣背水"];
+          let branch_miss_list = [
+            "ダメージ上限_通常攻撃枠","ダメージ上限_武器枠",
+            "与ダメージ上昇_クラフト枠"
+          ]
           if(branch_stamina_list.includes(skill_name)){
             obj_output[skill_name][skill_element] +=
             BASE_SKILL[skill_name][skill_lank][skill_level](hp,skill_name,skill_lank,skill_level)*
@@ -111,6 +115,9 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
             obj_output[skill_name][skill_element] +=
             BASE_SKILL[skill_name][skill_lank][skill_level](hp,skill_name,skill_lank,skill_level)*
             (1+aura_boost[skill_aura][skill_element])
+          }
+          else if(branch_miss_list.includes(skill_name)){
+            
           }
           else{
             obj_output[skill_name][skill_element] +=

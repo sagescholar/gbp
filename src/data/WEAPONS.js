@@ -248,7 +248,8 @@ export const GRAND_WEAPON = {
     EX_Skill: false,
     skill: {
       1: { e: "風", type: "技巧", lank: "II", aura: "opti"},
-      2: { e: "風", type: "通常攻刃", lank: "中", aura: "opti"}
+      2: { e: "風", type: "通常攻刃", lank: "中", aura: "opti"},
+      3: { e: "風", type: "与ダメージ上昇_クラフト枠", lank: 20000, aura:"None"}
     },
   },
   アトランティス: {
@@ -263,6 +264,7 @@ export const GRAND_WEAPON = {
     skill: {
       1: { e: "水", type: "通常背水", lank: "大", aura: "opti"},
       2: { e: "水", type: "堅守", lank: "大", aura: "opti"},
+      3: { e: "水", type: "ダメージ上限_武器枠", lank:7, aura: "None"}
     }
   },
   エターナルラヴ: {

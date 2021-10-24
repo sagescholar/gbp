@@ -14,10 +14,16 @@ export const CALCULATE_OUT_INTERFACE = {
     DA率: cloneDeep(ELEMENT_INTERFACE),
     TA率: cloneDeep(ELEMENT_INTERFACE),
     アビ与ダメ: cloneDeep(ELEMENT_INTERFACE),
-    D上限: cloneDeep(ELEMENT_INTERFACE),
-    与ダメージ: cloneDeep(ELEMENT_INTERFACE),
+    ダメージ上限_武器枠: cloneDeep(ELEMENT_INTERFACE),
+    ダメージ上限_召喚石枠: cloneDeep(ELEMENT_INTERFACE),
+    ダメージ上限_通常攻撃枠: cloneDeep(ELEMENT_INTERFACE),
+
+    与ダメージ上昇_クラフト枠: cloneDeep(ELEMENT_INTERFACE),
+    与ダメージ上昇_ベリアル枠: cloneDeep(ELEMENT_INTERFACE),
+    与ダメージ上昇_耳飾り枠: cloneDeep(ELEMENT_INTERFACE),
+
     奥義与ダメ: cloneDeep(ELEMENT_INTERFACE),
-    対有利与ダメ: cloneDeep(ELEMENT_INTERFACE),
+    対有利与ダメ: cloneDeep(ELEMENT_INTERFACE), //アーカルム石or天司
 
     EX攻撃: cloneDeep(ELEMENT_INTERFACE),
     EX渾身: cloneDeep(ELEMENT_INTERFACE),
@@ -27,6 +33,10 @@ export const CALCULATE_OUT_INTERFACE = {
 
     通常進境: cloneDeep(ELEMENT_INTERFACE),
     堅守: cloneDeep(ELEMENT_INTERFACE),
+
+    属性: cloneDeep(ELEMENT_INTERFACE),
+
+    
 }
 
 /* EXLB 渾身 */

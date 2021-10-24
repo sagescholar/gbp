@@ -29,7 +29,7 @@ export default function AppbarDamageChart(props) {
       </a>
       <div style={{ marginLeft: "auto" }}>
 
-      <Tooltip title="+10">
+      <Tooltip title="-100000">
         <img
           style={{
             width: "12px",
@@ -38,11 +38,11 @@ export default function AppbarDamageChart(props) {
             cursor: "pointer",
             transform: "rotate(180deg)"
           }}
-          onClick={()  => setStateYMAX(state_YMAX - 10000.0)}
+          onClick={()  => setStateYMAX(state_YMAX - 100000.0)}
           src={process.env.PUBLIC_URL + "/images/" + "892681.png"}
         /></Tooltip>
       <a style={{fontSize:"11px",color:"white",cursor:"default"}}>{state_YMAX}</a>
-      <Tooltip title="+10">
+      <Tooltip title="+100000">
         <img
           style={{
             width: "12px",
@@ -50,7 +50,7 @@ export default function AppbarDamageChart(props) {
             marginLeft: "auto",
             cursor: "pointer",
           }}
-          onClick={()  => setStateYMAX(state_YMAX + 10000.0)}
+          onClick={()  => setStateYMAX(state_YMAX + 100000.0)}
           src={process.env.PUBLIC_URL + "/images/" + "892681.png"}
         /></Tooltip>
         <Tooltip title={!state_show_graph_detail ? "計算詳細表示" : "計算詳細閉じる"}>

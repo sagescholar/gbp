@@ -135,7 +135,7 @@ function App() {
       {/*HEADER*/}
       {Header(setStateAddEquiped, setStateView)}
 
-      {state_view == "top" && <Toppage />}
+      {state_view == "top" && <Toppage parentSetStateView={setStateView} />}
 
       {state_view == "app" && (
         <>
@@ -254,7 +254,7 @@ function App() {
                 />
                 <div style={{
                     display: "block",
-                    width: "50%",
+                    width: "100%",
                     justifyContent: "center",
                     alignItems:"center"
                   }}>
@@ -319,7 +319,7 @@ function App() {
                 />
                 <div style={{
                     display: "block",
-                    width: "50%",
+                    width: "100%",
                     justifyContent: "center",
                     alignItems:"center"
                   }}>

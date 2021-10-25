@@ -44,6 +44,7 @@ export const DARK_OPUS_WEAPON = {
     type:"spear",
     icon: "images/weapon/Weapon_b_1040212500.png",
     EX_Skill: false,
+    Darkops: true,
     skill: {
       1: { e: "風", type: "通常神威", lank: "大", aura: "opti"},
     },
@@ -58,6 +59,7 @@ export const DARK_OPUS_WEAPON = {
     type:"staff",
     icon: "images/weapon/Weapon_b_1040415000.png",
     EX_Skill: false,
+    Darkops: true,
     skill: {
       1: { e: "水", type: "通常神威", lank: "大", aura: "opti"},
     },
@@ -72,6 +74,7 @@ export const DARK_OPUS_WEAPON = {
     type:"spear",
     icon: "images/weapon/Weapon_b_1040212600.png",
     EX_Skill: false,
+    Darkops: true,
     skill: {
       1: { e: "風", type: "方陣神威", lank: "大", aura: "omega"},
     },
@@ -85,6 +88,7 @@ export const DARK_OPUS_WEAPON = {
     type:"sabre",
     icon: "images/weapon/Weapon_b_1040017000.png",
     EX_Skill: false,
+    Darkops: true,
     skill: {
       1: { e: "光", type: "通常神威", lank: "大", aura: "opti"},
       2:{},

@@ -12,7 +12,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import { useState } from "react";
 import { Button, Card } from "@material-ui/core";
-import { EXSKILLICON } from "../data/WEAPONEXSKILL";
+import { DARKOPS_ICON, EXSKILLICON } from "../data/WEAPONEXSKILL";
 import AppbarEquiped from "../layouts/AppbarEquiped";
 import Draggable from "react-draggable";
 
@@ -55,6 +55,53 @@ export default function BuildEquipedWeaponButton(props) {
     delete content[num][ID]
     parentSetStateAddEquiped(content);
   }
+
+  const buildDarkopsButton = (num, id) => {
+    const ID = id;
+    const VAL = 0;
+
+    const skill_name = parent_state_list_equiped[id]["EX_Skill"][num].name
+
+    return (
+      <div
+        style={{
+          marginTop: "5px",
+          width: "350px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "left",
+        }}
+      >
+        <a style={{ fontSize: "10px" }}>{"[第" + num + "] : "}</a>
+        
+        <>
+          {Object.keys(DARKOPS_ICON[num]).map((key) => (
+            <div
+              onClick={() => updateExSkill(ID, key, /*lank*/ 3, num)}
+              style={{
+                fontSize: "10px",
+                textAlign: "center",
+                backgroundColor: "#222222",
+                cursor: "pointer",
+              }}
+            >
+              {skill_name == key ? (
+                <img
+                  style={{ height: "15px", width: "15px", opacity: "1.0" }}
+                  src={process.env.PUBLIC_URL + "/" + DARKOPS_ICON[num][key]}
+                />
+              ) :
+                <img
+                  style={{ height: "15px", width: "15px", opacity: "0.5" }}
+                  src={process.env.PUBLIC_URL + "/" + DARKOPS_ICON[num][key]}
+                />}
+
+            </div>
+          ))}
+        </>
+      </div>
+    );
+  };
 
   const buildExSkillButton = (num, id) => {
     const ID = id;
@@ -108,6 +155,7 @@ export default function BuildEquipedWeaponButton(props) {
     let bonus = parent_state_list_equiped[key].Bonus;
     let open = parent_state_list_equiped[key].isShow;
     let bool_ex_skill = weapons[parent_state_list_equiped[key].name]["EX_Skill"];
+    let bool_darkops = weapons[parent_state_list_equiped[key].name]["Darkops"];
 
     return (
       <>
@@ -159,6 +207,14 @@ export default function BuildEquipedWeaponButton(props) {
                       {buildExSkillButton(2, key)}
                       {/*//TODO: 効果量を手動で入力できるようにする*/}
                       <a style={{ fontSize: "4px" }}>Test mode: Fixed effect quantity of 3</a>
+                    </>
+                  )}
+                  {bool_darkops && (
+                    <>
+                      {buildDarkopsButton(1, key)}
+                      {buildDarkopsButton(2, key)}
+                      {/*//TODO: 効果量を手動で入力できるようにする*/}
+                      <a style={{ fontSize: "4px" }}>Test: DARK OPS</a>
                     </>
                   )}
                 </div>

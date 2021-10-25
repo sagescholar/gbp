@@ -6,6 +6,7 @@ import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 
 export default function Toppage(props) {
+  const setStateView = props.parentSetStateView;
   const content = (
     <Card sx={{ maxWidth: 200 }}>
       <CardMedia
@@ -17,7 +18,6 @@ export default function Toppage(props) {
           "Summon_b_2040027000_02.png"
         }
         alt="green iguana"
-        
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -38,19 +38,38 @@ export default function Toppage(props) {
     <div style={{ /*width: "1500px",*/ height: "700px" }}>
       <div
         style={{
-            width: "100%",
-            height: "100%",
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent:'center',
-            backgroundColor:"#888888"
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "#888888",
         }}
       >
-      <p style={{fontSize:"26px",cursor:"default",backgroundColor:"#888888"}}>
-      Let's calculate before we collect the equipment.<br />
-      You can start a new experience with the&nbsp;
-      <a style={{backgroundColor:"white",color:"black",borderRadius:"10px"}}>&nbsp;APP&nbsp;</a> above.
-      </p>
+        <p
+          style={{
+            fontSize: "26px",
+            cursor: "default",
+            backgroundColor: "#888888",
+          }}
+        >
+          Let's calculate before you collect the equipment.
+          <br />
+          You can start a new experience with the&nbsp;
+          <a
+            onClick={()=>setStateView("app")}
+            style={{
+              backgroundColor: "white",
+              color: "black",
+              borderRadius: "10px",
+              cursor:"pointer",
+            }}
+            
+          >
+            &nbsp;APP&nbsp;
+          </a>{" "}
+          above.
+        </p>
       </div>
     </div>
   );

@@ -48,19 +48,19 @@ export default function GenerateComputeDamageChart(props) {
   };
 
   let Element_isView_2 = {
-    火1: true,
-    水1: true,
-    土1: true,
-    風1: true,
-    光1: true,
-    闇1: true,
+    火1: false,
+    水1: false,
+    土1: false,
+    風1: false,
+    光1: false,
+    闇1: false,
 
-    火2: true,
-    水2: true,
-    土2: true,
-    風2: true,
-    光2: true,
-    闇2: true,
+    火2: false,
+    水2: false,
+    土2: false,
+    風2: false,
+    光2: false,
+    闇2: false,
   };
   const [state_show_radio, setStateShowRadio] = useState(
     cloneDeep(Element_isView_2)

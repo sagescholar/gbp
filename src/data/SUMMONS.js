@@ -51,6 +51,15 @@ export const ICON_SUMMONS = {
     イーウィア: "images/summon/218608.png",
     ルオー: "images/summon/218606.png",
     フェディエル: "images/summon/06e572c1db4f20de7646efd9c180c90b.jpg",
+
+    ミカエル: "images/summon/Summon_b_2040306000.png",
+    ガブリエル: "images/summon/Summon_b_2040311000.png",
+    ウリエル: "images/summon/Summon_b_2040203000.png",
+    ラファエル: "images/Summon_b_2040202000.png",
+    メタトロン: "images/summon/Summon_b_2040330000.png",
+    サリエル: "images/summon/Summon_b_2040327000.png",
+
+    ベリアル: "images/summon/06e572c1db4f20de7646efd9c180c90b.jpg",
 }
 
 

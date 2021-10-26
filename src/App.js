@@ -445,6 +445,29 @@ function App() {
               )}</div>
             </Button></Tooltip>
 
+            <Tooltip title="召喚石を設定する">
+            <Button  size="small" onClick={() => setStateSummonWindow(!state_summon_window)}>
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "52px-SummonSeries_Archangel_Series_icon.png"
+                }
+              />
+            </Button></Tooltip>
+
+            <Tooltip title="召喚石を設定する">
+            <Button  onClick={() => setStateSummonWindow(!state_summon_window)}>
+              <img
+                style={{ width: "30px" }}
+                src={
+                  process.env.PUBLIC_URL +
+                  "/images/" +
+                  "52px-SummonSeries_Providence_Series_icon.png"
+                }
+              />
+            </Button></Tooltip>
             
             {/* Graph Show Button */}
             <Tooltip title="倍率">

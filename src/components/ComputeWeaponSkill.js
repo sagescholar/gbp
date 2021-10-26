@@ -8,6 +8,9 @@ import cloneDeep from 'lodash.clonedeep';
 
 export function computeWeaponSkill(list,aura,HP,isView=true) {
 
+    //DeepCopyMethod -> JSON.parse(JSON.stringify(***DeepCopyTarget***))
+    let obj_output = JSON.parse(JSON.stringify(CALCULATE_OUT_INTERFACE));
+
     /*
     計算手順
     1. 情報を取得する 装備中武器/武器加護補正量,
@@ -42,14 +45,56 @@ export function computeWeaponSkill(list,aura,HP,isView=true) {
       SUM_ATK += list[key].Bonus * 5
       SUM_HP += list[key].Bonus * 1
       CNT += 1;
+
+      if (weapons[list[key].name]["Darkops"]) {
+        const DarkopsAura = weapons[list[key].name]["skill"]["1"]["aura"]
+        const skill_element = weapons[list[key].name]["element"]
+        const skill_level = weapons[list[key].name]["skill_level"]
+        Object.keys(list[key]["EX_Skill"]).forEach((skill_num) => {
+          if (list[key]["EX_Skill"][skill_num].name == undefined) return;
+          let skill_name = list[key]["EX_Skill"][skill_num].name;
+          if(skill_name == "α")
+            Object.keys(ELEMENT_INTERFACE).forEach((ele) => {
+              obj_output["ダメージ上限_通常攻撃枠"][ele] += 10
+            });
+          if(skill_name == "強壮"){
+            let skill_name = DarkopsAura == "opti" ? "通常渾身" : "方陣渾身"
+            let skill_aura = DarkopsAura == "opti" ? "opti" : "omega"
+            let skill_lank = "大"
+            obj_output[skill_name][skill_element] +=
+              BASE_SKILL[skill_name][skill_lank][skill_level](
+                hp,
+                skill_name,
+                skill_lank,
+                skill_level
+              ) *
+              (1 + aura_boost[skill_aura][skill_element]);
+          }
+          if(skill_name == "激情"){
+            let skill_name = DarkopsAura == "opti" ? "通常背水" : "方陣背水"
+            let skill_aura = DarkopsAura == "opti" ? "opti" : "omega"
+            let skill_lank = "大"
+            obj_output[skill_name][skill_element] +=
+              BASE_SKILL[skill_name][skill_lank][skill_level](
+                hp,
+                skill_name,
+                skill_lank,
+                skill_level
+              ) *
+              (1 + aura_boost[skill_aura][skill_element]);
+          }
+          
+        })
+      }
+
+      
     })
 
     
   
     //console.log(obj_equiped_weapon);
   
-    //DeepCopyMethod -> JSON.parse(JSON.stringify(***DeepCopyTarget***))
-    let obj_output = JSON.parse(JSON.stringify(CALCULATE_OUT_INTERFACE));
+    
     
     //EX_SKILL
     Object.keys(list).forEach((id) => {

@@ -504,7 +504,7 @@ export const weapons = {
     icon: "images/weapon/Weapon_b_1040212200.png",
     EX_Skill: false,
     skill: {
-      1: { e: "風", type: "通常攻刃", lank: "大", aura: "opti"},
+      1: { e: "風", type: "通常攻刃", lank: "II", aura: "opti"},
       2: { e: "風", type: "通常背水", lank: "中", aura: "opti"},
     }
   },

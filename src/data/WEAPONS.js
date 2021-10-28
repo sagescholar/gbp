@@ -523,6 +523,20 @@ export const weapons = {
       2: { e: "闇", type: "通常背水", lank: "中", aura: "opti"},
     },
   },
+  クリムゾンフィンガー: {
+    name: "クリムゾンフィンガー",
+    element: "火",
+    skill_level:15,
+    atk: 2850,
+    hp:300,
+    type:"melee",
+    icon: "images/weapon/Weapon_b_1040600200.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "火", type: "通常攻刃", lank: "II", aura: "opti"},
+      2: { e: "火", type: "通常背水", lank: "中", aura: "opti"},
+    },
+  },
   エッケザックス: {
     name: "エッケザックス",
     element: "火",

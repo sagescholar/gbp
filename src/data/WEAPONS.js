@@ -34,7 +34,36 @@ export const DARK_OPUS = [
   "永遠拒絶の太刀",
 ]
 
+
 export const DARK_OPUS_WEAPON = {
+  絶対否定の大鎌: {
+    name: "絶対否定の大鎌",
+    element: "火",
+    skill_level:20,
+    atk: 3870,
+    hp:277,
+    type:"axe",
+    icon: "images/weapon/Weapon_b_1040310600.png",
+    EX_Skill: false,
+    Darkops: true,
+    skill: {
+      1: { e: "火", type: "通常神威", lank: "大", aura: "opti"},
+    },
+  },
+  永遠拒絶の大鎌: {
+    name: "永遠拒絶の大鎌",
+    element: "火",
+    skill_level:20,
+    atk: 3870,
+    hp:277,
+    type:"axe",
+    icon: "images/weapon/Weapon_b_1040310700.png",
+    EX_Skill: false,
+    Darkops: true,
+    skill: {
+      1: { e: "火", type: "方陣神威", lank: "大", aura: "omega"},
+    },
+  },
   絶対否定の槍: {
     name: "絶対否定の槍",
     element: "風",
@@ -48,22 +77,6 @@ export const DARK_OPUS_WEAPON = {
     skill: {
       1: { e: "風", type: "通常神威", lank: "大", aura: "opti"},
     },
-    
-  },
-  絶対否定の杖: {
-    name: "絶対否定の杖",
-    element: "水",
-    skill_level:20,
-    atk: 3140,
-    hp:420,
-    type:"staff",
-    icon: "images/weapon/Weapon_b_1040415000.png",
-    EX_Skill: false,
-    Darkops: true,
-    skill: {
-      1: { e: "水", type: "通常神威", lank: "大", aura: "opti"},
-    },
-    
   },
   永遠拒絶の槍: {
     name: "永遠拒絶の槍",
@@ -77,6 +90,20 @@ export const DARK_OPUS_WEAPON = {
     Darkops: true,
     skill: {
       1: { e: "風", type: "方陣神威", lank: "大", aura: "omega"},
+    },
+  },
+  絶対否定の杖: {
+    name: "絶対否定の杖",
+    element: "水",
+    skill_level:20,
+    atk: 3140,
+    hp:420,
+    type:"staff",
+    icon: "images/weapon/Weapon_b_1040415000.png",
+    EX_Skill: false,
+    Darkops: true,
+    skill: {
+      1: { e: "水", type: "通常神威", lank: "大", aura: "opti"},
     },
   },
   絶対否定の剣: {
@@ -167,6 +194,20 @@ export const SERAPHIC_WEAPON = {
     skill: {
       1: { e: "水", type: "通常神威", lank: "小", aura: "opti"},
       2: { e: "水", type: "対有利与ダメUP", lank: 23, aura: "None"},
+    },
+  },
+  ソードオブミカエル: {
+    name: "ソードオブミカエル",
+    element: "火",
+    skill_level:15,
+    atk: 2980,
+    hp:250,
+    type:"",
+    icon: "images/weapon/Weapon_b_1040017200.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "火", type: "通常神威", lank: "小", aura: "opti"},
+      2: { e: "火", type: "対有利与ダメUP", lank: 23, aura: "None"},
     },
   }, 
 }
@@ -375,7 +416,34 @@ const OMEGA_WEAPON = {
   },
 }
 
-
+const ANCESTRAL_WEAPON = {
+  イーウィアビーク: {
+    name: "イーウィアビーク",
+    element: "風",
+    skill_level:15,
+    atk: 3209,
+    hp:224,
+    type:"katana",
+    icon: "images/weapon/Weapon_b_1040912400.png",
+    EX_Skill: true,
+    skill: {
+      1: { e: "風", type: "通常攻刃", lank: "劫風の攻刃", aura: "None"},
+    }
+  },
+  ウィルナスフィンガー: {
+    name: "ウィルナスフィンガー",
+    element: "火",
+    skill_level:15,
+    atk: 2825,
+    hp: 297,
+    type:"melee",
+    icon: "images/weapon/Weapon_b_1040613800.png",
+    EX_Skill: true,
+    skill: {
+      1: { e: "火", type: "通常背水", lank: "炎威の背水", aura: "None"},
+    }
+  },
+}
 
 export const ASTRAL = [
   "ソルレムナント",
@@ -513,6 +581,20 @@ export const weapons = {
       2: { e: "風", type: "通常背水", lank: "小", aura: "opti"},
     },
   },
+  アギト: {
+    name: "アギト",
+    element: "火",
+    skill_level:15,
+    atk: 3270,
+    hp:220,
+    type:"katana",
+    icon: "images/weapon/Weapon_b_1040911400.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "火", type: "修羅", lank: "大", aura: "opti"},
+      2: { e: "火", type: "通常攻刃", lank: "大", aura: "opti"},
+    },
+  },
   
   ラストストームハープ: {
     name: "ラストストームハープ",
@@ -585,21 +667,6 @@ export const weapons = {
     skill: {
       1: { e: "風", type: "通常背水", lank: "大", aura: "opti"},
     },
-  },
-  
-  
-  イーウィアビーク: {
-    name: "イーウィアビーク",
-    element: "風",
-    skill_level:15,
-    atk: 3209,
-    hp:224,
-    type:"katana",
-    icon: "images/weapon/Weapon_b_1040912400.png",
-    EX_Skill: true,
-    skill: {
-      1: { e: "風", type: "通常攻刃", lank: "劫風の攻刃", aura: "None"},
-    }
   },
   ルフェイ: {
     name: "ルフェイ",
@@ -688,6 +755,7 @@ export const weapons = {
     }
   },
   ...OMEGA_WEAPON,
+  ...ANCESTRAL_WEAPON,
   ...GRAND_WEAPON,
   ...DARK_OPUS_WEAPON,
   ...SERAPHIC_WEAPON,

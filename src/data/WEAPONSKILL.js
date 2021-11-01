@@ -36,6 +36,7 @@ export const CALCULATE_OUT_INTERFACE = {
     通常進境: cloneDeep(ELEMENT_INTERFACE),
     堅守: cloneDeep(ELEMENT_INTERFACE),
 
+    ATACK: cloneDeep(ELEMENT_INTERFACE),
     属性: cloneDeep(ELEMENT_INTERFACE),
 
     

@@ -198,6 +198,7 @@ export function computeDamage(list, aura, HP, isView = true) {
         ];
         let branch_supplement_list = ["与ダメージ上昇_クラフト枠"];
         let branch_seraphic_list = ["対有利与ダメUP"];
+        let branch_miss_list = ["ATACK"]
         if (branch_stamina_list.includes(skill_name)) {
           obj_output[skill_name][skill_element] +=
             BASE_SKILL[skill_name][skill_lank][skill_level](
@@ -225,7 +226,9 @@ export function computeDamage(list, aura, HP, isView = true) {
           obj_output[skill_name][skill_element] += skill_lank;
         } else if (branch_seraphic_list.includes(skill_name)) {
           obj_output[skill_name][skill_element] += skill_lank;
-        } else {
+        } else if (branch_miss_list.includes(skill_name)){
+            
+        }else {
           obj_output[skill_name][skill_element] +=
             BASE_SKILL[skill_name][skill_lank][skill_level] *
             (1 + aura_boost[skill_aura][skill_element]);

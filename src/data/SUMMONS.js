@@ -115,33 +115,161 @@ export const STATE_SUMMONS_INTERFACE = {
 export const SUMMONS_OPTIMUS = {
     アグニス:{
         element: "火",
+        ATK:3213,
+        HP:1092,
+        Lv:150,
+        series:"optimus",
+        main: {
+            1:{e: "火", type: "aura", lank: 140, aura: "opti"}
+        },
+        sub:{
+
+        },
+        icon: "images/summon/Summon_b_2040094000.png"
+    },
+    アグニス:{
+        element: "火",
         ATK:3685,
         HP:1253,
+        Lv:200,
+        series:"optimus",
+        main: {
+            1:{e: "火", type: "aura", lank: 150, aura: "opti"}
+        },
+        sub:{
+
+        },
+        icon: "images/summon/Summon_b_2040094000_02.png"
+    },
+    ヴァルナ:{
+        element: "水",
+        ATK:3040,
+        HP:1135,
+        Lv:150,
+        series:"optimus",
+        main: {
+            1:{e: "水", type: "aura", lank: 140, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040100000.png"
     },
     ヴァルナ:{
         element: "水",
         ATK:3485,
         HP:1303,
+        Lv:200,
+        series:"optimus",
+        main: {
+            1:{e: "水", type: "aura", lank: 150, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040100000_02.png"
+    },
+    ティターン:{
+        element: "土",
+        ATK:2755,
+        HP:1310,
+        Lv:150,
+        series:"optimus",
+        main: {
+            1:{e: "土", type: "aura", lank: 140, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040084000.png"
     },
     ティターン:{
         element: "土",
         ATK:3163,
         HP:1505,
+        Lv:200,
+        series:"optimus",
+        main: {
+            1:{e: "土", type: "aura", lank: 150, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040084000_02.png"
+    },
+    ゼピュロス:{
+        element: "風",
+        ATK:3153,
+        HP:1097,
+        Lv:150,
+        series:"optimus",
+        main: {
+            1:{e: "風", type: "aura", lank: 140, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040098000.png"
     },
     ゼピュロス:{
         element: "風",
         ATK:3653,
         HP:1259,
+        Lv:200,
+        series:"optimus",
+        main: {
+            1:{e: "風", type: "aura", lank: 150, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040098000_02.png"
+    },
+    ゼウス:{
+        element: "光",
+        ATK:3145,
+        HP:1120,
+        Lv:150,
+        series:"optimus",
+        main: {
+            1:{e: "光", type: "aura", lank: 140, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040080000.png"
     },
     ゼウス:{
         element: "光",
         ATK:3608,
         HP:1285,
+        Lv:200,
+        series:"optimus",
+        main: {
+            1:{e: "光", type: "aura", lank: 150, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040080000_02.png"
+    },
+    ハデス:{
+        element: "闇",
+        ATK:3315,
+        HP:1071,
+        Lv:150,
+        series:"optimus",
+        main: {
+            1:{e: "闇", type: "aura", lank: 140, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040090000.png"
     },
     ハデス:{
         element: "闇",
         ATK:3798,
         HP:1229,
+        Lv:200,
+        series:"optimus",
+        main: {
+            1:{e: "闇", type: "aura", lank: 150, aura: "opti"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040090000_02.png"
     },
 }
 
@@ -150,31 +278,74 @@ export const SUMMONS_BONUS = {
         element: "火",
         ATK:2042,
         HP:812,
+        Lv:100,
+        series:"",
+        main: {
+            1:{e: "火", type: "elemental", lank: 60, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040361000.png"
     },
     カリュブディス:{
         element: "水",
         ATK:1680,
         HP:900,
+        series:"",
+        main: {
+            1:{e: "水", type: "elemental", lank: 60, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040363000.png"
     },
     マンモス:{
         element: "土",
         ATK:2012,
         HP:818,
+        series:"",
+        main: {
+            1:{e: "土", type: "elemental", lank: 60, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040368000.png"
     },
     オウルキャット:{
         element: "風",
         ATK:2057,
         HP:809,
+        series:"",
+        main: {
+            1:{e: "風", type: "elemental", lank: 60, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040366000.png"
     },
     アルテミス:{
         element: "光",
         ATK:2032,
         HP:814,
+        series:"",
+        main: {
+            1:{e: "光", type: "elemental", lank: 60, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040381000.png"
     },
     ジルニトラ:{
         element: "闇",
         ATK:2174,
         HP:804,
+        series:"",
+        main: {
+            1:{e: "闇", type: "elemental", lank: 60, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Summon_b_2040385000.png"
     },
 }
 
@@ -183,51 +354,133 @@ export const SUMMONS_ARCARUM = {
         element: "闇",
         ATK:2850,
         HP:1128,
+        Lv:200,
+        series:"arcarum",
+        main: {
+            1:{e: "闇", type: "ATACK", lank: 140, aura: "None"}
+        },
+        sub:{
+            1:{e: "闇", type: "対有利与ダメUP", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/Death_(SSR).png"
     },
     ジャスティス:{
         element: "水",
         ATK:2717,
         HP:1134,
+        Lv:200,
+        series:"arcarum",
+        main: {
+            1:{e: "水", type: "ATACK", lank: 130, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Justice_(SSR).png"
     },
     ムーン:{
         element: "水",
         ATK:2820,
         HP:1094,
+        Lv:200,
+        series:"arcarum",
+        main: {
+            1:{e: "水", type: "ATACK", lank: 140, aura: "None"}
+        },
+        sub:{
+            1:{e: "水", type: "対有利与ダメUP", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/The_Moon_(SSR).png"
     },
     スター:{
         element: "光",
         ATK:2830,
         HP:1132,
+        Lv:200,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "光", type: "対有利与ダメUP", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/The_Star_(SSR).png"
     },
     サン:{
         element: "火",
         ATK:2837,
         HP:1090,
+        Lv:200,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "火", type: "対有利与ダメUP", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/The_Sun_(SSR).png"
     },
     デビル:{
         element: "火",
         ATK:2737,
         HP:1130,
+        Lv:200,
+        series:"arcarum",
+        main: {
+            1:{e: "火", type: "ATACK", lank: 130, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/The_Devil_(SSR).png"
     },
     ジャッジメント:{
         element: "風",
         ATK:2832,
         HP:1091,
+        Lv:200,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "風", type: "対有利与ダメUP", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/TJudgement_(SSR).png"
     },
     テンペランス:{
         element: "風",
         ATK:2732,
         HP:1131,
+        Lv:200,
+        series:"arcarum",
+        main: {
+            1:{e: "風", type: "ATACK", lank: 130, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/Temperance_(SSR).png"
     },
     ハングドマン:{
         element: "土",
         ATK:2825,
         HP:1093,
+        Lv:200,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "土", type: "対有利与ダメUP", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/The_Hanged_Man_(SSR).png"
     },
     タワー:{
         element: "土",
         ATK:2722,
         HP:1133,
+        Lv:200,
+        series:"arcarum",
+        main: {
+            1:{e: "土", type: "ATACK", lank: 130, aura: "None"}
+        },
+        sub:{
+        },
+        icon: "images/summon/The_Tower_(SSR).png"
     },
 }
 
@@ -236,9 +489,19 @@ export const SUMMONS_PROVIDENSE = {
         element: "闇",
         ATK:3265,
         HP:1140,
-        Skill:{
-            1:{name:"与ダメージ上昇_ベリアル枠",boost:30000}
-        }
+        Lv:200,
+        series:"",
+        main: {
+        },
+        sub:{
+            1:{e: "火", type: "与ダメージ上昇_ベリアル枠", lank: 30000, aura: "None"},
+            2:{e: "水", type: "与ダメージ上昇_ベリアル枠", lank: 30000, aura: "None"},
+            3:{e: "土", type: "与ダメージ上昇_ベリアル枠", lank: 30000, aura: "None"},
+            4:{e: "風", type: "与ダメージ上昇_ベリアル枠", lank: 30000, aura: "None"},
+            5:{e: "光", type: "与ダメージ上昇_ベリアル枠", lank: 30000, aura: "None"},
+            6:{e: "闇", type: "与ダメージ上昇_ベリアル枠", lank: 30000, aura: "None"},
+        },
+        icon: "images/summon/The_Star_(SSR).png"
     }
 }
 
@@ -247,34 +510,79 @@ export const SUMMONS_ARCHANGEL = {
         element: "火",
         ATK:2240,
         HP:832,
-        Skill:{
-            1:{name:"ダメージ上限_召喚石枠",boost:"10"}
-        }
+        Lv:100,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "火", type: "ダメージ上限_召喚石枠", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/Summon_b_2040306000.png"
     },
     ガブリエル:{
         element: "水",
         ATK:2100,
         HP:850,
+        Lv:100,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "水", type: "ダメージ上限_召喚石枠", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/Summon_b_2040311000.png"
     },
     ウリエル:{
         element: "土",
         ATK:2180,
         HP:844,
+        Lv:100,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "土", type: "ダメージ上限_召喚石枠", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/Summon_b_2040203000.png"
     },
     ラファエル:{
         element: "風",
         ATK:1750,
         HP:930,
+        Lv:100,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "風", type: "ダメージ上限_召喚石枠", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/Summon_b_2040202000.png"
     },
     メタトロン:{
         element: "光",
         ATK:2022,
         HP:816,
+        Lv:100,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "光", type: "ダメージ上限_召喚石枠", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/Summon_b_2040330000.png"
     },
     サリエル:{
         element: "闇",
         ATK:2155,
         HP:790,
+        Lv:100,
+        series:"arcarum",
+        main: {
+        },
+        sub:{
+            1:{e: "闇", type: "ダメージ上限_召喚石枠", lank: 10, aura: "None"}
+        },
+        icon: "images/summon/Summon_b_2040327000.png"
     },
 }
 

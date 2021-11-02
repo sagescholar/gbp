@@ -113,7 +113,7 @@ export const STATE_SUMMONS_INTERFACE = {
 }
 
 export const SUMMONS_OPTIMUS = {
-    アグニス:{
+    アグニス1:{
         element: "火",
         ATK:3213,
         HP:1092,
@@ -141,7 +141,7 @@ export const SUMMONS_OPTIMUS = {
         },
         icon: "images/summon/Summon_b_2040094000_02.png"
     },
-    ヴァルナ:{
+    ヴァルナ1:{
         element: "水",
         ATK:3040,
         HP:1135,
@@ -167,7 +167,7 @@ export const SUMMONS_OPTIMUS = {
         },
         icon: "images/summon/Summon_b_2040100000_02.png"
     },
-    ティターン:{
+    ティターン1:{
         element: "土",
         ATK:2755,
         HP:1310,
@@ -193,7 +193,7 @@ export const SUMMONS_OPTIMUS = {
         },
         icon: "images/summon/Summon_b_2040084000_02.png"
     },
-    ゼピュロス:{
+    ゼピュロス1:{
         element: "風",
         ATK:3153,
         HP:1097,
@@ -219,7 +219,7 @@ export const SUMMONS_OPTIMUS = {
         },
         icon: "images/summon/Summon_b_2040098000_02.png"
     },
-    ゼウス:{
+    ゼウス1:{
         element: "光",
         ATK:3145,
         HP:1120,
@@ -245,7 +245,7 @@ export const SUMMONS_OPTIMUS = {
         },
         icon: "images/summon/Summon_b_2040080000_02.png"
     },
-    ハデス:{
+    ハデス1:{
         element: "闇",
         ATK:3315,
         HP:1071,
@@ -441,7 +441,7 @@ export const SUMMONS_ARCARUM = {
         sub:{
             1:{e: "風", type: "対有利与ダメUP", lank: 10, aura: "None"}
         },
-        icon: "images/summon/TJudgement_(SSR).png"
+        icon: "images/summon/Judgement_(SSR).png"
     },
     テンペランス:{
         element: "風",
@@ -592,6 +592,4 @@ export const DATA_SUMMONS = {
     ...SUMMONS_ARCARUM,
     ...SUMMONS_PROVIDENSE,
     ...SUMMONS_ARCHANGEL
-
-
 }

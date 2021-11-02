@@ -37,6 +37,7 @@ import AppbarSummons from "./layouts/AppbarSummons";
 import AppbarChartDetail from "./layouts/AppbarChartDetail"
 import GenerateComputeDamageChart from "./components/GenerateComputeDamageChart"
 import { computeDamage } from "./components/ComputeDamage"
+import GenerateEquipedSummon from "./components/GenerateEquipedSummon";
 
 function App() {
   /* STATE */
@@ -52,6 +53,7 @@ function App() {
     1: {},
     2: {},
   });
+  const [state_list_summon, setStateAddSummon] = useState({1:{},2:{}})
   const [state_active_equiped_number, setStateActiveEquipedNumber] =
     useState("1");
   const [state_hp, setStateHp] = React.useState(60);
@@ -495,7 +497,7 @@ function App() {
                   position: "fixed",
                   bottom: "45px",
                   right: "10px",
-                  width: "200px",
+                  width: "800px",
                   height: "500px",
                   //display: "flex",
                   alignItems: "start",
@@ -508,6 +510,9 @@ function App() {
                     parent_state_toggle_summon={state_toggle_summon}
                     parentSetStateToggleSummon={setStateToggleSummon}
                     parentSetStateSummonWindow={setStateSummonWindow}
+                  />
+                  <GenerateEquipedSummon
+                    parent_state_list_summon={state_list_summon}
                   />
                   <div
                     style={{

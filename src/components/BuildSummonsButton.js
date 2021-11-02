@@ -147,7 +147,7 @@ export default function BuildSummonsButton (props) {
                 //disabled
                 style={{
                   transform: "scale(1)",
-                  width: "100px",
+                  width: "calc(100px)",
                   border: "0px solid black",
                 }}
                 class="tooltip button"

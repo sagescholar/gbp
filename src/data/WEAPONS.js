@@ -696,10 +696,10 @@ export const weapons = {
       2: { e: "風", type: "通常三手", lank: "大", aura: "opti"},
     }
   },
-  青竜邪槍王: {
-    name: "青竜邪槍王",
+  青竜牙矛王: {
+    name: "青竜牙矛王",
     element: "風",
-    skill_level:15,
+    skill_level:20,
     atk: 2180,
     hp:240,
     type:"spear",
@@ -708,6 +708,20 @@ export const weapons = {
     skill: {
       1: { e: "風", type: "通常攻刃", lank: "II", aura: "opti"},
       2: { e: "風", type: "技巧", lank: "中", aura: "opti"},
+    }
+  },
+  青竜牙矛邪: {
+    name: "青竜牙矛邪",
+    element: "風",
+    skill_level:20,
+    atk: 2180,
+    hp:240,
+    type:"spear",
+    icon: "images/weapon/Qinglong_Spear_Malus.png",
+    EX_Skill: false,
+    skill: {
+      1: { e: "風", type: "通常攻刃", lank: "II", aura: "opti"},
+      2: { e: "風", type: "ダメージ上限_武器枠", lank:10, aura: "None"}
     }
   },
   暁: {
